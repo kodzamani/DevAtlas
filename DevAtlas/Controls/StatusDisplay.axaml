@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="DevAtlas.Controls.StatusDisplay"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:svc="using:DevAtlas.Services">
+    
+    <Border Background="{DynamicResource Bg.Window}"
+            BorderBrush="{DynamicResource Border.Normal}"
+            BorderThickness="0,1,0,0"
+            CornerRadius="6,6,0,0"
+            Padding="12,6"
+            Opacity="0.9"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom">
+        <StackPanel Orientation="Horizontal">
+            <!-- Project Count -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,15,0">
+                <TextBlock Text="{Binding [ProjectsFooterProjects], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" FontSize="9" VerticalAlignment="Center" Margin="0,0,4,0" Opacity="0.7" Foreground="{DynamicResource Text.Muted}"/>
+                <StackPanel>
+                    <Grid>
+                        <TextBlock x:Name="ProjectCountText" Text="0" Foreground="{DynamicResource Text.Secondary}" FontSize="10" FontWeight="SemiBold"/>
+                        <!-- Loading indicator -->
+                        <TextBlock x:Name="ProjectLoadingText" Text="..." Foreground="{DynamicResource Text.Muted}" FontSize="8" Margin="2,0,0,0" IsVisible="False"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+            
+            <!-- File Count -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,15,0">
+                <TextBlock Text="{Binding [ProjectsFooterFiles], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" FontSize="9" VerticalAlignment="Center" Margin="0,0,4,0" Opacity="0.7" Foreground="{DynamicResource Text.Muted}"/>
+                <StackPanel>
+                    <Grid>
+                        <TextBlock x:Name="FileCountText" Text="0" Foreground="{DynamicResource Text.Secondary}" FontSize="10" FontWeight="SemiBold"/>
+                        <!-- Loading indicator -->
+                        <TextBlock x:Name="FileLoadingText" Text="..." Foreground="{DynamicResource Text.Muted}" FontSize="8" Margin="2,0,0,0" IsVisible="False"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+            
+            <!-- Code Lines -->
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding [ProjectsFooterLines], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" FontSize="9" VerticalAlignment="Center" Margin="0,0,4,0" Opacity="0.7" Foreground="{DynamicResource Text.Muted}"/>
+                <StackPanel>
+                    <Grid>
+                        <TextBlock x:Name="LinesCountText" Text="0" Foreground="{DynamicResource Text.Secondary}" FontSize="10" FontWeight="SemiBold"/>
+                        <!-- Loading indicator -->
+                        <TextBlock x:Name="LinesLoadingText" Text="..." Foreground="{DynamicResource Text.Muted}" FontSize="8" Margin="2,0,0,0" IsVisible="False"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <!-- App General -->
+  <data name="AppName" xml:space="preserve"><value>DevAtlas</value></data>
+  <data name="AppTagline" xml:space="preserve"><value>개발 명령 센터</value></data>
+  <data name="AppVersion" xml:space="preserve"><value>버전 {0}</value></data>
+  <data name="WindowTitleWorkspace" xml:space="preserve"><value>DevAtlas 워크스페이스</value></data>
+
+  <!-- Tabs -->
+  <data name="TabAtlas" xml:space="preserve"><value>아틀라스</value></data>
+  <data name="TabStats" xml:space="preserve"><value>통계</value></data>
+  <data name="TabNotebook" xml:space="preserve"><value>노트북</value></data>
+  <data name="TabSettings" xml:space="preserve"><value>설정</value></data>
+
+  <!-- Sidebar -->
+  <data name="SidebarAllProjects" xml:space="preserve"><value>모든 프로젝트</value></data>
+  <data name="SidebarWeb" xml:space="preserve"><value>웹</value></data>
+  <data name="SidebarDesktop" xml:space="preserve"><value>데스크톱</value></data>
+  <data name="SidebarMobile" xml:space="preserve"><value>모바일</value></data>
+  <data name="SidebarCloud" xml:space="preserve"><value>클라우드</value></data>
+  <data name="SidebarScanProjects" xml:space="preserve"><value>프로젝트 스캔</value></data>
+  <data name="SidebarDarkMode" xml:space="preserve"><value>다크 모드</value></data>
+  <data name="SidebarShowTour" xml:space="preserve"><value>투어 보기</value></data>
+  <data name="SidebarExplorer" xml:space="preserve"><value>탐색기</value></data>
+
+  <!-- Search -->
+  <data name="SearchProjects" xml:space="preserve"><value>프로젝트 검색...</value></data>
+
+  <!-- Onboarding - Welcome -->
+  <data name="OnboardingWelcomeTitle" xml:space="preserve"><value>DevAtlas에 오신 것을 환영합니다</value></data>
+  <data name="OnboardingWelcomeSubtitle" xml:space="preserve"><value>개발 명령 센터</value></data>
+  <data name="OnboardingGetStarted" xml:space="preserve"><value>시작하기</value></data>
+  <data name="OnboardingSkip" xml:space="preserve"><value>건너뛰기</value></data>
+
+  <!-- Onboarding - Features -->
+  <data name="OnboardingFeaturesTitle" xml:space="preserve"><value>프로젝트 아틀라스</value></data>
+  <data name="OnboardingFeaturesSubtitle" xml:space="preserve"><value>모든 개발 프로젝트 관리</value></data>
+  <data name="OnboardingFeature1Title" xml:space="preserve"><value>프로젝트 아틀라스</value></data>
+  <data name="OnboardingFeature1Subtitle" xml:space="preserve"><value>모든 개발 프로젝트 관리</value></data>
+  <data name="OnboardingFeature2Title" xml:space="preserve"><value>통계</value></data>
+  <data name="OnboardingFeature2Subtitle" xml:space="preserve"><value>코딩 활동 추적</value></data>
+  <data name="OnboardingFeature3Title" xml:space="preserve"><value>노트북</value></data>
+  <data name="OnboardingFeature3Subtitle" xml:space="preserve"><value>프로젝트 문서화</value></data>
+
+  <!-- Onboarding - Quick Actions -->
+  <data name="OnboardingQuickActionsTitle" xml:space="preserve"><value>빠른 작업</value></data>
+  <data name="OnboardingQuickActionsSubtitle" xml:space="preserve"><value>도구로 빠르게 이동</value></data>
+
+  <!-- Onboarding - Stats & Notebook -->
+  <data name="OnboardingStatsNotebookTitle" xml:space="preserve"><value>통계 &amp; 노트북</value></data>
+  <data name="OnboardingStatsNotebookSubtitle" xml:space="preserve"><value>진행 상황 추적 및 메모</value></data>
+
+  <!-- Onboarding - Appearance -->
+  <data name="OnboardingAppearanceTitle" xml:space="preserve"><value>모양</value></data>
+  <data name="OnboardingAppearanceSubtitle" xml:space="preserve"><value>DevAtlas의 외관을 선택</value></data>
+  <data name="OnboardingAllSet" xml:space="preserve"><value>준비 완료!</value></data>
+  <data name="OnboardingStartUsing" xml:space="preserve"><value>DevAtlas 사용 시작</value></data>
+
+  <!-- Onboarding - Additional -->
+  <data name="OnboardingChooseAccentColor" xml:space="preserve"><value>좋아하는 강조 색상을 선택하세요</value></data>
+  <data name="OnboardingDiscoverProjects" xml:space="preserve"><value>모든 개발 프로젝트를 발견하고 관리하세요</value></data>
+  <data name="OnboardingTwoMoreFeatures" xml:space="preserve"><value>손에 넣을 수 있는 두 가지 더 강력한 기능</value></data>
+  <data name="OnboardingLightningAccess" xml:space="preserve"><value>개발 도구에 대한 번개처럼 빠른 접근</value></data>
+  <data name="OnboardingAutoScanTitle" xml:space="preserve"><value>자동 스캔</value></data>
+  <data name="OnboardingAutoScanSubtitle" xml:space="preserve"><value>모든 드라이브에서 프로젝트 찾기</value></data>
+  <data name="OnboardingSmartFiltersTitle" xml:space="preserve"><value>스마트 필터</value></data>
+  <data name="OnboardingSmartFiltersSubtitle" xml:space="preserve"><value>웹, 데스크톱, 모바일 또는 클라우드로 필터링</value></data>
+  <data name="OnboardingAutoScanProjectsTitle" xml:space="preserve"><value>프로젝트 자동 스캔</value></data>
+  <data name="OnboardingAutoScanProjectsSubtitle" xml:space="preserve"><value>컴퓨터의 모든 프로젝트를 자동으로 발견하고 인덱싱</value></data>
+  <data name="OnboardingSmartCategoriesTitle" xml:space="preserve"><value>스마트 카테고리</value></data>
+  <data name="OnboardingSmartCategoriesSubtitle" xml:space="preserve"><value>프로젝트가 웹, 데스크톱, 모바일, 클라우드로 분류됨</value></data>
+  <data name="OnboardingTechStackDetectionTitle" xml:space="preserve"><value>기술 스택 감지</value></data>
+  <data name="OnboardingTechStackDetectionSubtitle" xml:space="preserve"><value>사용된 프레임워크, 언어, 도구를 자동으로 감지</value></data>
+  <data name="OnboardingOpenInEditorTitle" xml:space="preserve"><value>편집기에서 열기</value></data>
+  <data name="OnboardingOpenInEditorSubtitle" xml:space="preserve"><value>VS Code, Visual Studio 또는 모든 편집기에서 프로젝트를 직접 실행</value></data>
+  <data name="OnboardingRunProjectsTitle" xml:space="preserve"><value>프로젝트 실행</value></data>
+  <data name="OnboardingRunProjectsSubtitle" xml:space="preserve"><value>원클릭으로 개발 서버 및 빌드 프로세스 시작</value></data>
+  <data name="OnboardingAnalyzeCodeTitle" xml:space="preserve"><value>코드 분석</value></data>
+  <data name="OnboardingAnalyzeCodeSubtitle" xml:space="preserve"><value>코드 라인 및 파일 수 포함 상세 메트릭 얻기</value></data>
+  <data name="OnboardingGitStatisticsTitle" xml:space="preserve"><value>Git 통계</value></data>
+  <data name="OnboardingGitStatisticsSubtitle" xml:space="preserve"><value>시간 경과에 따른 추가, 삭제 및 커밋 활동 추적</value></data>
+  <data name="OnboardingProjectInsightsTitle" xml:space="preserve"><value>프로젝트 인사이트</value></data>
+  <data name="OnboardingProjectInsightsSubtitle" xml:space="preserve"><value>코드 분포, 프로젝트 유형 및 파일 메트릭 시각화</value></data>
+  <data name="OnboardingSearchTitle" xml:space="preserve"><value>검색</value></data>
+  <data name="OnboardingSearchSubtitle" xml:space="preserve"><value>이름이나 기술 스택으로 프로젝트 찾기</value></data>
+  <data name="OnboardingRecentActivityTitle" xml:space="preserve"><value>최근 활동</value></data>
+  <data name="OnboardingRecentActivitySubtitle" xml:space="preserve"><value>최근에 작업한 파일 보기</value></data>
+  <data name="OnboardingVSCode" xml:space="preserve"><value>Visual Studio Code에서 열기</value></data>
+  <data name="OnboardingTerminal" xml:space="preserve"><value>프로젝트 위치에서 터미널 열기</value></data>
+  <data name="OnboardingExplorer" xml:space="preserve"><value>탐색기에서 프로젝트 보기</value></data>
+  <data name="OnboardingRunProjects" xml:space="preserve"><value>프로젝트 실행</value></data>
+  <data name="OnboardingAnalyzeCode" xml:space="preserve"><value>코드 분석</value></data>
+  <data name="OnboardingStatsLanguageBreakdown" xml:space="preserve"><value>언어별 분포</value></data>
+  <data name="OnboardingStatsLineCount" xml:space="preserve"><value>라인 수 분석</value></data>
+  <data name="OnboardingStatsTimeInsights" xml:space="preserve"><value>시간 기반 인사이트</value></data>
+  <data name="OnboardingStatsExportReports" xml:space="preserve"><value>보고서 내보내기</value></data>
+
+  <!-- Settings -->
+  <data name="SettingsTitle" xml:space="preserve"><value>설정</value></data>
+  <data name="SettingsAbout" xml:space="preserve"><value>정보</value></data>
+  <data name="SettingsAboutDescription" xml:space="preserve"><value>DevAtlas은 포괄적인 개발 명령 센터입니다. 모든 프로젝트를 한 곳에서 구성, 분석 및 추적하세요.</value></data>
+  <data name="SettingsLanguage" xml:space="preserve"><value>언어</value></data>
+  <data name="SettingsSelectLanguage" xml:space="preserve"><value>언어 선택</value></data>
+  <data name="SettingsAppearance" xml:space="preserve"><value>모양</value></data>
+  <data name="SettingsTheme" xml:space="preserve"><value>테마</value></data>
+  <data name="SettingsAccentColor" xml:space="preserve"><value>강조 색상</value></data>
+  <data name="SettingsLight" xml:space="preserve"><value>라이트</value></data>
+  <data name="SettingsDark" xml:space="preserve"><value>다크</value></data>
+  <data name="SettingsSystem" xml:space="preserve"><value>시스템</value></data>
+  <data name="SettingsVersion" xml:space="preserve"><value>버전</value></data>
+  <data name="SettingsCopyright" xml:space="preserve"><value>© 2024 DevAtlas</value></data>
+
+  <!-- Languages -->
+  <data name="LanguageEn" xml:space="preserve"><value>영어</value></data>
+  <data name="LanguageTr" xml:space="preserve"><value>터키어</value></data>
+  <data name="LanguageDe" xml:space="preserve"><value>독일어</value></data>
+  <data name="LanguageJa" xml:space="preserve"><value>일본어</value></data>
+  <data name="LanguageZh" xml:space="preserve"><value>중국어 (간체)</value></data>
+  <data name="LanguageKo" xml:space="preserve"><value>한국어</value></data>
+  <data name="LanguageIt" xml:space="preserve"><value>이탈리아어</value></data>
+  <data name="LanguageFr" xml:space="preserve"><value>프랑스어</value></data>
+
+  <!-- Common -->
+  <data name="CommonNext" xml:space="preserve"><value>다음</value></data>
+  <data name="CommonPrevious" xml:space="preserve"><value>이전</value></data>
+  <data name="CommonBack" xml:space="preserve"><value>뒤로</value></data>
+  <data name="CommonDone" xml:space="preserve"><value>완료</value></data>
+  <data name="CommonCancel" xml:space="preserve"><value>취소</value></data>
+  <data name="CommonSave" xml:space="preserve"><value>저장</value></data>
+  <data name="CommonClose" xml:space="preserve"><value>닫기</value></data>
+
+  <!-- Dashboard & Projects -->
+  <data name="DashboardQuickActions" xml:space="preserve"><value>빠른 작업</value></data>
+  <data name="DashboardTechStack" xml:space="preserve"><value>기술 스택</value></data>
+  <data name="DashboardRecentActivity" xml:space="preserve"><value>최근 활동</value></data>
+  <data name="DashboardNoRecentActivity" xml:space="preserve"><value>최근 활동 없음</value></data>
+  <data name="DashboardSize" xml:space="preserve"><value>크기</value></data>
+  <data name="DashboardFiles" xml:space="preserve"><value>파일</value></data>
+  <data name="DashboardLines" xml:space="preserve"><value>줄</value></data>
+  <data name="DashboardLang" xml:space="preserve"><value>언어</value></data>
+  <data name="DashboardFramework" xml:space="preserve"><value>프레임워크</value></data>
+
+  <!-- Stats View -->
+  <data name="StatsProjectsAnalyzed" xml:space="preserve"><value>분석된 프로젝트</value></data>
+  <data name="StatsTrackedCodeLines" xml:space="preserve"><value>추적된 코드 줄 수</value></data>
+  <data name="StatsGitAdditions" xml:space="preserve"><value>Git 추가</value></data>
+  <data name="StatsGitDeletions" xml:space="preserve"><value>Git 삭제</value></data>
+  <data name="StatsGitActivity" xml:space="preserve"><value>Git 활동 ({0})</value></data>
+  <data name="StatsActivityVolume" xml:space="preserve"><value>활동량</value></data>
+  <data name="StatsCodeLinesByProject" xml:space="preserve"><value>프로젝트별 코드 줄 수</value></data>
+  <data name="StatsProjectTypes" xml:space="preserve"><value>프로젝트 유형</value></data>
+  <data name="StatsAllProjects" xml:space="preserve"><value>모든 프로젝트</value></data>
+  <data name="StatsTopProjectsByFileCount" xml:space="preserve"><value>파일 수 상위 프로젝트</value></data>
+  <data name="StatsNoGitActivity" xml:space="preserve"><value>이 기간에 Git 활동을 찾을 수 없습니다.</value></data>
+  <data name="StatsNoCodeLines" xml:space="preserve"><value>표시할 코드 줄이 없습니다.</value></data>
+  <data name="StatsNoProjectsToRank" xml:space="preserve"><value>순위를 매길 프로젝트가 없습니다.</value></data>
+  <data name="StatsNoData" xml:space="preserve"><value>데이터가 없습니다.</value></data>
+  <data name="StatsActivityHigh" xml:space="preserve"><value>활동도 높음</value></data>
+  <data name="StatsActivityMedium" xml:space="preserve"><value>활동도 보통</value></data>
+  <data name="StatsActivityLow" xml:space="preserve"><value>활동도 낮음</value></data>
+
+  <!-- Projects -->
+  <data name="ProjectsNoProjectsFound" xml:space="preserve"><value>프로젝트를 찾을 수 없습니다</value></data>
+  <data name="ProjectsTryScanning" xml:space="preserve"><value>프로젝트 스캔 또는 검색 조정을 시도해 보세요</value></data>
+  <data name="ProjectsScanProjects" xml:space="preserve"><value>프로젝트 스캔</value></data>
+  <data name="ProjectsBackToProjects" xml:space="preserve"><value>프로젝트로 돌아가기</value></data>
+  <data name="ProjectsActive" xml:space="preserve"><value>활성</value></data>
+  <data name="ProjectsOpenInCodeEditor" xml:space="preserve"><value>코드 편집기에서 열기</value></data>
+  <data name="ProjectsSelectEditor" xml:space="preserve"><value>편집기 선택</value></data>
+  <data name="ProjectsRunProject" xml:space="preserve"><value>프로젝트 실행</value></data>
+  <data name="ProjectsStartDevServer" xml:space="preserve"><value>개발 서버 시작</value></data>
+  <data name="ProjectsOpenTerminal" xml:space="preserve"><value>터미널 열기</value></data>
+  <data name="ProjectsCommandPrompt" xml:space="preserve"><value>명령 프롬프트</value></data>
+  <data name="ProjectsRevealInExplorer" xml:space="preserve"><value>탐색기에서 보기</value></data>
+  <data name="ProjectsOpenFileExplorer" xml:space="preserve"><value>파일 탐색기 열기</value></data>
+  <data name="ProjectsAnalyzeProject" xml:space="preserve"><value>프로젝트 분석</value></data>
+  <data name="ProjectsCodeLineStats" xml:space="preserve"><value>코드 줄 통계</value></data>
+  <data name="ProjectsType" xml:space="preserve"><value>유형:</value></data>
+  <data name="ProjectsFooterProjects" xml:space="preserve"><value>프로젝트</value></data>
+  <data name="ProjectsFooterFiles" xml:space="preserve"><value>파일</value></data>
+  <data name="ProjectsFooterLines" xml:space="preserve"><value>줄</value></data>
+
+  <!-- Navigation -->
+  <data name="NavWorkspace" xml:space="preserve"><value>워크스페이스</value></data>
+  <data name="NavProjects" xml:space="preserve"><value>프로젝트</value></data>
+  <data name="NavAllLocations" xml:space="preserve"><value>모든 위치</value></data>
+  <data name="NavExport" xml:space="preserve"><value>내보내기</value></data>
+  <data name="NavNavigation" xml:space="preserve"><value>내비게이션</value></data>
+
+  <data name="StatsDashboardTitle" xml:space="preserve"><value>통계 대시보드</value></data>
+  <data name="StatsDashboardSubtitle" xml:space="preserve"><value>워크스페이스 활동 및 프로젝트 메트릭 개요</value></data>
+  <data name="StatsCalculating" xml:space="preserve"><value>계산 중...</value></data>
+  <data name="StatsLoadingGitData" xml:space="preserve"><value>Git 데이터 로딩 중...</value></data>
+  <data name="StatsRangeWeek" xml:space="preserve"><value>주</value></data>
+  <data name="StatsRangeMonth" xml:space="preserve"><value>월</value></data>
+  <data name="StatsRangeYear" xml:space="preserve"><value>년</value></data>
+  <data name="StatsRangeAllTime" xml:space="preserve"><value>전체 기간</value></data>
+  <data name="StatsGitActivityTitle" xml:space="preserve"><value>Git 활동</value></data>
+  <data name="StatsGitActivitySubtitle" xml:space="preserve"><value>시간 경과에 따른 추가 및 삭제 라인</value></data>
+  <data name="StatsGitHeatmapTitle" xml:space="preserve"><value>기여 히트맵</value></data>
+  <data name="StatsGitHeatmapSubtitle" xml:space="preserve"><value>선택한 프로젝트의 일일 커밋 밀도</value></data>
+  <data name="StatsHeatmapHint" xml:space="preserve"><value>세부 정보를 보려면 블록 위에 마우스를 올리세요</value></data>
+  <data name="StatsLess" xml:space="preserve"><value>적음</value></data>
+  <data name="StatsMore" xml:space="preserve"><value>많음</value></data>
+  <data name="StatsContribution" xml:space="preserve"><value>기여</value></data>
+  <data name="StatsContributions" xml:space="preserve"><value>기여</value></data>
+  <data name="StatsLinesOfCodeTitle" xml:space="preserve"><value>코드 라인</value></data>
+  <data name="StatsLinesOfCodeSubtitle" xml:space="preserve"><value>코드 라인 수 상위 10개 프로젝트</value></data>
+  <data name="StatsProjectTypesTitle" xml:space="preserve"><value>프로젝트 유형</value></data>
+  <data name="StatsProjectTypesSubtitle" xml:space="preserve"><value>프로젝트 유형별 분포</value></data>
+  <data name="StatsFileCountTitle" xml:space="preserve"><value>파일 수</value></data>
+  <data name="StatsFileCountSubtitle" xml:space="preserve"><value>파일 수 상위 10개 프로젝트</value></data>
+
+  <!-- Scan -->
+  <data name="ScanFoundProjects" xml:space="preserve"><value>{0}개 프로젝트 발견</value></data>
+  <data name="ScanStarting" xml:space="preserve"><value>스캔 시작 중...</value></data>
+  <data name="ScanInitializing" xml:space="preserve"><value>초기화 중...</value></data>
+
+  <data name="EditorsNoEditorsFound" xml:space="preserve"><value>시스템에서 코드 편집기를 찾을 수 없습니다</value></data>
+
+  <data name="ProjectsAnalyzingProject" xml:space="preserve"><value>프로젝트 분석 중...</value></data>
+  <data name="ProjectsTotalFiles" xml:space="preserve"><value>총 파일</value></data>
+  <data name="ProjectsTotalLines" xml:space="preserve"><value>총 줄</value></data>
+  <data name="ProjectsAvgLinesPerFile" xml:space="preserve"><value>평균 줄/파일</value></data>
+  <data name="ProjectsLargestFile" xml:space="preserve"><value>가장 큰 파일</value></data>
+  <data name="ProjectsFile" xml:space="preserve"><value>파일</value></data>
+  <data name="ProjectsExtension" xml:space="preserve"><value>확장자</value></data>
+  <data name="ProjectsLines" xml:space="preserve"><value>줄</value></data>
+  <data name="ProjectsOpenInVisualStudio" xml:space="preserve"><value>Visual Studio에서 열기</value></data>
+  <data name="ProjectsLaunchIDE" xml:space="preserve"><value>IDE 실행</value></data>
+  <data name="ProjectsProperties" xml:space="preserve"><value>속성</value></data>
+
+  <!-- Time Groups -->
+  <data name="TimeGroupToday" xml:space="preserve"><value>오늘</value></data>
+  <data name="TimeGroupYesterday" xml:space="preserve"><value>어제</value></data>
+  <data name="TimeGroupThisWeek" xml:space="preserve"><value>이번 주</value></data>
+  <data name="TimeGroupThisMonth" xml:space="preserve"><value>이번 달</value></data>
+  <data name="TimeGroup1to3MonthsAgo" xml:space="preserve"><value>1-3개월 전</value></data>
+  <data name="TimeGroupOlder" xml:space="preserve"><value>그 이전</value></data>
+
+  <!-- Date Range Filters -->
+  <data name="DateRange7Days" xml:space="preserve"><value>7일</value></data>
+  <data name="DateRange30Days" xml:space="preserve"><value>30일</value></data>
+  <data name="DateRangeYear" xml:space="preserve"><value>년</value></data>
+  <data name="DateRangeAllTime" xml:space="preserve"><value>전체</value></data>
+
+  <!-- Stats Chart Labels -->
+  <data name="StatsAdditions" xml:space="preserve"><value>추가</value></data>
+  <data name="StatsDeletions" xml:space="preserve"><value>삭제</value></data>
+  <data name="StatsLinesOfCode" xml:space="preserve"><value>코드 줄 수</value></data>
+  <data name="StatsFileCount" xml:space="preserve"><value>파일 수</value></data>
+
+  <!-- Run Project States -->
+  <data name="RunProjectStop" xml:space="preserve"><value>프로젝트 중지</value></data>
+  <data name="RunProjectServerRunning" xml:space="preserve"><value>서버 실행 중</value></data>
+  <data name="RunProjectStart" xml:space="preserve"><value>프로젝트 실행</value></data>
+  <data name="RunProjectStartDevServer" xml:space="preserve"><value>개발 서버 시작</value></data>
+
+  <!-- Messages -->
+  <data name="MessageAllLocations" xml:space="preserve"><value>모든 위치</value></data>
+  <data name="MessageEditorNotFound" xml:space="preserve"><value>편집기를 찾을 수 없음</value></data>
+  <data name="MessageVSCodeNotFound" xml:space="preserve"><value>VSCode를 찾을 수 없습니다.</value></data>
+  <data name="MessageComingSoon" xml:space="preserve"><value>곧 출시</value></data>
+  <data name="MessageFavoritesComingSoon" xml:space="preserve"><value>즐겨찾기 기능이 곧 출시됩니다!</value></data>
+  <data name="MessageTagEditingComingSoon" xml:space="preserve"><value>태그 편집 기능이 곧 출시됩니다!</value></data>
+  <data name="MessageError" xml:space="preserve"><value>오류</value></data>
+  <data name="MessageCouldNotFindStartScript" xml:space="preserve"><value>package.json에서 start/dev/serve 스크립트를 찾을 수 없습니다</value></data>
+  <data name="MessageFailedToStartDevServer" xml:space="preserve"><value>개발 서버 시작 실패</value></data>
+  <data name="MessageFailedToRunProject" xml:space="preserve"><value>프로젝트 실행 실패: {0}</value></data>
+  <data name="MessageInitializationError" xml:space="preserve"><value>초기화 오류</value></data>
+  <data name="MessageFailedToInitializeServices" xml:space="preserve"><value>확장성 서비스 초기화 실패: {0}</value></data>
+
+  <!-- Categories -->
+  <data name="CategoryOther" xml:space="preserve"><value>기타</value></data>
+  <data name="CategoryUnknown" xml:space="preserve"><value>알 수 없음</value></data>
+  <data name="CategoryWeb" xml:space="preserve"><value>웹</value></data>
+  <data name="CategoryDesktop" xml:space="preserve"><value>데스크톱</value></data>
+  <data name="CategoryMobile" xml:space="preserve"><value>모바일</value></data>
+  <data name="CategoryCloud" xml:space="preserve"><value>클라우드</value></data>
+
+  <data name="StatsDashboardTitle" xml:space="preserve"><value>통계 대시보드</value></data>
+  <data name="StatsDashboardSubtitle" xml:space="preserve"><value>워크스페이스 활동 및 프로젝트 메트릭 개요</value></data>
+  <data name="StatsCalculating" xml:space="preserve"><value>계산 중...</value></data>
+  <data name="StatsLoadingGitData" xml:space="preserve"><value>Git 데이터 로딩 중...</value></data>
+  <data name="StatsRangeWeek" xml:space="preserve"><value>주</value></data>
+  <data name="StatsRangeMonth" xml:space="preserve"><value>월</value></data>
+  <data name="StatsRangeYear" xml:space="preserve"><value>년</value></data>
+  <data name="StatsRangeAllTime" xml:space="preserve"><value>전체 기간</value></data>
+  <data name="StatsGitActivityTitle" xml:space="preserve"><value>Git 활동</value></data>
+  <data name="StatsGitActivitySubtitle" xml:space="preserve"><value>시간 경과에 따른 추가 및 삭제 라인</value></data>
+  <data name="StatsLinesOfCodeTitle" xml:space="preserve"><value>코드 라인</value></data>
+  <data name="StatsLinesOfCodeSubtitle" xml:space="preserve"><value>코드 라인 수 상위 10개 프로젝트</value></data>
+  <data name="StatsProjectTypesTitle" xml:space="preserve"><value>프로젝트 유형</value></data>
+  <data name="StatsProjectTypesSubtitle" xml:space="preserve"><value>프로젝트 유형별 분포</value></data>
+  <data name="StatsFileCountTitle" xml:space="preserve"><value>파일 수</value></data>
+  <data name="StatsFileCountSubtitle" xml:space="preserve"><value>파일 수 상위 10개 프로젝트</value></data>
+
+  <!-- Unused Code Analysis -->
+  <data name="UnusedCodeTitle" xml:space="preserve"><value>사용되지 않는 코드 찾기</value></data>
+  <data name="UnusedCodeAnalyzing" xml:space="preserve"><value>사용되지 않는 코드 분석 중...</value></data>
+  <data name="UnusedCodeTotalIssues" xml:space="preserve"><value>총 문제</value></data>
+  <data name="UnusedCodeVariables" xml:space="preserve"><value>변수</value></data>
+  <data name="UnusedCodeMethods" xml:space="preserve"><value>메서드</value></data>
+  <data name="UnusedCodeTypes" xml:space="preserve"><value>타입</value></data>
+  <data name="UnusedCodeNoIssues" xml:space="preserve"><value>사용되지 않는 코드를 찾을 수 없습니다!</value></data>
+  <data name="UnusedCodeCleanProject" xml:space="preserve"><value>프로젝트가 깨끗합니다. 훌륭합니다!</value></data>
+  <data name="UnusedCodeColType" xml:space="preserve"><value>유형</value></data>
+  <data name="UnusedCodeColName" xml:space="preserve"><value>이름</value></data>
+  <data name="UnusedCodeColLocation" xml:space="preserve"><value>위치</value></data>
+  <data name="UnusedCodeColHints" xml:space="preserve"><value>힌트</value></data>
+  <data name="UnusedCodeFindUnused" xml:space="preserve"><value>미사용 찾기</value></data>
+  <data name="UnusedCodeDetectUnused" xml:space="preserve"><value>사용되지 않는 코드 감지</value></data>
+  <data name="UnusedCodeAIPrompt" xml:space="preserve"><value>AI 프롬프트</value></data>
+  <data name="DepsPackage" xml:space="preserve"><value>패키지</value></data>
+  <data name="DepsVersion" xml:space="preserve"><value>버전</value></data>
+  <data name="DepsSource" xml:space="preserve"><value>소스</value></data>
+  <data name="DepsLoading" xml:space="preserve"><value>종속성 로드 중...</value></data>
+  <data name="DepsCheckingUpdates" xml:space="preserve"><value>업데이트 확인 중...</value></data>
+  <data name="DepsNoDependencies" xml:space="preserve"><value>종속성을 찾을 수 없습니다</value></data>
+  <!-- AI Prompt Library -->
+  <data name="tab.aiPrompts" xml:space="preserve"><value>AI 프롬프트</value></data>
+  <data name="aiprompts.title" xml:space="preserve"><value>AI 프롬프트 라이브러리</value></data>
+  <data name="aiprompts.subtitle" xml:space="preserve"><value>%d개 카테고리 · %d개 전문가 프롬프트</value></data>
+  <data name="aiprompts.description" xml:space="preserve"><value>자신의 프로젝트를 분석하기 위해 이 자세한 프롬프트를 복사하여 AI 어시스턴트(ChatGPT, Claude, Gemini 등)에 붙여넣으세요. 각 프롬프트는 전문가 수준의 분석 결과를 생성하도록 설계되었습니다.</value></data>
+  <data name="aiprompts.wordCount" xml:space="preserve"><value>%d단어</value></data>
+  <data name="aiprompts.copied" xml:space="preserve"><value>복사되었습니다!</value></data>
+  <data name="aiprompts.copy" xml:space="preserve"><value>복사</value></data>
+  <data name="aiprompts.collapse" xml:space="preserve"><value>접기</value></data>
+  <data name="aiprompts.expand" xml:space="preserve"><value>모두 보기</value></data>
+  <data name="aiprompts.category.codeQuality" xml:space="preserve"><value>코드 품질</value></data>
+  <data name="aiprompts.category.performance" xml:space="preserve"><value>성능</value></data>
+  <data name="aiprompts.category.architecture" xml:space="preserve"><value>아키텍처 및 설계</value></data>
+  <data name="aiprompts.category.testing" xml:space="preserve"><value>테스트</value></data>
+  <data name="aiprompts.category.documentation" xml:space="preserve"><value>문서화</value></data>
+  <data name="aiprompts.category.debugging" xml:space="preserve"><value>디버깅 및 프로파일링</value></data>
+  <data name="aiprompts.category.networking" xml:space="preserve"><value>API 및 네트워킹</value></data>
+  <data name="aiprompts.category.accessibility" xml:space="preserve"><value>접근성</value></data>
+  <data name="aiprompts.category.localization" xml:space="preserve"><value>i18n 및 다국어 지원</value></data>
+  <data name="aiprompts.category.cicd" xml:space="preserve"><value>Git 및 CI/CD</value></data>
+  <data name="aiprompts.category.dependencies" xml:space="preserve"><value>종속성 관리</value></data>
+  <data name="aiprompts.category.codeGeneration" xml:space="preserve"><value>코드 생성</value></data>
+  <data name="aiprompts.prompt.unusedCode.title" xml:space="preserve"><value>사용되지 않는 코드</value></data>
+  <data name="aiprompts.prompt.unusedCode.desc" xml:space="preserve"><value>프로젝트에서 사용되지 않는 함수, 변수, 클래스 및 가져오기를 감지합니다.</value></data>
+  <data name="aiprompts.prompt.codeSmells.title" xml:space="preserve"><value>코드 악취 및 안티 패턴</value></data>
+  <data name="aiprompts.prompt.codeSmells.desc" xml:space="preserve"><value>코드 악취, 안티 패턴 및 잠재적 버그를 깊이 있게 감지합니다.</value></data>
+  <data name="aiprompts.prompt.memoryLeaks.title" xml:space="preserve"><value>메모리 누수 및 유지 사이클</value></data>
+  <data name="aiprompts.prompt.memoryLeaks.desc" xml:space="preserve"><value>Swift/Apple 프로젝트의 메모리 누수, 유지 사이클 및 리소스 관리 오류를 포괄적으로 분석합니다.</value></data>
+  <data name="aiprompts.prompt.securityAudit.title" xml:space="preserve"><value>보안 감사</value></data>
+  <data name="aiprompts.prompt.securityAudit.desc" xml:space="preserve"><value>보안 취약점, 위험한 코드 패턴 및 데이터 보호 결함을 포괄적으로 감사합니다.</value></data>
+  <data name="aiprompts.prompt.errorHandling.title" xml:space="preserve"><value>오류 처리 감사</value></data>
+  <data name="aiprompts.prompt.errorHandling.desc" xml:space="preserve"><value>오류 처리 결함, 강제 언래핑 및 크래시 위험을 감지합니다.</value></data>
+  <data name="aiprompts.prompt.bottleneck.title" xml:space="preserve"><value>성능 병목 현상 분석</value></data>
+  <data name="aiprompts.prompt.bottleneck.desc" xml:space="preserve"><value>전체 코드베이스의 성능 병목 현상, 느린 지점 및 불필요한 워크로드를 감지합니다.</value></data>
+  <data name="aiprompts.prompt.swiftuiRender.title" xml:space="preserve"><value>SwiftUI 렌더링 최적화</value></data>
+  <data name="aiprompts.prompt.swiftuiRender.desc" xml:space="preserve"><value>SwiftUI 뷰 계층 구조의 불필요한 재렌더링, 상태 관리 오류 및 UI 성능 문제를 감지합니다.</value></data>
+  <data name="aiprompts.prompt.appLaunch.title" xml:space="preserve"><value>앱 시작 및 실행 최적화</value></data>
+  <data name="aiprompts.prompt.appLaunch.desc" xml:space="preserve"><value>앱 시작 시간, 콜드/웜 실행 성능 및 첫 화면 표시 속도를 분석합니다.</value></data>
+  <data name="aiprompts.prompt.architectureDeep.title" xml:space="preserve"><value>아키텍처 정밀 점검</value></data>
+  <data name="aiprompts.prompt.architectureDeep.desc" xml:space="preserve"><value>SOLID 원칙, 종속성 관리 및 모듈성 측면에서 프로젝트의 아키텍처를 깊이 있게 평가합니다.</value></data>
+  <data name="aiprompts.prompt.designPatterns.title" xml:space="preserve"><value>디자인 패턴 및 모범 사례</value></data>
+  <data name="aiprompts.prompt.designPatterns.desc" xml:space="preserve"><value>현재 디자인 패턴 사용을 분석하고 부족한 패턴을 제안하며 안티 패턴을 감지합니다.</value></data>
+  <data name="aiprompts.prompt.refactoringGuide.title" xml:space="preserve"><value>리팩토링 가이드</value></data>
+  <data name="aiprompts.prompt.refactoringGuide.desc" xml:space="preserve"><value>마틴 파울러의 리팩토링 카탈로그에 따라 리팩토링이 필요한 코드 블록을 표시하고 단계별 가이드를 제공합니다.</value></data>
+  <data name="aiprompts.prompt.testCoverage.title" xml:space="preserve"><value>테스트 커버리지 및 갭 분석</value></data>
+  <data name="aiprompts.prompt.testCoverage.desc" xml:space="preserve"><value>테스트 커버리지 갭, 누락된 테스트 시나리오 및 테스트되지 않은 중요한 코드 경로를 포괄적으로 분석합니다.</value></data>
+  <data name="aiprompts.prompt.unitTestAudit.title" xml:space="preserve"><value>단위 테스트 품질 감사</value></data>
+  <data name="aiprompts.prompt.unitTestAudit.desc" xml:space="preserve"><value>기존 단위 테스트의 품질, 안정성 및 유지 관리 가능성을 감사합니다.</value></data>
+  <data name="aiprompts.prompt.testGenerator.title" xml:space="preserve"><value>테스트 작성 어시스턴트</value></data>
+  <data name="aiprompts.prompt.testGenerator.desc" xml:space="preserve"><value>제공된 코드 파일에 대해 포괄적이고 작동하는 단위 테스트를 생성합니다.</value></data>
+  <data name="aiprompts.prompt.apiDocs.title" xml:space="preserve"><value>자동화된 API 설명서</value></data>
+  <data name="aiprompts.prompt.apiDocs.desc" xml:space="preserve"><value>모든 공용 API에 대한 자세한 설명서를 Swift DocC 형식으로 생성합니다.</value></data>
+  <data name="aiprompts.prompt.readmeDocs.title" xml:space="preserve"><value>README 및 프로젝트 설명서</value></data>
+  <data name="aiprompts.prompt.readmeDocs.desc" xml:space="preserve"><value>전문적이고 포괄적인 README 및 프로젝트 설명서를 생성합니다.</value></data>
+  <data name="aiprompts.prompt.commentsAudit.title" xml:space="preserve"><value>코드 주석 분석</value></data>
+  <data name="aiprompts.prompt.commentsAudit.desc" xml:space="preserve"><value>기존 주석을 분석하여 오래되거나 잘못된 주석을 감지하고 개선 제안을 제공합니다.</value></data>
+  <data name="aiprompts.prompt.crashBugAudit.title" xml:space="preserve"><value>크래시 및 버그 분석</value></data>
+  <data name="aiprompts.prompt.crashBugAudit.desc" xml:space="preserve"><value>크래시 로그 및 버그 보고서를 분석하여 근본 원인을 찾고 수정 사항을 제안합니다.</value></data>
+  <data name="aiprompts.prompt.instrumentsGuide.title" xml:space="preserve"><value>Instruments 및 프로파일링 가이드</value></data>
+  <data name="aiprompts.prompt.instrumentsGuide.desc" xml:space="preserve"><value>Xcode Instruments를 사용한 프로파일링 가이드와 프로젝트별 권장 사항을 제공합니다.</value></data>
+  <data name="aiprompts.prompt.networkAudit.title" xml:space="preserve"><value>네트워크 계층 감사</value></data>
+  <data name="aiprompts.prompt.networkAudit.desc" xml:space="preserve"><value>네트워킹 계층, API 호출, 오류 처리 및 데이터 흐름을 포괄적으로 감사합니다.</value></data>
+  <data name="aiprompts.prompt.apiMock.title" xml:space="preserve"><value>API 모의 및 테스트 인프라</value></data>
+  <data name="aiprompts.prompt.apiMock.desc" xml:space="preserve"><value>API 테스트 인프라, 모의 서버 구성 및 네트워크 테스트 전략을 생성합니다.</value></data>
+  <data name="aiprompts.prompt.a11yAudit.title" xml:space="preserve"><value>접근성 감사</value></data>
+  <data name="aiprompts.prompt.a11yAudit.desc" xml:space="preserve"><value>접근성 표준 준수 여부를 감사하고 VoiceOver, 다이내믹 타입 및 색상 대비 문제를 감지합니다.</value></data>
+  <data name="aiprompts.prompt.i18nAudit.title" xml:space="preserve"><value>다국어 지원 종합 감사</value></data>
+  <data name="aiprompts.prompt.i18nAudit.desc" xml:space="preserve"><value>하드코딩된 문자열, 누락된 번역, 날짜/숫자 형식 및 RTL 지원을 포괄적으로 감사합니다.</value></data>
+  <data name="aiprompts.prompt.gitWorkflow.title" xml:space="preserve"><value>Git 워크플로우 최적화</value></data>
+  <data name="aiprompts.prompt.gitWorkflow.desc" xml:space="preserve"><value>Git 기록, 브랜치 전략, 커밋 품질 및 .gitignore 구성을 감사합니다.</value></data>
+  <data name="aiprompts.prompt.cicdPipeline.title" xml:space="preserve"><value>CI/CD 파이프라인 설계</value></data>
+  <data name="aiprompts.prompt.cicdPipeline.desc" xml:space="preserve"><value>프로젝트 유형에 적합한 CI/CD 파이프라인 설계, 빌드 최적화 및 배포 전략을 생성합니다.</value></data>
+  <data name="aiprompts.prompt.depAudit.title" xml:space="preserve"><value>종속성 감사</value></data>
+  <data name="aiprompts.prompt.depAudit.desc" xml:space="preserve"><value>보안, 최신 상태, 라이선스 준수 및 필요성에 대해 모든 종속성을 감사합니다.</value></data>
+  <data name="aiprompts.prompt.crudGen.title" xml:space="preserve"><value>CRUD 기능 생성기</value></data>
+  <data name="aiprompts.prompt.crudGen.desc" xml:space="preserve"><value>새 엔티티에 대한 완벽한 CRUD 기능(Model, Service, ViewModel, View)을 생성합니다.</value></data>
+  <data name="aiprompts.prompt.boilerplateGen.title" xml:space="preserve"><value>프로젝트 보일러플레이트 생성기</value></data>
+  <data name="aiprompts.prompt.boilerplateGen.desc" xml:space="preserve"><value>새 모듈 또는 기능에 필요한 모든 파일 및 폴더 구조를 생성합니다.</value></data>
+  <data name="aiprompts.prompt.projectReport.title" xml:space="preserve"><value>프로젝트 분석 보고서</value></data>
+  <data name="aiprompts.prompt.projectReport.desc" xml:space="preserve"><value>프로젝트의 전체적인 엑스레이(아키텍처, 품질, 위험 및 개선 제안)를 제공합니다.</value></data>
+  <!-- End AI Prompt Library -->
+</root>

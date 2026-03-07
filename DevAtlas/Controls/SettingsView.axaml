@@ -1,0 +1,276 @@
+<UserControl x:Class="DevAtlas.Controls.SettingsView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:DevAtlas.ViewModels"
+             xmlns:svc="using:DevAtlas.Services">
+
+    <UserControl.Styles>
+        <!-- Section card -->
+        <Style Selector="Border.SectionCard">
+            <Setter Property="Background" Value="{DynamicResource Bg.Card}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Border.Normal}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="24,20"/>
+            <Setter Property="Margin" Value="0,0,0,20"/>
+        </Style>
+
+        <!-- Theme button -->
+        <Style Selector="Border.ThemeBtn">
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="18,12"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+
+        <!-- Language row -->
+        <Style Selector="Border.LangRow">
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="14,10"/>
+            <Setter Property="Margin" Value="0,0,0,4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <!-- Accent color circle -->
+        <Style Selector="Border.AccentCircle">
+            <Setter Property="Width" Value="32"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Margin" Value="0,0,8,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+
+        <!-- Browse button -->
+        <Style Selector="Button.BrowseButton">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="6"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="Button.BrowseButton:pointerover">
+            <Setter Property="Opacity" Value="0.8"/>
+        </Style>
+
+        <!-- Remove button -->
+        <Style Selector="Button.RemoveButton">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="4"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="Button.RemoveButton:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Bg.Hover}"/>
+            <Setter Property="Foreground" Value="{DynamicResource Text.Primary}"/>
+        </Style>
+    </UserControl.Styles>
+
+    <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+        <Grid Margin="32,24,32,32" MaxWidth="1100">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Column: Appearance + Language -->
+            <StackPanel Grid.Column="0" Margin="0,0,24,0">
+
+            <!-- ======================== -->
+            <!--  APPEARANCE SECTION      -->
+            <!-- ======================== -->
+            <Border Classes="SectionCard">
+                <StackPanel>
+                    <TextBlock Text="{Binding AppearanceLabel}" Foreground="{DynamicResource Text.Primary}" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,16"/>
+
+                    <!-- Theme selection -->
+                    <TextBlock Text="{Binding ThemeLabel}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" FontWeight="Medium" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                        <!-- Light -->
+                        <Border x:Name="ThemeLightBtn" Classes="ThemeBtn" Background="{DynamicResource Bg.Muted}"
+                                BorderBrush="Transparent" PointerPressed="ThemeBtn_Click" Tag="Light" Margin="0,0,10,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="ThemeLightIcon" Tag="avares://DevAtlas/Assets/Icons/Settings/settings_light_mode.svg" Width="16" Height="16" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding LightLabel}" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="Medium" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- Dark -->
+                        <Border x:Name="ThemeDarkBtn" Classes="ThemeBtn" Background="{DynamicResource Bg.Muted}"
+                                BorderBrush="Transparent" PointerPressed="ThemeBtn_Click" Tag="Dark" Margin="0,0,10,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="ThemeDarkIcon" Tag="avares://DevAtlas/Assets/Icons/Settings/settings_dark_mode.svg" Width="16" Height="16" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding DarkLabel}" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="Medium" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- System -->
+                        <Border x:Name="ThemeSystemBtn" Classes="ThemeBtn" Background="{DynamicResource Bg.Muted}"
+                                BorderBrush="Transparent" PointerPressed="ThemeBtn_Click" Tag="System">
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="ThemeSystemIcon" Tag="avares://DevAtlas/Assets/Icons/Settings/settings_system.svg" Width="16" Height="16" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding SystemLabel}" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="Medium" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Accent color -->
+                    <TextBlock Text="{Binding AccentColorLabel}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" FontWeight="Medium" Margin="0,0,0,10"/>
+                    <WrapPanel x:Name="AccentColorPanel" Margin="0,0,0,0">
+                        <!-- Populated in code-behind -->
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- ======================== -->
+            <!--  LANGUAGE SECTION        -->
+            <!-- ======================== -->
+            <Border Classes="SectionCard">
+                <StackPanel>
+                    <TextBlock Text="{Binding LanguageLabel}" Foreground="{DynamicResource Text.Primary}" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                    <TextBlock Text="{Binding SelectLanguageLabel}" Foreground="{DynamicResource Text.Muted}" FontSize="11" Margin="0,0,0,14"/>
+
+                    <StackPanel x:Name="LanguageList">
+                        <!-- Populated in code-behind -->
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- ======================== -->
+            <!--  EXCLUDE PATHS SECTION   -->
+            <!-- ======================== -->
+            <Border Classes="SectionCard">
+                <StackPanel>
+                    <TextBlock Text="Exclude Paths" Foreground="{DynamicResource Text.Primary}" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                    <TextBlock Text="Paths added here will be skipped during project scanning" Foreground="{DynamicResource Text.Muted}" FontSize="11" Margin="0,0,0,14"/>
+
+                    <!-- Input Section -->
+                    <Button x:Name="BrowseExcludePathButton"
+                            Content="+ Browse Folder..."
+                            Click="BrowseExcludePathButton_Click"
+                            Padding="16,10"
+                            FontSize="13"
+                            FontWeight="Medium"
+                            Margin="0,0,0,16"
+                            HorizontalAlignment="Left"
+                            Cursor="Hand"
+                            Background="{DynamicResource Bg.Muted}"
+                            Foreground="{DynamicResource Text.Primary}"
+                            BorderBrush="{DynamicResource Border.Normal}"
+                            BorderThickness="1"
+                            Classes="BrowseButton"/>
+
+                    <!-- List Section -->
+                    <ItemsControl ItemsSource="{Binding ExcludePaths}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{DynamicResource Bg.Muted}"
+                                        BorderBrush="{DynamicResource Border.Normal}"
+                                        BorderThickness="1"
+                                        CornerRadius="6"
+                                        Padding="12,8"
+                                        Margin="0,0,0,6">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0"
+                                                   Text="{Binding}"
+                                                   Foreground="{DynamicResource Text.Primary}"
+                                                   FontSize="13"
+                                                   VerticalAlignment="Center"
+                                                   TextTrimming="CharacterEllipsis"/>
+                                        <Button Grid.Column="1"
+                                                Content="&#x2715;"
+                                                Command="{Binding DataContext.RemoveExcludePathCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}"
+                                                FontSize="18"
+                                                FontWeight="Bold"
+                                                Padding="8,2"
+                                                Background="Transparent"
+                                                Foreground="{DynamicResource Text.Tertiary}"
+                                                BorderThickness="0"
+                                                Cursor="Hand"
+                                                Width="28"
+                                                Height="28"
+                                                Margin="8,0,0,0"
+                                                Classes="RemoveButton"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Border>
+
+            </StackPanel>
+
+            <!-- Right Column: About Section -->
+            <Border Grid.Column="1"  VerticalAlignment="Top">
+                <StackPanel>
+    
+                    <Grid Margin="0,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- App icon -->
+                        <Image Grid.Column="0" Source="avares://DevAtlas/Assets/logo_brand.png" Width="48" Height="48"
+                               RenderOptions.BitmapInterpolationMode="HighQuality" Margin="0,0,16,0" VerticalAlignment="Top"/>
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="DevAtlas" Foreground="{DynamicResource Text.Primary}" FontSize="16" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding AboutDescription}" Foreground="{DynamicResource Text.Muted}" FontSize="12" TextWrapping="Wrap" Margin="0,4,0,8"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding VersionLabel}" Foreground="{DynamicResource Text.Tertiary}" FontSize="11"/>
+                                <TextBlock Text=" " FontSize="11"/>
+                                <TextBlock Text="{Binding AppVersion}" Foreground="{DynamicResource Text.Tertiary}" FontSize="11"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding CopyrightLabel}" Foreground="{DynamicResource Text.Muted}" FontSize="10" Margin="0,4,0,0"/>
+                            
+                            <!-- Show Tour Button (subtle) -->
+                            <Border Background="Transparent"
+                                    CornerRadius="4"
+                                    Padding="0,0"
+                                    Margin="0,12,0,0"
+                                    Cursor="Hand"
+                                    PointerPressed="ShowTourButton_Click"
+                                    HorizontalAlignment="Left">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x1F44B;" FontSize="11" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                    <TextBlock Text="{Binding [SidebarShowTour], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}"
+                                               Foreground="{DynamicResource Text.Tertiary}"
+                                               FontSize="10"
+                                               VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

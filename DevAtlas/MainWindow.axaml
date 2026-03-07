@@ -1,0 +1,856 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DevAtlas"
+        xmlns:controls="clr-namespace:DevAtlas.Controls"
+        xmlns:svc="clr-namespace:DevAtlas.Services"
+        xmlns:models="using:DevAtlas.Models"
+        mc:Ignorable="d"
+        x:Class="DevAtlas.MainWindow"
+        Title="{Binding [WindowTitleWorkspace], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}"
+        Height="900" Width="1600"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Inter, Segoe UI, San Francisco, Helvetica Neue, sans-serif"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="42"
+        Background="Transparent"
+        SystemDecorations="BorderOnly"
+        CanResize="True">
+
+    <Window.Resources>
+        <!-- Grid Card Template -->
+        <DataTemplate x:Key="GridCardTemplate">
+            <Border Classes="projectCard" Background="{DynamicResource Bg.Card}" CornerRadius="10" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" MinHeight="100" Margin="6" Cursor="Hand" PointerPressed="ProjectCard_Click" Width="260">
+                <Border.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="{Binding [ProjectsOpenTerminal], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Click="ContextMenu_OpenTerminal_Click" />
+                        <MenuItem Header="{Binding [ProjectsRevealInExplorer], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Click="ContextMenu_OpenExplorer_Click" />
+                        <Separator />
+                        <MenuItem Header="{Binding [ProjectsProperties], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Click="ContextMenu_Properties_Click" />
+                    </ContextMenu>
+                </Border.ContextMenu>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Icon + Name/Path Header -->
+                    <Grid Grid.Row="0" Margin="12,12,12,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Width="28" Height="28" CornerRadius="6" Background="{Binding IconBrush}" VerticalAlignment="Top">
+                            <TextBlock Text="{Binding IconText}" Foreground="{DynamicResource Text.Inverse}" FontSize="10" FontWeight="Bold"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding Name}" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding Path}" Foreground="{DynamicResource Text.Muted}" FontSize="10" Margin="0,1,0,0" TextTrimming="CharacterEllipsis"/>
+                        </StackPanel>
+
+                        <Ellipse Grid.Column="2" Width="8" Height="8" Fill="#22C55E"
+                                 VerticalAlignment="Top"
+                                 IsVisible="{Binding IsActive}"/>
+                    </Grid>
+
+                    <!-- Tags -->
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding Tags}" Margin="12,0,12,10">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{DynamicResource Bg.Muted}" CornerRadius="3" Padding="5,2" Margin="0,0,5,0">
+                                    <TextBlock Text="{Binding}" Foreground="{DynamicResource Text.Secondary}" FontSize="9"/>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <!-- Footer -->
+                    <Border Grid.Row="2" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="0,1,0,0" Padding="10,8">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Border CornerRadius="4" Padding="5,3" Margin="0,0,3,0" Cursor="Hand">
+                                    <Image Tag="avares://DevAtlas/Assets/Icons/code.svg" Width="11" Height="11" VerticalAlignment="Center"/>
+                                </Border>
+                                <Border CornerRadius="4" Padding="5,3" Margin="0,0,3,0" Cursor="Hand">
+                                    <Image Tag="avares://DevAtlas/Assets/Icons/explorer.svg" Width="11" Height="11" VerticalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+                            <TextBlock Text="{Binding ProjectType}" Foreground="{DynamicResource Text.Muted}" FontSize="10"
+                                       HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ListCardTemplate">
+            <Border Background="{DynamicResource Bg.Card}" CornerRadius="8" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" Margin="4,2" Cursor="Hand" PointerPressed="ProjectCard_Click">
+                <Border.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="{Binding [ProjectsOpenTerminal], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Click="ContextMenu_OpenTerminal_Click" />
+                        <MenuItem Header="{Binding [ProjectsRevealInExplorer], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Click="ContextMenu_OpenExplorer_Click" />
+                        <Separator />
+                        <MenuItem Header="{Binding [ProjectsProperties], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Click="ContextMenu_Properties_Click" />
+                    </ContextMenu>
+                </Border.ContextMenu>
+                <Grid Margin="12,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Width="28" Height="28" CornerRadius="6" Background="{Binding IconBrush}" Margin="0,0,12,0" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding IconText}" Foreground="{DynamicResource Text.Inverse}" FontSize="10" FontWeight="Bold"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Name}" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding Path}" Foreground="{DynamicResource Text.Muted}" FontSize="10" Margin="0,1,0,0" TextTrimming="CharacterEllipsis"/>
+                    </StackPanel>
+
+                    <ItemsControl Grid.Column="2" ItemsSource="{Binding Tags}" Margin="12,0,12,0" VerticalAlignment="Center">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{DynamicResource Bg.Muted}" CornerRadius="3" Padding="5,1" Margin="0,0,4,0">
+                                    <TextBlock Text="{Binding}" Foreground="{DynamicResource Text.Secondary}" FontSize="9"/>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock Grid.Column="3" Text="{Binding ProjectType}" Foreground="{DynamicResource Text.Muted}" FontSize="10"
+                               VerticalAlignment="Center" Margin="8,0,0,0"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+    </Window.Resources>
+
+    <Window.DataTemplates>
+        <DataTemplate DataType="models:ProjectGroupHeaderEntry">
+            <Border Margin="6,12,6,8" Padding="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="{Binding Icon}" FontSize="14" Foreground="{DynamicResource Text.Primary}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <TextBlock Grid.Column="1" Text="{Binding GroupName}" Foreground="{DynamicResource Text.Primary}" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    <Border Grid.Column="2" Background="{DynamicResource Bg.Hover}" CornerRadius="10" Padding="8,2" Margin="10,0,0,0" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Count}" Foreground="{DynamicResource Text.Secondary}" FontSize="10" FontWeight="SemiBold"/>
+                    </Border>
+                    <Border Grid.Column="3" Height="1" Background="{DynamicResource Border.Normal}" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate DataType="models:ProjectGridRowEntry">
+            <ItemsControl ItemsSource="{Binding Projects}" ItemTemplate="{DynamicResource GridCardTemplate}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </DataTemplate>
+
+        <DataTemplate DataType="models:ProjectListItemEntry">
+            <ContentControl Content="{Binding Project}" ContentTemplate="{DynamicResource ListCardTemplate}" />
+        </DataTemplate>
+    </Window.DataTemplates>
+
+    <Border Background="Transparent" Margin="0">
+        <Border Background="{DynamicResource Bg.Window}" CornerRadius="10" ClipToBounds="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="42"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Overlays -->
+                <controls:ScanningOverlay x:Name="ScanningOverlay" Grid.RowSpan="2" ZIndex="100"/>
+                <controls:EditorSelectorPopup x:Name="EditorSelectorPopupControl" Grid.RowSpan="2" ZIndex="101"/>
+                <controls:ProjectAnalyzePopup x:Name="ProjectAnalyzePopupControl" Grid.RowSpan="2" ZIndex="102"/>
+                <controls:UnusedCodePopup x:Name="UnusedCodePopupControl" Grid.RowSpan="2" ZIndex="103"/>
+                <controls:RunScriptPopup x:Name="RunScriptPopupControl" Grid.RowSpan="2" ZIndex="104"/>
+                <controls:AIPromptDetailPopup x:Name="AIPromptDetailPopupControl" Grid.RowSpan="2" ZIndex="105"/>
+                <controls:OnboardingView x:Name="OnboardingViewControl" Grid.RowSpan="2" ZIndex="200"/>
+                <controls:StatusDisplay x:Name="StatusDisplayControl" Grid.RowSpan="2" ZIndex="50"
+                                      HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                      IsVisible="False"/>
+
+                <!-- TOP NAVIGATION BAR -->
+                <Border Grid.Row="0" Background="{DynamicResource Bg.Window}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="0,0,0,1" PointerPressed="Header_PointerPressed">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Logo area -->
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="14,0">
+                            <Image Source="avares://DevAtlas/Assets/logo_brand.png" Width="24" Height="24" Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding [AppName], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="13"
+                           FontWeight="SemiBold" VerticalAlignment="Center" Padding="0,0,3,0"/>
+                            <TextBlock Text="{Binding [NavWorkspace], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="13" FontWeight="Light" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <!-- Search bar -->
+                        <Border Grid.Column="1" Background="{DynamicResource Bg.Muted}" CornerRadius="7"
+                    BorderBrush="{DynamicResource Border.Normal}" BorderThickness="0.5"
+                    Margin="40,4" Width="500" HorizontalAlignment="Center">
+                            <Grid Margin="12,0" VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="SearchIcon" Tag="avares://DevAtlas/Assets/Icons/search.svg" Width="10" Height="10" Margin="0,0,8,0" VerticalAlignment="Center" Opacity="0.6"/>
+                                <Grid Grid.Column="1">
+                                    <TextBlock x:Name="SearchPlaceholder" Text="{Binding [SearchProjects], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}"
+                                   FontSize="12" VerticalAlignment="Center" IsHitTestVisible="False"/>
+                                    <TextBox x:Name="SearchBox" Background="Transparent" BorderThickness="0"
+                                     FontSize="12" Foreground="{DynamicResource Text.Primary}" VerticalAlignment="Center"
+                                     VerticalContentAlignment="Center"
+                                     TextChanged="SearchBox_TextChanged" Padding="0" MinHeight="24">
+                                        <TextBox.Styles>
+                                            <Style Selector="TextBox:pointerover /template/ Border">
+                                                <Setter Property="Background" Value="Transparent"/>
+                                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                            </Style>
+                                            <Style Selector="TextBox:focus-within /template/ Border">
+                                                <Setter Property="Background" Value="Transparent"/>
+                                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                            </Style>
+                                        </TextBox.Styles>
+                                    </TextBox>
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                        <!-- Right panel -->
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,4,0">
+                            <!-- Breadcrumb -->
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,12,0">
+                                <TextBlock Text="{Binding [NavProjects], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                <TextBlock Text=" / " Foreground="{DynamicResource Text.Disabled}" FontSize="13" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="BreadcrumbCategoryText" Text="{Binding [NavAllLocations], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Tertiary}" FontSize="13" VerticalAlignment="Center"/>
+                                <TextBlock Text=" / " Foreground="{DynamicResource Text.Disabled}" FontSize="13" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="FilteredCountText" Text="0" Foreground="{DynamicResource Text.Tertiary}" FontSize="13" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                            </StackPanel>
+
+                            <!-- View toggle -->
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,12,0">
+                                <Border x:Name="ViewGridBtn" Background="{DynamicResource Border.Normal}" CornerRadius="5" Padding="7,4" Margin="0,0,3,0" Cursor="Hand" PointerPressed="ViewToggle_Click" Tag="Grid">
+                                    <TextBlock Text="&#x25A6;" FontSize="14" Foreground="{DynamicResource Text.Secondary}" VerticalAlignment="Center"/>
+                                </Border>
+                                <Border x:Name="ViewListBtn" CornerRadius="5" Padding="7,4" Cursor="Hand" PointerPressed="ViewToggle_Click" Tag="List">
+                                    <TextBlock Text="&#x2630;" FontSize="14" Foreground="{DynamicResource Text.Muted}" VerticalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Window control buttons -->
+                            <Border Width="36" Height="32" Background="Transparent" Cursor="Hand" PointerPressed="MinimizeButton_Click">
+                                <TextBlock Text="-" FontSize="23" Foreground="{DynamicResource Text.Tertiary}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,2"/>
+                            </Border>
+                            <Border Width="36" Height="36" Background="Transparent" Cursor="Hand" PointerPressed="MaximizeButton_Click">
+                                <TextBlock Text="&#x25A1;" FontSize="17" Foreground="{DynamicResource Text.Tertiary}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-5,0,0"/>
+                            </Border>
+                            <Border Width="36" Height="32" Background="Transparent" Cursor="Hand" PointerPressed="CloseButton_Click">
+                                <TextBlock Text="&#x2715;" FontSize="12" Foreground="{DynamicResource Text.Tertiary}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- CONTENT AREA -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- SIDEBAR -->
+                    <DockPanel Grid.Column="0" Background="{DynamicResource Bg.Window}" LastChildFill="False">
+                        <Border DockPanel.Dock="Right" Width="0.5" Background="{DynamicResource Border.Normal}"/>
+
+                        <!-- Bottom Action Controls -->
+                        <StackPanel DockPanel.Dock="Bottom" Margin="0,0,0,10">
+                            <Border Height="1" Background="{DynamicResource Border.Normal}" Margin="0,0,0,10"/>
+
+                            <!-- Scan Projects Button -->
+                            <Border Background="{DynamicResource Bg.Muted}"
+                            BorderBrush="{DynamicResource Border.Normal}"
+                            BorderThickness="1" CornerRadius="6" Padding="10,4" Margin="16,0,16,8"
+                            Cursor="Hand" PointerPressed="RescanButton_Click" x:Name="ScanProjectsBorder">
+                                <Grid HorizontalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="&#x27F3;" FontSize="14" Foreground="{DynamicResource Text.Secondary}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding [SidebarScanProjects], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" FontWeight="Medium" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
+                            <!-- Dark Mode Toggle -->
+                            <Grid Margin="16,0,16,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding [SidebarDarkMode], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" FontWeight="Medium" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <Border x:Name="DarkModeBorder" Grid.Column="1" Width="36" Height="20" CornerRadius="10" Background="{DynamicResource Border.Normal}" Cursor="Hand" PointerPressed="DarkModeToggle_Click">
+                                    <Ellipse x:Name="DarkModeThumb" Width="16" Height="16" Fill="White" HorizontalAlignment="Left" Margin="2,0,0,0"/>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+
+                        <!-- TAB NAVIGATION -->
+                        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,4">
+                            <TextBlock Text="{Binding [NavNavigation], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10"
+                               FontWeight="SemiBold" Margin="14,10,0,6"/>
+
+                            <!-- Atlas Tab -->
+                            <Border x:Name="TabAtlas" Background="{DynamicResource Bg.SidebarActive}" CornerRadius="6" Padding="8,7" Margin="4,1" Cursor="Hand"
+                                    PointerPressed="TabNavigation_Click" Tag="Atlas">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border x:Name="TabAtlasIconBorder" Grid.Column="0" Width="20" Height="20" CornerRadius="4" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                        <Image x:Name="TabAtlasSvg" Tag="avares://DevAtlas/Assets/Sidebar/atlas.svg" Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock Grid.Column="1" Text="{Binding [TabAtlas], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.SidebarActive}" FontSize="12" FontWeight="Medium" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
+                            <!-- Stats Tab -->
+                            <Border x:Name="TabStats" CornerRadius="6" Padding="8,6" Margin="4,1" Cursor="Hand" PointerPressed="TabNavigation_Click" Tag="Stats">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border x:Name="TabStatsIconBorder" Grid.Column="0" Width="20" Height="20" CornerRadius="4" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                        <Image x:Name="TabStatsSvg" Tag="avares://DevAtlas/Assets/Sidebar/stats.svg" Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock Grid.Column="1" Text="{Binding [TabStats], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
+                            <!-- AI Prompts Tab -->
+                            <Border x:Name="TabAIPrompts" CornerRadius="6" Padding="8,6" Margin="4,1" Cursor="Hand" PointerPressed="TabNavigation_Click" Tag="AIPrompts">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border x:Name="TabAIPromptsIconBorder" Grid.Column="0" Width="20" Height="20" CornerRadius="4" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                        <Image x:Name="TabAIPromptsSvg" Tag="avares://DevAtlas/Assets/Sidebar/ai_prompts.svg" Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock x:Name="TabAIPromptsText" Grid.Column="1" Foreground="{DynamicResource Text.Secondary}" FontSize="12" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
+                            <!-- Settings Tab -->
+                            <Border x:Name="TabSettings" CornerRadius="6" Padding="8,6" Margin="4,1" Cursor="Hand" PointerPressed="TabNavigation_Click" Tag="Settings">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border x:Name="TabSettingsIconBorder" Grid.Column="0" Width="20" Height="20" CornerRadius="4" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                        <Image x:Name="TabSettingsSvg" Tag="avares://DevAtlas/Assets/Sidebar/settings.svg" Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock Grid.Column="1" Text="{Binding [TabSettings], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
+                            <Border Height="1" Background="{DynamicResource Border.Normal}" Margin="14,8,14,4"/>
+                        </StackPanel>
+
+                        <!-- EXPLORER section -->
+                        <StackPanel x:Name="ExplorerSection" DockPanel.Dock="Top">
+                            <TextBlock Text="{Binding [SidebarExplorer], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10"
+                               FontWeight="SemiBold" Margin="14,14,0,6"/>
+
+                            <!-- All Projects -->
+                            <Border x:Name="SidebarAllProjects" CornerRadius="6" Padding="8,6" Margin="4,1" Cursor="Hand" Background="{DynamicResource Bg.SidebarActive}" PointerPressed="SidebarFilter_Click" Tag="All">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border x:Name="SidebarAllProjectsIconBorder" Grid.Column="0" Width="15" Height="15" CornerRadius="4" Background="Transparent" Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Border x:Name="SidebarAllProjectsCell1" Grid.Row="0" Grid.Column="0" Background="{DynamicResource Text.Secondary}" CornerRadius="1" Margin="2,2,1,1"/>
+                                            <Border x:Name="SidebarAllProjectsCell2" Grid.Row="0" Grid.Column="1" Background="{DynamicResource Text.Secondary}" CornerRadius="1" Margin="1,2,2,1"/>
+                                            <Border x:Name="SidebarAllProjectsCell3" Grid.Row="1" Grid.Column="0" Background="{DynamicResource Text.Secondary}" CornerRadius="1" Margin="2,1,1,2"/>
+                                            <Border x:Name="SidebarAllProjectsCell4" Grid.Row="1" Grid.Column="1" Background="{DynamicResource Text.Secondary}" CornerRadius="1" Margin="1,1,2,2"/>
+                                        </Grid>
+                                    </Border>
+                                    <TextBlock x:Name="SidebarAllProjectsText" Grid.Column="1" Text="{Binding [SidebarAllProjects], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.SidebarActive}"
+                                       FontSize="12" FontWeight="Medium" VerticalAlignment="Center"/>
+                                    <Border x:Name="SidebarAllProjectsBadge" Grid.Column="2" Background="{DynamicResource Bg.Badge}" CornerRadius="9" Padding="6,1" VerticalAlignment="Center">
+                                        <TextBlock x:Name="SidebarProjectCountText" Text="0" Foreground="{DynamicResource Text.SidebarActive}" FontSize="10" VerticalAlignment="Center"/>
+                                    </Border>
+                                </Grid>
+                            </Border>
+
+                            <!-- Web -->
+                            <Border x:Name="SidebarWeb" CornerRadius="6" Padding="8,6" Margin="4,1" Cursor="Hand" PointerPressed="SidebarFilter_Click" Tag="Web">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border x:Name="SidebarWebIconBorder" Grid.Column="0" Width="20" Height="20" CornerRadius="4" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                        <Image x:Name="SidebarWebSvg" Tag="avares://DevAtlas/Assets/Icons/web.svg" Width="12" Height="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock Grid.Column="1" Text="{Binding [SidebarWeb], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="SidebarWebCount" Grid.Column="2" Text="0" Foreground="{DynamicResource Text.Muted}" FontSize="11" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
+                            <!-- Desktop -->
+                            <Border x:Name="SidebarDesktop" CornerRadius="6" Padding="8,6" Margin="4,1" Cursor="Hand" PointerPressed="SidebarFilter_Click" Tag="Desktop">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border x:Name="SidebarDesktopIconBorder" Grid.Column="0" Width="20" Height="20" CornerRadius="4" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                        <Image x:Name="SidebarDesktopSvg" Tag="avares://DevAtlas/Assets/Icons/desktop.svg" Width="12" Height="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock Grid.Column="1" Text="{Binding [SidebarDesktop], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="SidebarDesktopCount" Grid.Column="2" Text="0" Foreground="{DynamicResource Text.Muted}" FontSize="11" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
+                            <!-- Mobile -->
+                            <Border x:Name="SidebarMobile" CornerRadius="6" Padding="8,6" Margin="4,1" Cursor="Hand" PointerPressed="SidebarFilter_Click" Tag="Mobile">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border x:Name="SidebarMobileIconBorder" Grid.Column="0" Width="20" Height="20" CornerRadius="4" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                        <Image x:Name="SidebarMobileSvg" Tag="avares://DevAtlas/Assets/Icons/phone.svg" Width="12" Height="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock Grid.Column="1" Text="{Binding [SidebarMobile], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="SidebarMobileCount" Grid.Column="2" Text="0" Foreground="{DynamicResource Text.Muted}" FontSize="11" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
+                            <!-- Cloud -->
+                            <Border x:Name="SidebarCloud" CornerRadius="6" Padding="8,6" Margin="4,1" Cursor="Hand" PointerPressed="SidebarFilter_Click" Tag="Cloud">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border x:Name="SidebarCloudIconBorder" Grid.Column="0" Width="20" Height="20" CornerRadius="4" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                        <Image x:Name="SidebarCloudSvg" Tag="avares://DevAtlas/Assets/Icons/cloud.svg" Width="12" Height="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock Grid.Column="1" Text="{Binding [SidebarCloud], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="SidebarCloudCount" Grid.Column="2" Text="0" Foreground="{DynamicResource Text.Muted}" FontSize="11" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </DockPanel>
+
+                    <!-- MAIN CONTENT -->
+                    <Grid Grid.Column="1" Background="{DynamicResource Bg.Window}">
+
+                        <controls:StatsView x:Name="StatsViewControl" IsVisible="False"/>
+                        <controls:AIPromptsView x:Name="AIPromptsViewControl" IsVisible="False"/>
+                        <controls:SettingsView x:Name="SettingsViewControl" IsVisible="False"/>
+
+                        <!-- EMPTY STATE VIEW -->
+                        <Grid x:Name="EmptyStatePanel" IsVisible="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <StackPanel HorizontalAlignment="Center">
+                                <Image Tag="avares://DevAtlas/Assets/Icons/search.svg" Width="48" Height="48" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="EmptyStateTitle" Text="{Binding [ProjectsNoProjectsFound], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,12,0,8"/>
+                                <TextBlock x:Name="EmptyStateSubTitle" Text="{Binding [ProjectsTryScanning], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="14" HorizontalAlignment="Center" Margin="0,0,0,24"/>
+                                <Border Background="{DynamicResource Accent.Primary}" CornerRadius="8" Padding="60,10" Cursor="Hand" PointerPressed="RescanButton_Click" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding [ProjectsScanProjects], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Inverse}" FontSize="14" FontWeight="Medium" VerticalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- PROJECT LIST VIEW -->
+                        <Grid x:Name="ProjectListGrid">
+                            <ScrollViewer x:Name="ProjectListScrollViewer"
+                                          Padding="10,10,10,10"
+                                          HorizontalScrollBarVisibility="Disabled"
+                                          SizeChanged="ProjectListScrollViewer_SizeChanged">
+                                <ItemsControl ItemsSource="{Binding ProjectListEntries}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <VirtualizingStackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Grid>
+                        <!-- PROJECT DETAIL VIEW -->
+                        <Grid x:Name="ProjectDetailPanel" IsVisible="False">
+                            <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                                <StackPanel Margin="32,24,32,32" HorizontalAlignment="Stretch">
+                                    <!-- Back button -->
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                                        <Border Background="{DynamicResource Bg.Muted}" CornerRadius="6" Padding="8,5" Cursor="Hand" PointerPressed="DetailBackButton_Click"
+                                        BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="&#x2190;" Foreground="{DynamicResource Text.Tertiary}" FontSize="13" Margin="0,0,6,0" VerticalAlignment="Center"/>
+                                                <TextBlock Text="{Binding [ProjectsBackToProjects], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Tertiary}" FontSize="12" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+
+                                    <!-- Project Header -->
+                                    <Grid Margin="0,0,0,28">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border x:Name="DetailIconBorder" Grid.Column="0" Width="52" Height="52" CornerRadius="12" Background="#6B7280" Margin="0,0,16,0" VerticalAlignment="Center">
+                                            <TextBlock x:Name="DetailIconText" Text="" Foreground="{DynamicResource Text.Inverse}" FontSize="16" FontWeight="Bold"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                                <TextBlock x:Name="DetailProjectName" Text="" Foreground="{DynamicResource Text.Primary}" FontSize="22" FontWeight="Bold" VerticalAlignment="Center"/>
+                                                <Border x:Name="DetailActiveBadge" Background="{DynamicResource Bg.Success}" CornerRadius="10" Padding="10,3" Margin="12,0,0,0" VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding [ProjectsActive], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Success}" FontSize="11" FontWeight="Medium"/>
+                                                </Border>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image x:Name="DetailPathExplorerIcon" Tag="avares://DevAtlas/Assets/Icons/explorer.svg" Width="12" Height="12" Margin="0,0,8,0" VerticalAlignment="Center" Opacity="0.5"/>
+                                                <TextBlock x:Name="DetailProjectPath" Text="" Foreground="{DynamicResource Text.Tertiary}" FontSize="12"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel x:Name="DetailGitBranchPanel" Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" IsVisible="False">
+                                            <Border Background="{DynamicResource Bg.Muted}" CornerRadius="6" Padding="10,6" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="&#x2387;" Foreground="{DynamicResource Text.Secondary}" FontSize="11" Margin="0,0,6,0" VerticalAlignment="Center"/>
+                                                    <TextBlock x:Name="DetailGitBranch" Text="" Foreground="{DynamicResource Text.Secondary}" FontSize="12" FontWeight="Medium" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <!-- Quick Actions -->
+                                    <Border Background="{DynamicResource Bg.Card}" CornerRadius="12" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" Padding="20,18" Margin="0,0,0,24">
+                                        <UniformGrid x:Name="QuickActionsGrid" Columns="4">
+                                            <Border Background="{DynamicResource Bg.Card}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" CornerRadius="10" Padding="18,16" Cursor="Hand" Margin="0,0,10,0" PointerPressed="DetailOpenEditor_Click">
+                                                <StackPanel HorizontalAlignment="Center">
+                                                    <Image x:Name="DetailCodeIcon" Tag="avares://DevAtlas/Assets/Icons/code.svg" Width="24" Height="24" HorizontalAlignment="Center" Margin="0,4,0,10"/>
+                                                    <TextBlock Text="{Binding [ProjectsOpenInCodeEditor], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                                                    <TextBlock Text="{Binding [ProjectsSelectEditor], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border x:Name="RunProjectBorder" Background="{DynamicResource Bg.Card}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" CornerRadius="10" Padding="18,16" Cursor="Hand" Margin="0,0,10,0" PointerPressed="DetailRunProject_Click">
+                                                <StackPanel HorizontalAlignment="Center">
+                                                    <TextBlock x:Name="RunProjectIcon" Text="&#x25B6;" Foreground="{DynamicResource Text.Success}" FontSize="24" HorizontalAlignment="Center" Margin="0,2,0,6"/>
+                                                    <TextBlock x:Name="RunProjectText" Text="{Binding [ProjectsRunProject], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                                                    <TextBlock x:Name="RunProjectSubtext" Text="{Binding [ProjectsStartDevServer], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border x:Name="DetailOpenVSButton" Background="{DynamicResource Bg.Card}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" CornerRadius="10" Padding="18,16" Cursor="Hand" Margin="0,0,10,0" PointerPressed="DetailOpenVisualStudio_Click" IsVisible="False">
+                                                <StackPanel HorizontalAlignment="Center">
+                                                    <Image Source="avares://DevAtlas/Assets/EditorIcons/visualstudio.png" Width="24" Height="24" HorizontalAlignment="Center" Margin="0,4,0,10"/>
+                                                    <TextBlock Text="{Binding [ProjectsOpenInVisualStudio], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                                                    <TextBlock Text="{Binding [ProjectsLaunchIDE], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Background="{DynamicResource Bg.Card}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" CornerRadius="10" Padding="18,16" Cursor="Hand" Margin="0,0,10,0" PointerPressed="DetailOpenTerminal_Click">
+                                                <StackPanel HorizontalAlignment="Center">
+                                                    <Image x:Name="DetailTerminalIcon" Tag="avares://DevAtlas/Assets/Icons/terminal.svg" Width="24" Height="24" HorizontalAlignment="Center" Margin="0,4,0,10"/>
+                                                    <TextBlock Text="{Binding [ProjectsOpenTerminal], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                                                    <TextBlock Text="{Binding [ProjectsCommandPrompt], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Background="{DynamicResource Bg.Card}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" CornerRadius="10" Padding="18,16" Cursor="Hand" Margin="0" PointerPressed="DetailOpenExplorer_Click">
+                                                <StackPanel HorizontalAlignment="Center">
+                                                    <Image x:Name="DetailExplorerIcon" Tag="avares://DevAtlas/Assets/Icons/explorer.svg" Width="24" Height="24" HorizontalAlignment="Center" Margin="0,4,0,10"/>
+                                                    <TextBlock Text="{Binding [ProjectsRevealInExplorer], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                                                    <TextBlock Text="{Binding [ProjectsOpenFileExplorer], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Background="{DynamicResource Bg.Card}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" CornerRadius="10" Padding="18,16" Cursor="Hand" Margin="8,0,0,0" PointerPressed="DetailAnalyzeProject_Click">
+                                                <StackPanel HorizontalAlignment="Center">
+                                                    <Image x:Name="DetailAnalyzeIcon" Tag="avares://DevAtlas/Assets/Icons/calculate_code.svg" Width="24" Height="24" HorizontalAlignment="Center" Margin="0,4,0,10"/>
+                                                    <TextBlock Text="{Binding [ProjectsAnalyzeProject], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                                                    <TextBlock Text="{Binding [ProjectsCodeLineStats], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </UniformGrid>
+                                    </Border>
+
+                                    <!-- Two column layout for Tech Stack + Stats -->
+                                    <Grid Margin="0,0,0,24">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="16"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0" Background="{DynamicResource Bg.Card}" CornerRadius="12" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" Padding="20,18">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding [DashboardTechStack], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,14"/>
+                                                <ItemsControl x:Name="DetailTechTags">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Background="{DynamicResource Bg.SidebarActive}" CornerRadius="12" Padding="12,5" Margin="0,0,8,8">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <Ellipse Width="6" Height="6" Fill="{DynamicResource Accent.Primary}" Margin="0,0,6,0" VerticalAlignment="Center"/>
+                                                                    <TextBlock Text="{Binding Name}" Foreground="{DynamicResource Text.SidebarActive}" FontSize="11.5" FontWeight="Medium"/>
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                                <TextBlock x:Name="DetailTechTotalLines" Foreground="{DynamicResource Text.Muted}" FontSize="11" Margin="0,4,0,0"/>
+                                                <Border Background="{DynamicResource Bg.Muted}" CornerRadius="8" Padding="12,8" Margin="0,8,0,0">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="{Binding [ProjectsType], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Tertiary}" FontSize="11" Margin="0,0,6,0" VerticalAlignment="Center"/>
+                                                        <TextBlock x:Name="DetailProjectType" Text="" Foreground="{DynamicResource Text.Secondary}" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Grid Margin="0,10,0,0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="10"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="10"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="10"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="10"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border Grid.Column="0" Background="{DynamicResource Bg.Card}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" CornerRadius="10" Padding="16,14">
+                                                        <StackPanel HorizontalAlignment="Center">
+                                                            <TextBlock Text="{Binding [DashboardSize], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                                                            <TextBlock x:Name="DetailStatSize" Text="&#x2014;" Foreground="{DynamicResource Text.Primary}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                    <Border Grid.Column="2" Background="{DynamicResource Bg.Card}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" CornerRadius="10" Padding="16,14">
+                                                        <StackPanel HorizontalAlignment="Center">
+                                                            <TextBlock Text="{Binding [DashboardFiles], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                                                            <TextBlock x:Name="DetailStatFiles" Text="&#x2014;" Foreground="{DynamicResource Text.Primary}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                    <Border Grid.Column="4" Background="{DynamicResource Bg.Card}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" CornerRadius="10" Padding="16,14">
+                                                        <StackPanel HorizontalAlignment="Center">
+                                                            <TextBlock Text="{Binding [DashboardLang], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                                                            <TextBlock x:Name="DetailStatLang" Text="&#x2014;" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                    <Border Grid.Column="6" Background="{DynamicResource Bg.Card}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" CornerRadius="10" Padding="16,14">
+                                                        <StackPanel HorizontalAlignment="Center">
+                                                            <TextBlock Text="{Binding [DashboardFramework], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                                                            <TextBlock x:Name="DetailStatFramework" Text="&#x2014;" Foreground="{DynamicResource Text.Primary}" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                    <Border Grid.Column="8" Background="{DynamicResource Bg.Card}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" CornerRadius="10" Padding="16,14">
+                                                        <StackPanel HorizontalAlignment="Center">
+                                                            <TextBlock Text="{Binding [DashboardLines], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                                                            <TextBlock x:Name="DetailStatLines" Text="&#x2014;" Foreground="{DynamicResource Text.Primary}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </Grid>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border Grid.Column="2" Background="{DynamicResource Bg.Card}" CornerRadius="12" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" Padding="20,18">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding [DashboardRecentActivity], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,14"/>
+                                                <ItemsControl x:Name="DetailRecentFiles">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Margin="0,0,0,8">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="*"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Border Grid.Column="0" Background="{DynamicResource Bg.Muted}" CornerRadius="4" Padding="5,2" Margin="0,0,10,0" VerticalAlignment="Center">
+                                                                        <TextBlock Text="{Binding Extension}" Foreground="{DynamicResource Text.Tertiary}" FontSize="9" FontWeight="Medium"/>
+                                                                    </Border>
+                                                                    <TextBlock Grid.Column="1" Text="{Binding FileName}" Foreground="{DynamicResource Text.Secondary}" FontSize="11.5" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                                                    <TextBlock Grid.Column="2" Text="{Binding ModifiedAgo}" Foreground="{DynamicResource Text.Muted}" FontSize="10" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                                                                </Grid>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+
+                                    <!-- DEPENDENCIES SECTION -->
+                                    <StackPanel x:Name="DependenciesSectionPanel" IsVisible="False">
+                                        <ItemsControl x:Name="DependencySectionsControl">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="{DynamicResource Bg.Card}" CornerRadius="12" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" Margin="0,0,0,16">
+                                                        <StackPanel>
+                                                            <Border Padding="20,14" Cursor="Hand" PointerPressed="DependencySection_Toggle">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="*"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Grid.Column="1" Text="{Binding Name, StringFormat={}{0} Dependencies}" Foreground="{DynamicResource Text.Primary}" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                                                    <Border Grid.Column="3" Background="{DynamicResource Bg.Hover}" CornerRadius="10" Padding="8,3" Margin="0,0,12,0" VerticalAlignment="Center">
+                                                                        <TextBlock Text="{Binding TotalPackageCount}" Foreground="{DynamicResource Text.Secondary}" FontSize="11" FontWeight="SemiBold"/>
+                                                                    </Border>
+                                                                    <TextBlock Grid.Column="4" Text="&#x25BC;" Foreground="{DynamicResource Text.Tertiary}" FontSize="10" VerticalAlignment="Center"/>
+                                                                </Grid>
+                                                            </Border>
+                                                            <ItemsControl ItemsSource="{Binding Groups}" Margin="0,0,0,8">
+                                                                <ItemsControl.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <StackPanel Margin="12,0,12,8">
+                                                                            <Border Background="{DynamicResource Bg.Muted}" CornerRadius="8" Padding="14,10" Cursor="Hand" PointerPressed="DependencyGroup_Toggle">
+                                                                                <Grid>
+                                                                                    <Grid.ColumnDefinitions>
+                                                                                        <ColumnDefinition Width="Auto"/>
+                                                                                        <ColumnDefinition Width="Auto"/>
+                                                                                        <ColumnDefinition Width="Auto"/>
+                                                                                        <ColumnDefinition Width="*"/>
+                                                                                        <ColumnDefinition Width="Auto"/>
+                                                                                    </Grid.ColumnDefinitions>
+                                                                                    <TextBlock Grid.Column="0" Text="&#x1F4E6;" FontSize="13" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                                                    <TextBlock Grid.Column="1" Text="{Binding Name}" Foreground="{DynamicResource Text.Primary}" FontSize="12.5" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                                                                    <Border Grid.Column="2" Background="{DynamicResource Bg.Hover}" CornerRadius="8" Padding="6,2" Margin="8,0,0,0" VerticalAlignment="Center">
+                                                                                        <TextBlock Text="{Binding PackageCount}" Foreground="{DynamicResource Text.Tertiary}" FontSize="10" FontWeight="Medium"/>
+                                                                                    </Border>
+                                                                                    <TextBlock Grid.Column="4" Text="&#x25B6;" Foreground="{DynamicResource Text.Tertiary}" FontSize="10" VerticalAlignment="Center"/>
+                                                                                </Grid>
+                                                                            </Border>
+                                                                            <StackPanel Margin="0,6,0,0" IsVisible="False">
+                                                                                <Grid Margin="14,4,14,4">
+                                                                                    <Grid.ColumnDefinitions>
+                                                                                        <ColumnDefinition Width="*"/>
+                                                                                        <ColumnDefinition Width="170"/>
+                                                                                        <ColumnDefinition Width="100"/>
+                                                                                    </Grid.ColumnDefinitions>
+                                                                                    <TextBlock Grid.Column="0" Text="{Binding [DepsPackage], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold"/>
+                                                                                    <TextBlock Grid.Column="1" Text="{Binding [DepsVersion], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold"/>
+                                                                                    <TextBlock Grid.Column="2" Text="{Binding [DepsSource], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Right"/>
+                                                                                </Grid>
+                                                                                <Border Height="1" Background="{DynamicResource Border.Normal}" Margin="14,0"/>
+                                                                                <ItemsControl ItemsSource="{Binding Packages}">
+                                                                                    <ItemsControl.ItemTemplate>
+                                                                                        <DataTemplate>
+                                                                                            <Border Padding="14,7" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="0,0,0,0.5">
+                                                                                                <Grid>
+                                                                                                    <Grid.ColumnDefinitions>
+                                                                                                        <ColumnDefinition Width="*"/>
+                                                                                                        <ColumnDefinition Width="170"/>
+                                                                                                        <ColumnDefinition Width="100"/>
+                                                                                                    </Grid.ColumnDefinitions>
+                                                                                                    <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                                                                                        <Ellipse Width="6" Height="6" Fill="{DynamicResource Accent.Primary}" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                                                                                        <TextBlock Text="{Binding Name}" Foreground="{DynamicResource Accent.Primary}" FontSize="12" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                                                                                    </StackPanel>
+                                                                                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                                                                        <TextBlock Text="{Binding Version}" Foreground="{DynamicResource Text.Secondary}" FontSize="11.5" VerticalAlignment="Center" IsVisible="{Binding !HasUpdate}"/>
+                                                                                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" IsVisible="{Binding HasUpdate}">
+                                                                                                            <TextBlock Text="{Binding Version}" Foreground="{DynamicResource Text.Muted}" FontSize="11" VerticalAlignment="Center"/>
+                                                                                                            <TextBlock Text=" &#x2192; " Foreground="#F97316" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                                                                                            <TextBlock Text="{Binding LatestVersion}" Foreground="#F97316" FontSize="11.5" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                                                                                            <Border Background="#FFF7ED" CornerRadius="8" Padding="5,2" VerticalAlignment="Center" Margin="6,0,0,0" BorderBrush="#FED7AA" BorderThickness="1">
+                                                                                                                <TextBlock Text="&#x2191; Update Available" Foreground="#F97316" FontSize="9" FontWeight="Medium"/>
+                                                                                                            </Border>
+                                                                                                        </StackPanel>
+                                                                                                    </StackPanel>
+                                                                                                    <TextBlock Grid.Column="2" Text="{Binding Source}" Foreground="{DynamicResource Text.Muted}" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                                                                                </Grid>
+                                                                                            </Border>
+                                                                                        </DataTemplate>
+                                                                                    </ItemsControl.ItemTemplate>
+                                                                                </ItemsControl>
+                                                                            </StackPanel>
+                                                                        </StackPanel>
+                                                                    </DataTemplate>
+                                                                </ItemsControl.ItemTemplate>
+                                                            </ItemsControl>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                        <Border x:Name="DependenciesLoadingPanel" IsVisible="False" Background="{DynamicResource Bg.Card}" CornerRadius="12" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1" Padding="20,16" Margin="0,0,0,16">
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <TextBlock Text="&#x231B;" FontSize="14" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                <TextBlock Text="{Binding [DepsLoading], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Tertiary}" FontSize="12" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Border>
+</Window>
+
+
+
+
+

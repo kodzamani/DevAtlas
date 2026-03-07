@@ -1,0 +1,30 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Backgrounds -->
+    <SolidColorBrush x:Key="Bg.Window" Color="#F8F8F8" />
+    <SolidColorBrush x:Key="Bg.Card" Color="White" />
+    <SolidColorBrush x:Key="Bg.Sidebar" Color="White" />
+    <SolidColorBrush x:Key="Bg.Muted" Color="#F3F4F6" />
+    <SolidColorBrush x:Key="Bg.Hover" Color="#F9FAFB" />
+    <SolidColorBrush x:Key="Bg.SidebarActive" Color="#EFF6FF" />
+    <SolidColorBrush x:Key="Bg.Badge" Color="#DBEAFE" />
+    <SolidColorBrush x:Key="Bg.Success" Color="#DCFCE7" />
+
+    <!-- Borders -->
+    <SolidColorBrush x:Key="Border.Normal" Color="#E5E7EB" />
+
+    <!-- Text -->
+    <SolidColorBrush x:Key="Text.Primary" Color="#111827" />
+    <SolidColorBrush x:Key="Text.Secondary" Color="#374151" />
+    <SolidColorBrush x:Key="Text.Tertiary" Color="#6B7280" />
+    <SolidColorBrush x:Key="Text.Muted" Color="#9CA3AF" />
+    <SolidColorBrush x:Key="Text.Disabled" Color="#D1D5DB" />
+    <SolidColorBrush x:Key="Text.SidebarActive" Color="#1D4ED8" />
+    <SolidColorBrush x:Key="Text.Success" Color="#15803D" />
+    <SolidColorBrush x:Key="Text.Inverse" Color="White" />
+
+    <!-- Accents -->
+    <SolidColorBrush x:Key="Accent.Primary" Color="#3B82F6" />
+    <SolidColorBrush x:Key="Accent.Light" Color="#93C5FD" />
+    <SolidColorBrush x:Key="Accent.Lighter" Color="#BFDBFE" />
+</ResourceDictionary>

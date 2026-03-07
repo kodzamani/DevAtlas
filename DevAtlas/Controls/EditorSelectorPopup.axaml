@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="DevAtlas.Controls.EditorSelectorPopup"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:DevAtlas.Controls"
+             xmlns:svc="using:DevAtlas.Services"
+             Background="#CC000000"
+             IsVisible="False">
+
+    <UserControl.Styles>
+        <Style Selector="Border.EditorCard">
+            <Setter Property="Background" Value="{DynamicResource Bg.Card}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Bg.Card}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style Selector="Border.EditorCard:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Bg.Hover}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Border.Normal}"/>
+        </Style>
+        <Style Selector="Border.CloseHover">
+            <Setter Property="Background" Value="{DynamicResource Bg.Muted}"/>
+        </Style>
+        <Style Selector="Border.CloseHover:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Bg.Hover}"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Background="{DynamicResource Bg.Card}" CornerRadius="12" Padding="16,12"
+            BorderBrush="{DynamicResource Border.Normal}" BorderThickness="0.9"
+            Width="500">
+
+            <StackPanel>
+                <!-- Editor Grid -->
+                <ItemsControl x:Name="EditorsList">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="4" Rows="1"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                                <Border PointerPressed="EditorItem_Click"
+                                    Tag="{Binding}"
+                                    Margin="6"
+                                    Classes="EditorCard">
+                                <StackPanel>
+                                    <!-- Icon -->
+                                    <Border Width="48" Height="48"
+                                            CornerRadius="8"
+                                            Background="Transparent"
+                                            HorizontalAlignment="Center"
+                                            Margin="0,0,0,12">
+                                        <Image Source="{Binding IconImage}"
+                                               Loaded="EditorIcon_Loaded"
+                                               Width="35" Height="35"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               RenderOptions.BitmapInterpolationMode="HighQuality"/>
+                                    </Border>
+
+                                    <!-- Editor Name -->
+                                    <TextBlock Text="{Binding DisplayName}"
+                                               FontSize="14"
+                                               FontWeight="Medium"
+                                               Foreground="{DynamicResource Text.Primary}"
+                                               HorizontalAlignment="Center"
+                                               TextAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <!-- No Editors Message -->
+                <TextBlock x:Name="NoEditorsMessage"
+                           Text="{Binding [EditorsNoEditorsFound], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}"
+                           FontSize="13"
+                           Foreground="{DynamicResource Text.Tertiary}"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20"
+                           IsVisible="False"/>
+
+                <!-- Close Button -->
+                <Border CornerRadius="8"
+                        Padding="20,12"
+                        HorizontalAlignment="Center"
+                        Cursor="Hand"
+                        PointerPressed="CloseButton_Click"
+                        Margin="0,20,0,0"
+                        Classes="CloseHover">
+                    <TextBlock Text="{Binding [CommonClose], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}"
+                               FontSize="13"
+                               FontWeight="Medium"
+                               Foreground="{DynamicResource Text.Primary}"/>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</UserControl>

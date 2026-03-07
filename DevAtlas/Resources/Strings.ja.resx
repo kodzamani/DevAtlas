@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <!-- App General -->
+  <data name="AppName" xml:space="preserve"><value>DevAtlas</value></data>
+  <data name="AppTagline" xml:space="preserve"><value>開発コマンドセンター</value></data>
+  <data name="AppVersion" xml:space="preserve"><value>バージョン {0}</value></data>
+  <data name="WindowTitleWorkspace" xml:space="preserve"><value>DevAtlas ワークスペース</value></data>
+
+  <!-- Tabs -->
+  <data name="TabAtlas" xml:space="preserve"><value>アトラス</value></data>
+  <data name="TabStats" xml:space="preserve"><value>統計</value></data>
+  <data name="TabNotebook" xml:space="preserve"><value>ノートブック</value></data>
+  <data name="TabSettings" xml:space="preserve"><value>設定</value></data>
+
+  <!-- Sidebar -->
+  <data name="SidebarAllProjects" xml:space="preserve"><value>すべてのプロジェクト</value></data>
+  <data name="SidebarWeb" xml:space="preserve"><value>ウェブ</value></data>
+  <data name="SidebarDesktop" xml:space="preserve"><value>デスクトップ</value></data>
+  <data name="SidebarMobile" xml:space="preserve"><value>モバイル</value></data>
+  <data name="SidebarCloud" xml:space="preserve"><value>クラウド</value></data>
+  <data name="SidebarScanProjects" xml:space="preserve"><value>プロジェクトをスキャン</value></data>
+  <data name="SidebarDarkMode" xml:space="preserve"><value>ダークモード</value></data>
+  <data name="SidebarShowTour" xml:space="preserve"><value>ツアーを見る</value></data>
+  <data name="SidebarExplorer" xml:space="preserve"><value>エクスプローラー</value></data>
+
+  <!-- Search -->
+  <data name="SearchProjects" xml:space="preserve"><value>プロジェクトを検索...</value></data>
+
+  <!-- Onboarding - Welcome -->
+  <data name="OnboardingWelcomeTitle" xml:space="preserve"><value>DevAtlasへようこそ</value></data>
+  <data name="OnboardingWelcomeSubtitle" xml:space="preserve"><value>開発コマンドセンター</value></data>
+  <data name="OnboardingGetStarted" xml:space="preserve"><value>始める</value></data>
+  <data name="OnboardingSkip" xml:space="preserve"><value>スキップ</value></data>
+
+  <!-- Onboarding - Features -->
+  <data name="OnboardingFeaturesTitle" xml:space="preserve"><value>プロジェクトアトラス</value></data>
+  <data name="OnboardingFeaturesSubtitle" xml:space="preserve"><value>すべての開発プロジェクトを管理</value></data>
+  <data name="OnboardingFeature1Title" xml:space="preserve"><value>プロジェクトアトラス</value></data>
+  <data name="OnboardingFeature1Subtitle" xml:space="preserve"><value>すべての開発プロジェクトを管理</value></data>
+  <data name="OnboardingFeature2Title" xml:space="preserve"><value>統計</value></data>
+  <data name="OnboardingFeature2Subtitle" xml:space="preserve"><value>コーディング活動を追跡</value></data>
+  <data name="OnboardingFeature3Title" xml:space="preserve"><value>ノートブック</value></data>
+  <data name="OnboardingFeature3Subtitle" xml:space="preserve"><value>プロジェクトを文書化</value></data>
+
+  <!-- Onboarding - Quick Actions -->
+  <data name="OnboardingQuickActionsTitle" xml:space="preserve"><value>クイックアクション</value></data>
+  <data name="OnboardingQuickActionsSubtitle" xml:space="preserve"><value>ツールへの素早いアクセス</value></data>
+
+  <!-- Onboarding - Stats & Notebook -->
+  <data name="OnboardingStatsNotebookTitle" xml:space="preserve"><value>統計 &amp; ノートブック</value></data>
+  <data name="OnboardingStatsNotebookSubtitle" xml:space="preserve"><value>進捗を追跡し、メモを取る</value></data>
+
+  <!-- Onboarding - Appearance -->
+  <data name="OnboardingAppearanceTitle" xml:space="preserve"><value>外観</value></data>
+  <data name="OnboardingAppearanceSubtitle" xml:space="preserve"><value>DevAtlasの表示方法を選択</value></data>
+  <data name="OnboardingAllSet" xml:space="preserve"><value>準備完了！</value></data>
+  <data name="OnboardingStartUsing" xml:space="preserve"><value>DevAtlasを使い始める</value></data>
+
+  <!-- Onboarding - Additional -->
+  <data name="OnboardingChooseAccentColor" xml:space="preserve"><value>お気に入りアクセントカラーを選択</value></data>
+  <data name="OnboardingDiscoverProjects" xml:space="preserve"><value>すべての開発プロジェクトを発見・管理</value></data>
+  <data name="OnboardingTwoMoreFeatures" xml:space="preserve"><value>手に取れるさらに2つの強力な機能</value></data>
+  <data name="OnboardingLightningAccess" xml:space="preserve"><value>開発ツールへの超高速アクセス</value></data>
+  <data name="OnboardingAutoScanTitle" xml:space="preserve"><value>自動スキャン</value></data>
+  <data name="OnboardingAutoScanSubtitle" xml:space="preserve"><value>すべてのドライブからプロジェクトを検出</value></data>
+  <data name="OnboardingSmartFiltersTitle" xml:space="preserve"><value>スマートフィルター</value></data>
+  <data name="OnboardingSmartFiltersSubtitle" xml:space="preserve"><value>Web／デスクトップ／モバイル／クラウドでフィルタリング</value></data>
+  <data name="OnboardingAutoScanProjectsTitle" xml:space="preserve"><value>プロジェクトの自動スキャン</value></data>
+  <data name="OnboardingAutoScanProjectsSubtitle" xml:space="preserve"><value>PC上のすべてのプロジェクトを自動検出してインデックス化</value></data>
+  <data name="OnboardingSmartCategoriesTitle" xml:space="preserve"><value>スマートカテゴリ</value></data>
+  <data name="OnboardingSmartCategoriesSubtitle" xml:space="preserve"><value>プロジェクトをWeb／デスクトップ／モバイル／クラウドに分類</value></data>
+  <data name="OnboardingTechStackDetectionTitle" xml:space="preserve"><value>技術スタック検出</value></data>
+  <data name="OnboardingTechStackDetectionSubtitle" xml:space="preserve"><value>利用しているフレームワーク、言語、ツールを自動検出</value></data>
+  <data name="OnboardingOpenInEditorTitle" xml:space="preserve"><value>エディタで開く</value></data>
+  <data name="OnboardingOpenInEditorSubtitle" xml:space="preserve"><value>VS Code、Visual Studio、その他のエディタでプロジェクトを直接起動</value></data>
+  <data name="OnboardingRunProjectsTitle" xml:space="preserve"><value>プロジェクトを実行</value></data>
+  <data name="OnboardingRunProjectsSubtitle" xml:space="preserve"><value>開発サーバーやビルドをワンクリックで起動</value></data>
+  <data name="OnboardingAnalyzeCodeTitle" xml:space="preserve"><value>コードを分析</value></data>
+  <data name="OnboardingAnalyzeCodeSubtitle" xml:space="preserve"><value>コード行数やファイル数などの詳細メトリクスを取得</value></data>
+  <data name="OnboardingGitStatisticsTitle" xml:space="preserve"><value>Git統計</value></data>
+  <data name="OnboardingGitStatisticsSubtitle" xml:space="preserve"><value>追加・削除・コミット活動を時系列で追跡</value></data>
+  <data name="OnboardingProjectInsightsTitle" xml:space="preserve"><value>プロジェクトインサイト</value></data>
+  <data name="OnboardingProjectInsightsSubtitle" xml:space="preserve"><value>コード分布、プロジェクトタイプ、ファイル指標を可視化</value></data>
+  <data name="OnboardingSearchTitle" xml:space="preserve"><value>検索</value></data>
+  <data name="OnboardingSearchSubtitle" xml:space="preserve"><value>名前または技術スタックでプロジェクトを検索</value></data>
+  <data name="OnboardingRecentActivityTitle" xml:space="preserve"><value>最近のアクティビティ</value></data>
+  <data name="OnboardingRecentActivitySubtitle" xml:space="preserve"><value>最近作業したファイルを表示</value></data>
+  <data name="OnboardingVSCode" xml:space="preserve"><value>Visual Studio Codeで開く</value></data>
+  <data name="OnboardingTerminal" xml:space="preserve"><value>プロジェクトフォルダでターミナルを開く</value></data>
+  <data name="OnboardingExplorer" xml:space="preserve"><value>エクスプローラーでプロジェクトを表示</value></data>
+  <data name="OnboardingRunProjects" xml:space="preserve"><value>プロジェクトを実行</value></data>
+  <data name="OnboardingAnalyzeCode" xml:space="preserve"><value>コードを分析</value></data>
+  <data name="OnboardingStatsLanguageBreakdown" xml:space="preserve"><value>言語別の内訳</value></data>
+  <data name="OnboardingStatsLineCount" xml:space="preserve"><value>行数の分析</value></data>
+  <data name="OnboardingStatsTimeInsights" xml:space="preserve"><value>時間ベースのインサイト</value></data>
+  <data name="OnboardingStatsExportReports" xml:space="preserve"><value>レポートをエクスポート</value></data>
+
+  <!-- Settings -->
+  <data name="SettingsTitle" xml:space="preserve"><value>設定</value></data>
+  <data name="SettingsAbout" xml:space="preserve"><value>について</value></data>
+  <data name="SettingsAboutDescription" xml:space="preserve"><value>DevAtlasは包括的な開発コマンドセンターです。すべてのプロジェクトを一箇所で整理、分析、追跡します。</value></data>
+  <data name="SettingsLanguage" xml:space="preserve"><value>言語</value></data>
+  <data name="SettingsSelectLanguage" xml:space="preserve"><value>言語を選択</value></data>
+  <data name="SettingsAppearance" xml:space="preserve"><value>外観</value></data>
+  <data name="SettingsTheme" xml:space="preserve"><value>テーマ</value></data>
+  <data name="SettingsAccentColor" xml:space="preserve"><value>アクセントカラー</value></data>
+  <data name="SettingsLight" xml:space="preserve"><value>ライト</value></data>
+  <data name="SettingsDark" xml:space="preserve"><value>ダーク</value></data>
+  <data name="SettingsSystem" xml:space="preserve"><value>システム</value></data>
+  <data name="SettingsVersion" xml:space="preserve"><value>バージョン</value></data>
+  <data name="SettingsCopyright" xml:space="preserve"><value>© 2024 DevAtlas</value></data>
+
+  <!-- Languages -->
+  <data name="LanguageEn" xml:space="preserve"><value>英語</value></data>
+  <data name="LanguageTr" xml:space="preserve"><value>トルコ語</value></data>
+  <data name="LanguageDe" xml:space="preserve"><value>ドイツ語</value></data>
+  <data name="LanguageJa" xml:space="preserve"><value>日本語</value></data>
+  <data name="LanguageZh" xml:space="preserve"><value>中国語（簡体字）</value></data>
+  <data name="LanguageKo" xml:space="preserve"><value>韓国語</value></data>
+  <data name="LanguageIt" xml:space="preserve"><value>イタリア語</value></data>
+  <data name="LanguageFr" xml:space="preserve"><value>フランス語</value></data>
+
+  <!-- Common -->
+  <data name="CommonNext" xml:space="preserve"><value>次へ</value></data>
+  <data name="CommonPrevious" xml:space="preserve"><value>前へ</value></data>
+  <data name="CommonBack" xml:space="preserve"><value>戻る</value></data>
+  <data name="CommonDone" xml:space="preserve"><value>完了</value></data>
+  <data name="CommonCancel" xml:space="preserve"><value>キャンセル</value></data>
+  <data name="CommonSave" xml:space="preserve"><value>保存</value></data>
+  <data name="CommonClose" xml:space="preserve"><value>閉じる</value></data>
+
+  <!-- Dashboard & Projects -->
+  <data name="DashboardQuickActions" xml:space="preserve"><value>クイックアクション</value></data>
+  <data name="DashboardTechStack" xml:space="preserve"><value>技術スタック</value></data>
+  <data name="DashboardRecentActivity" xml:space="preserve"><value>最近のアクティビティ</value></data>
+  <data name="DashboardNoRecentActivity" xml:space="preserve"><value>最近のアクティビティはありません</value></data>
+  <data name="DashboardSize" xml:space="preserve"><value>サイズ</value></data>
+  <data name="DashboardFiles" xml:space="preserve"><value>ファイル数</value></data>
+  <data name="DashboardLines" xml:space="preserve"><value>行数</value></data>
+  <data name="DashboardLang" xml:space="preserve"><value>言語</value></data>
+  <data name="DashboardFramework" xml:space="preserve"><value>フレームワーク</value></data>
+
+  <!-- Stats View -->
+  <data name="StatsProjectsAnalyzed" xml:space="preserve"><value>分析したプロジェクト</value></data>
+  <data name="StatsTrackedCodeLines" xml:space="preserve"><value>追跡されたコード行数</value></data>
+  <data name="StatsGitAdditions" xml:space="preserve"><value>Git追加数</value></data>
+  <data name="StatsGitDeletions" xml:space="preserve"><value>Git削除数</value></data>
+  <data name="StatsGitActivity" xml:space="preserve"><value>Gitアクティビティ ({0})</value></data>
+  <data name="StatsActivityVolume" xml:space="preserve"><value>アクティビティ量</value></data>
+  <data name="StatsCodeLinesByProject" xml:space="preserve"><value>プロジェクト別コード行数</value></data>
+  <data name="StatsProjectTypes" xml:space="preserve"><value>プロジェクトタイプ</value></data>
+  <data name="StatsAllProjects" xml:space="preserve"><value>すべてのプロジェクト</value></data>
+  <data name="StatsTopProjectsByFileCount" xml:space="preserve"><value>ファイル数上位のプロジェクト</value></data>
+  <data name="StatsNoGitActivity" xml:space="preserve"><value>この期間のGitアクティビティが見つかりません。</value></data>
+  <data name="StatsNoCodeLines" xml:space="preserve"><value>表示できるコード行がありません。</value></data>
+  <data name="StatsNoProjectsToRank" xml:space="preserve"><value>ランク付けするプロジェクトがありません。</value></data>
+  <data name="StatsNoData" xml:space="preserve"><value>利用可能なデータがありません。</value></data>
+  <data name="StatsActivityHigh" xml:space="preserve"><value>アクティビティ高</value></data>
+  <data name="StatsActivityMedium" xml:space="preserve"><value>アクティビティ中</value></data>
+  <data name="StatsActivityLow" xml:space="preserve"><value>アクティビティ低</value></data>
+
+  <!-- Projects -->
+  <data name="ProjectsNoProjectsFound" xml:space="preserve"><value>プロジェクトが見つかりません</value></data>
+  <data name="ProjectsTryScanning" xml:space="preserve"><value>プロジェクトのスキャンまたは検索の調整を試行</value></data>
+  <data name="ProjectsScanProjects" xml:space="preserve"><value>プロジェクトをスキャン</value></data>
+  <data name="ProjectsBackToProjects" xml:space="preserve"><value>プロジェクトに戻る</value></data>
+  <data name="ProjectsActive" xml:space="preserve"><value>アクティブ</value></data>
+  <data name="ProjectsOpenInCodeEditor" xml:space="preserve"><value>コードエディタで開く</value></data>
+  <data name="ProjectsSelectEditor" xml:space="preserve"><value>エディタを選択</value></data>
+  <data name="ProjectsRunProject" xml:space="preserve"><value>プロジェクトを実行</value></data>
+  <data name="ProjectsStartDevServer" xml:space="preserve"><value>開発サーバーを起動</value></data>
+  <data name="ProjectsOpenTerminal" xml:space="preserve"><value>ターミナルを開く</value></data>
+  <data name="ProjectsCommandPrompt" xml:space="preserve"><value>コマンドプロンプト</value></data>
+  <data name="ProjectsRevealInExplorer" xml:space="preserve"><value>エクスプローラーで表示</value></data>
+  <data name="ProjectsOpenFileExplorer" xml:space="preserve"><value>エクスプローラーを開く</value></data>
+  <data name="ProjectsAnalyzeProject" xml:space="preserve"><value>プロジェクトを分析</value></data>
+  <data name="ProjectsCodeLineStats" xml:space="preserve"><value>コード行統計</value></data>
+  <data name="ProjectsOpenInVisualStudio" xml:space="preserve"><value>Visual Studioで開く</value></data>
+  <data name="ProjectsLaunchIDE" xml:space="preserve"><value>IDEを起動</value></data>
+  <data name="ProjectsProperties" xml:space="preserve"><value>プロパティ</value></data>
+  <data name="ProjectsType" xml:space="preserve"><value>タイプ：</value></data>
+  <data name="ProjectsFooterProjects" xml:space="preserve"><value>プロジェクト</value></data>
+  <data name="ProjectsFooterFiles" xml:space="preserve"><value>ファイル</value></data>
+  <data name="ProjectsFooterLines" xml:space="preserve"><value>行</value></data>
+
+  <!-- Navigation -->
+  <data name="NavWorkspace" xml:space="preserve"><value>ワークスペース</value></data>
+  <data name="NavProjects" xml:space="preserve"><value>プロジェクト</value></data>
+  <data name="NavAllLocations" xml:space="preserve"><value>すべての場所</value></data>
+  <data name="NavExport" xml:space="preserve"><value>エクスポート</value></data>
+  <data name="NavNavigation" xml:space="preserve"><value>ナビゲーション</value></data>
+
+  <data name="StatsDashboardTitle" xml:space="preserve"><value>統計ダッシュボード</value></data>
+  <data name="StatsDashboardSubtitle" xml:space="preserve"><value>ワークスペースの活動とプロジェクト指標の概要</value></data>
+  <data name="StatsCalculating" xml:space="preserve"><value>計算中...</value></data>
+  <data name="StatsLoadingGitData" xml:space="preserve"><value>Gitデータを読み込み中...</value></data>
+  <data name="StatsRangeWeek" xml:space="preserve"><value>週</value></data>
+  <data name="StatsRangeMonth" xml:space="preserve"><value>月</value></data>
+  <data name="StatsRangeYear" xml:space="preserve"><value>年</value></data>
+  <data name="StatsRangeAllTime" xml:space="preserve"><value>全期間</value></data>
+  <data name="StatsGitActivityTitle" xml:space="preserve"><value>Gitアクティビティ</value></data>
+  <data name="StatsGitActivitySubtitle" xml:space="preserve"><value>時間経過に伴う追加・削除行</value></data>
+  <data name="StatsGitHeatmapTitle" xml:space="preserve"><value>コントリビューションheatmap</value></data>
+  <data name="StatsGitHeatmapSubtitle" xml:space="preserve"><value>選択したプロジェクトの毎日のコミット密度</value></data>
+  <data name="StatsHeatmapHint" xml:space="preserve"><value>詳細を表示するにはブロックにカーソルを合わせます</value></data>
+  <data name="StatsLess" xml:space="preserve"><value>少ない</value></data>
+  <data name="StatsMore" xml:space="preserve"><value>多い</value></data>
+  <data name="StatsContribution" xml:space="preserve"><value>コントリビューション</value></data>
+  <data name="StatsContributions" xml:space="preserve"><value>コントリビューション</value></data>
+  <data name="StatsLinesOfCodeTitle" xml:space="preserve"><value>コード行数</value></data>
+  <data name="StatsLinesOfCodeSubtitle" xml:space="preserve"><value>コード行数が多い上位10プロジェクト</value></data>
+  <data name="StatsProjectTypesTitle" xml:space="preserve"><value>プロジェクトタイプ</value></data>
+  <data name="StatsProjectTypesSubtitle" xml:space="preserve"><value>プロジェクトタイプ別の分布</value></data>
+  <data name="StatsFileCountTitle" xml:space="preserve"><value>ファイル数</value></data>
+  <data name="StatsFileCountSubtitle" xml:space="preserve"><value>ファイル数が多い上位10プロジェクト</value></data>
+
+  <!-- Scan -->
+  <data name="ScanFoundProjects" xml:space="preserve"><value>{0} 件のプロジェクトが見つかりました</value></data>
+  <data name="ScanStarting" xml:space="preserve"><value>スキャンを開始しています...</value></data>
+  <data name="ScanInitializing" xml:space="preserve"><value>初期化しています...</value></data>
+
+  <data name="EditorsNoEditorsFound" xml:space="preserve"><value>システムにコードエディタが見つかりません</value></data>
+
+  <data name="ProjectsAnalyzingProject" xml:space="preserve"><value>プロジェクトを分析中...</value></data>
+  <data name="ProjectsTotalFiles" xml:space="preserve"><value>総ファイル数</value></data>
+  <data name="ProjectsTotalLines" xml:space="preserve"><value>総行数</value></data>
+  <data name="ProjectsAvgLinesPerFile" xml:space="preserve"><value>平均行/ファイル</value></data>
+  <data name="ProjectsLargestFile" xml:space="preserve"><value>最大のファイル</value></data>
+  <data name="ProjectsFile" xml:space="preserve"><value>ファイル</value></data>
+  <data name="ProjectsExtension" xml:space="preserve"><value>拡張子</value></data>
+  <data name="ProjectsLines" xml:space="preserve"><value>行</value></data>
+
+  <!-- Time Groups -->
+  <data name="TimeGroupToday" xml:space="preserve"><value>今日</value></data>
+  <data name="TimeGroupYesterday" xml:space="preserve"><value>昨日</value></data>
+  <data name="TimeGroupThisWeek" xml:space="preserve"><value>今週</value></data>
+  <data name="TimeGroupThisMonth" xml:space="preserve"><value>今月</value></data>
+  <data name="TimeGroup1to3MonthsAgo" xml:space="preserve"><value>1-3ヶ月前</value></data>
+  <data name="TimeGroupOlder" xml:space="preserve"><value>それ以前</value></data>
+
+  <!-- Date Range Filters -->
+  <data name="DateRange7Days" xml:space="preserve"><value>7日間</value></data>
+  <data name="DateRange30Days" xml:space="preserve"><value>30日間</value></data>
+  <data name="DateRangeYear" xml:space="preserve"><value>年</value></data>
+  <data name="DateRangeAllTime" xml:space="preserve"><value>全期間</value></data>
+
+  <!-- Stats Chart Labels -->
+  <data name="StatsAdditions" xml:space="preserve"><value>追加行</value></data>
+  <data name="StatsDeletions" xml:space="preserve"><value>削除行</value></data>
+  <data name="StatsLinesOfCode" xml:space="preserve"><value>コード行数</value></data>
+  <data name="StatsFileCount" xml:space="preserve"><value>ファイル数</value></data>
+
+  <!-- Run Project States -->
+  <data name="RunProjectStop" xml:space="preserve"><value>プロジェクトを停止</value></data>
+  <data name="RunProjectServerRunning" xml:space="preserve"><value>サーバー実行中</value></data>
+  <data name="RunProjectStart" xml:space="preserve"><value>プロジェクトを実行</value></data>
+  <data name="RunProjectStartDevServer" xml:space="preserve"><value>開発サーバーを起動</value></data>
+
+  <!-- Messages -->
+  <data name="MessageAllLocations" xml:space="preserve"><value>すべての場所</value></data>
+  <data name="MessageEditorNotFound" xml:space="preserve"><value>エディタが見つかりません</value></data>
+  <data name="MessageVSCodeNotFound" xml:space="preserve"><value>VSCodeが見つかりませんでした。</value></data>
+  <data name="MessageComingSoon" xml:space="preserve"><value>近日公開</value></data>
+  <data name="MessageFavoritesComingSoon" xml:space="preserve"><value>お気に入り機能は近日公開予定です！</value></data>
+  <data name="MessageTagEditingComingSoon" xml:space="preserve"><value>タグ編集機能は近日公開予定です！</value></data>
+  <data name="MessageError" xml:space="preserve"><value>エラー</value></data>
+  <data name="MessageCouldNotFindStartScript" xml:space="preserve"><value>package.jsonにstart/dev/serveスクリプトが見つかりません</value></data>
+  <data name="MessageFailedToStartDevServer" xml:space="preserve"><value>開発サーバーの起動に失敗しました</value></data>
+  <data name="MessageFailedToRunProject" xml:space="preserve"><value>プロジェクトの実行に失敗しました: {0}</value></data>
+  <data name="MessageInitializationError" xml:space="preserve"><value>初期化エラー</value></data>
+  <data name="MessageFailedToInitializeServices" xml:space="preserve"><value>スケーラビリティサービスの初期化に失敗しました: {0}</value></data>
+
+  <!-- Categories -->
+  <data name="CategoryOther" xml:space="preserve"><value>その他</value></data>
+  <data name="CategoryUnknown" xml:space="preserve"><value>不明</value></data>
+  <data name="CategoryWeb" xml:space="preserve"><value>Web</value></data>
+  <data name="CategoryDesktop" xml:space="preserve"><value>デスクトップ</value></data>
+  <data name="CategoryMobile" xml:space="preserve"><value>モバイル</value></data>
+  <data name="CategoryCloud" xml:space="preserve"><value>クラウド</value></data>
+
+  <!-- Unused Code Analysis -->
+  <data name="UnusedCodeTitle" xml:space="preserve"><value>未使用コードを検索</value></data>
+  <data name="UnusedCodeAnalyzing" xml:space="preserve"><value>未使用コードを分析中...</value></data>
+  <data name="UnusedCodeTotalIssues" xml:space="preserve"><value>合計問題数</value></data>
+  <data name="UnusedCodeVariables" xml:space="preserve"><value>変数</value></data>
+  <data name="UnusedCodeMethods" xml:space="preserve"><value>メソッド</value></data>
+  <data name="UnusedCodeTypes" xml:space="preserve"><value>型</value></data>
+  <data name="UnusedCodeNoIssues" xml:space="preserve"><value>未使用コードは見つかりませんでした！</value></data>
+  <data name="UnusedCodeCleanProject" xml:space="preserve"><value>プロジェクトはクリーンです。素晴らしい！</value></data>
+  <data name="UnusedCodeColType" xml:space="preserve"><value>種類</value></data>
+  <data name="UnusedCodeColName" xml:space="preserve"><value>名前</value></data>
+  <data name="UnusedCodeColLocation" xml:space="preserve"><value>場所</value></data>
+  <data name="UnusedCodeColHints" xml:space="preserve"><value>ヒント</value></data>
+  <data name="UnusedCodeFindUnused" xml:space="preserve"><value>未使用を検索</value></data>
+  <data name="UnusedCodeDetectUnused" xml:space="preserve"><value>未使用コードを検出</value></data>
+  <data name="UnusedCodeAIPrompt" xml:space="preserve"><value>AIプロンプト</value></data>
+  <data name="DepsPackage" xml:space="preserve"><value>パッケージ</value></data>
+  <data name="DepsVersion" xml:space="preserve"><value>バージョン</value></data>
+  <data name="DepsSource" xml:space="preserve"><value>ソース</value></data>
+  <data name="DepsLoading" xml:space="preserve"><value>依存関係を読み込み中...</value></data>
+  <data name="DepsCheckingUpdates" xml:space="preserve"><value>アップデートを確認中...</value></data>
+  <data name="DepsNoDependencies" xml:space="preserve"><value>依存関係が見つかりません</value></data>
+  <!-- AI Prompt Library -->
+  <data name="tab.aiPrompts" xml:space="preserve"><value>AIプロンプト</value></data>
+  <data name="aiprompts.title" xml:space="preserve"><value>AIプロンプトライブラリ</value></data>
+  <data name="aiprompts.subtitle" xml:space="preserve"><value>%dカテゴリー · %dプロフェッショナルプロンプト</value></data>
+  <data name="aiprompts.description" xml:space="preserve"><value>これらの詳細なプロンプトをコピーしてAIアシスタント（ChatGPT、Claude、Geminiなど）に貼り付け、自分のプロジェクトを分析してください。各プロンプトは専門家レベルの分析結果を生成するように設計されています。</value></data>
+  <data name="aiprompts.wordCount" xml:space="preserve"><value>%d語</value></data>
+  <data name="aiprompts.copied" xml:space="preserve"><value>コピーしました！</value></data>
+  <data name="aiprompts.copy" xml:space="preserve"><value>コピー</value></data>
+  <data name="aiprompts.collapse" xml:space="preserve"><value>折りたたむ</value></data>
+  <data name="aiprompts.expand" xml:space="preserve"><value>すべて見る</value></data>
+  <data name="aiprompts.category.codeQuality" xml:space="preserve"><value>コード品質</value></data>
+  <data name="aiprompts.category.performance" xml:space="preserve"><value>パフォーマンス</value></data>
+  <data name="aiprompts.category.architecture" xml:space="preserve"><value>アーキテクチャと設計</value></data>
+  <data name="aiprompts.category.testing" xml:space="preserve"><value>テスト</value></data>
+  <data name="aiprompts.category.documentation" xml:space="preserve"><value>ドキュメンテーション</value></data>
+  <data name="aiprompts.category.debugging" xml:space="preserve"><value>デバッグとプロファイリング</value></data>
+  <data name="aiprompts.category.networking" xml:space="preserve"><value>APIとネットワーキング</value></data>
+  <data name="aiprompts.category.accessibility" xml:space="preserve"><value>アクセシビリティ</value></data>
+  <data name="aiprompts.category.localization" xml:space="preserve"><value>i18nとローカリゼーション</value></data>
+  <data name="aiprompts.category.cicd" xml:space="preserve"><value>GitとCI/CD</value></data>
+  <data name="aiprompts.category.dependencies" xml:space="preserve"><value>依存関係管理</value></data>
+  <data name="aiprompts.category.codeGeneration" xml:space="preserve"><value>コード生成</value></data>
+  <data name="aiprompts.prompt.unusedCode.title" xml:space="preserve"><value>未使用コード</value></data>
+  <data name="aiprompts.prompt.unusedCode.desc" xml:space="preserve"><value>プロジェクト内の未使用の関数、変数、クラス、およびインポートを検出します。</value></data>
+  <data name="aiprompts.prompt.codeSmells.title" xml:space="preserve"><value>コードの匂いとアンチパターン</value></data>
+  <data name="aiprompts.prompt.codeSmells.desc" xml:space="preserve"><value>コードの匂い、アンチパターン、および潜在的なバグを深く検出します。</value></data>
+  <data name="aiprompts.prompt.memoryLeaks.title" xml:space="preserve"><value>メモリリークとリテインサイクル</value></data>
+  <data name="aiprompts.prompt.memoryLeaks.desc" xml:space="preserve"><value>Swift/Appleプロジェクトのメモリリーク、リテインサイクル、およびリソース管理エラーを包括的に分析します。</value></data>
+  <data name="aiprompts.prompt.securityAudit.title" xml:space="preserve"><value>セキュリティ監査</value></data>
+  <data name="aiprompts.prompt.securityAudit.desc" xml:space="preserve"><value>セキュリティの脆弱性、危険なコードパターン、およびデータ保護の欠陥を包括的に監査します。</value></data>
+  <data name="aiprompts.prompt.errorHandling.title" xml:space="preserve"><value>エラー処理監査</value></data>
+  <data name="aiprompts.prompt.errorHandling.desc" xml:space="preserve"><value>エラー処理の欠陥、強制アンラップ、およびクラッシュのリスクを検出します。</value></data>
+  <data name="aiprompts.prompt.bottleneck.title" xml:space="preserve"><value>パフォーマンスボトルネック分析</value></data>
+  <data name="aiprompts.prompt.bottleneck.desc" xml:space="preserve"><value>コードベース全体のパフォーマンスのボトルネック、遅いポイント、および不要なワークロードを検出します。</value></data>
+  <data name="aiprompts.prompt.swiftuiRender.title" xml:space="preserve"><value>SwiftUIレンダリングの最適化</value></data>
+  <data name="aiprompts.prompt.swiftuiRender.desc" xml:space="preserve"><value>SwiftUIビュー階層内の不要な再レンダリング、状態管理エラー、およびUIパフォーマンスの問題を検出します。</value></data>
+  <data name="aiprompts.prompt.appLaunch.title" xml:space="preserve"><value>アプリ起動とスタートアップの最適化</value></data>
+  <data name="aiprompts.prompt.appLaunch.desc" xml:space="preserve"><value>アプリの起動時間、コールド/ウォーム起動パフォーマンス、および最初の画面表示速度を分析します。</value></data>
+  <data name="aiprompts.prompt.architectureDeep.title" xml:space="preserve"><value>アーキテクチャ詳細レビュー</value></data>
+  <data name="aiprompts.prompt.architectureDeep.desc" xml:space="preserve"><value>SOLID原則、依存関係管理、およびモジュール性の観点からプロジェクトのアーキテクチャを深く評価します。</value></data>
+  <data name="aiprompts.prompt.designPatterns.title" xml:space="preserve"><value>デザインパターンとベストプラクティス</value></data>
+  <data name="aiprompts.prompt.designPatterns.desc" xml:space="preserve"><value>現在のデザインパターンの使用状況を分析し、不足しているパターンを提案し、アンチパターンを検出します。</value></data>
+  <data name="aiprompts.prompt.refactoringGuide.title" xml:space="preserve"><value>リファクタリングガイド</value></data>
+  <data name="aiprompts.prompt.refactoringGuide.desc" xml:space="preserve"><value>マーティン・ファウラーのリファクタリングカタログに従ってリファクタリングが必要なコードブロックをマークし、ステップバイステップのガイドを提供します。</value></data>
+  <data name="aiprompts.prompt.testCoverage.title" xml:space="preserve"><value>テストカバレッジとギャップ分析</value></data>
+  <data name="aiprompts.prompt.testCoverage.desc" xml:space="preserve"><value>テストカバレッジのギャップ、不足しているテストシナリオ、およびテストされていない重要なコードパスを包括的に分析します。</value></data>
+  <data name="aiprompts.prompt.unitTestAudit.title" xml:space="preserve"><value>ユニットテスト品質監査</value></data>
+  <data name="aiprompts.prompt.unitTestAudit.desc" xml:space="preserve"><value>既存のユニットテストの品質、信頼性、および保守性を監査します。</value></data>
+  <data name="aiprompts.prompt.testGenerator.title" xml:space="preserve"><value>テスト作成アシスタント</value></data>
+  <data name="aiprompts.prompt.testGenerator.desc" xml:space="preserve"><value>提供されたコードファイルに対して包括的で機能するユニットテストを生成します。</value></data>
+  <data name="aiprompts.prompt.apiDocs.title" xml:space="preserve"><value>自動APIドキュメント化</value></data>
+  <data name="aiprompts.prompt.apiDocs.desc" xml:space="preserve"><value>すべてのパブリックAPIの詳細なドキュメントをSwift DocC形式で生成します。</value></data>
+  <data name="aiprompts.prompt.readmeDocs.title" xml:space="preserve"><value>READMEとプロジェクトドキュメント</value></data>
+  <data name="aiprompts.prompt.readmeDocs.desc" xml:space="preserve"><value>プロフェッショナルで包括的なREADMEおよびプロジェクトドキュメントを作成します。</value></data>
+  <data name="aiprompts.prompt.commentsAudit.title" xml:space="preserve"><value>コードコメント分析</value></data>
+  <data name="aiprompts.prompt.commentsAudit.desc" xml:space="preserve"><value>既存のコメントを分析し、古くなった/間違っているものを検出し、改善の提案を提供します。</value></data>
+  <data name="aiprompts.prompt.crashBugAudit.title" xml:space="preserve"><value>クラッシュとバグ分析</value></data>
+  <data name="aiprompts.prompt.crashBugAudit.desc" xml:space="preserve"><value>クラッシュログとバグレポートを分析し、根本原因を見つけて修正を提案します。</value></data>
+  <data name="aiprompts.prompt.instrumentsGuide.title" xml:space="preserve"><value>Instrumentsとプロファイリングガイド</value></data>
+  <data name="aiprompts.prompt.instrumentsGuide.desc" xml:space="preserve"><value>Xcode Instrumentsを使用したプロファイリングのガイドとプロジェクト固有の推奨事項を提供します。</value></data>
+  <data name="aiprompts.prompt.networkAudit.title" xml:space="preserve"><value>ネットワーク層監査</value></data>
+  <data name="aiprompts.prompt.networkAudit.desc" xml:space="preserve"><value>ネットワーキング層、API呼び出し、エラー処理、およびデータフローを包括的に監査します。</value></data>
+  <data name="aiprompts.prompt.apiMock.title" xml:space="preserve"><value>APIモックとテストインフラストラクチャ</value></data>
+  <data name="aiprompts.prompt.apiMock.desc" xml:space="preserve"><value>APIテストインフラストラクチャ、モックサーバー構成、およびネットワークテスト戦略を作成します。</value></data>
+  <data name="aiprompts.prompt.a11yAudit.title" xml:space="preserve"><value>アクセシビリティ監査</value></data>
+  <data name="aiprompts.prompt.a11yAudit.desc" xml:space="preserve"><value>アクセシビリティ基準の遵守を監査し、VoiceOver、Dynamic Type、および色のコントラストの問題を検出します。</value></data>
+  <data name="aiprompts.prompt.i18nAudit.title" xml:space="preserve"><value>ローカリゼーション完全監査</value></data>
+  <data name="aiprompts.prompt.i18nAudit.desc" xml:space="preserve"><value>ハードコードされた文字列、欠落している翻訳、日付/数値形式、およびRTLサポートを包括的に監査します。</value></data>
+  <data name="aiprompts.prompt.gitWorkflow.title" xml:space="preserve"><value>Gitワークフローの最適化</value></data>
+  <data name="aiprompts.prompt.gitWorkflow.desc" xml:space="preserve"><value>Gitの履歴、ブランチ戦略、コミット品質、および.gitignore構成を監査します。</value></data>
+  <data name="aiprompts.prompt.cicdPipeline.title" xml:space="preserve"><value>CI/CDパイプライン設計</value></data>
+  <data name="aiprompts.prompt.cicdPipeline.desc" xml:space="preserve"><value>プロジェクトタイプに適したCI/CDパイプライン設計、ビルドの最適化、およびデプロイ戦略を作成します。</value></data>
+  <data name="aiprompts.prompt.depAudit.title" xml:space="preserve"><value>依存関係監査</value></data>
+  <data name="aiprompts.prompt.depAudit.desc" xml:space="preserve"><value>セキュリティ、最新性、ライセンスの遵守、および必要性についてすべての依存関係を監査します。</value></data>
+  <data name="aiprompts.prompt.crudGen.title" xml:space="preserve"><value>CRUD機能ジェネレーター</value></data>
+  <data name="aiprompts.prompt.crudGen.desc" xml:space="preserve"><value>新しいエンティティのための完全なCRUD機能（Model、Service、ViewModel、View）を生成します。</value></data>
+  <data name="aiprompts.prompt.boilerplateGen.title" xml:space="preserve"><value>プロジェクトボイラープレートジェネレーター</value></data>
+  <data name="aiprompts.prompt.boilerplateGen.desc" xml:space="preserve"><value>新しいモジュールまたは機能に必要なすべてのファイルとフォルダー構造を作成します。</value></data>
+  <data name="aiprompts.prompt.projectReport.title" xml:space="preserve"><value>プロジェクト分析レポート</value></data>
+  <data name="aiprompts.prompt.projectReport.desc" xml:space="preserve"><value>プロジェクトの全体的なX線（アーキテクチャ、品質、リスク、改善の提案）を提供します。</value></data>
+  <!-- End AI Prompt Library -->
+</root>

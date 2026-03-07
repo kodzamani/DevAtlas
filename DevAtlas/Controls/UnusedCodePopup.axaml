@@ -1,0 +1,196 @@
+<UserControl x:Class="DevAtlas.Controls.UnusedCodePopup"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:DevAtlas.Controls"
+             xmlns:svc="using:DevAtlas.Services"
+             Background="#CC000000"
+             IsVisible="False"
+             PointerPressed="Overlay_MouseLeftButtonDown">
+
+    <UserControl.Styles>
+        <Style Selector="Border.CloseHover">
+            <Setter Property="Background" Value="{DynamicResource Bg.Muted}"/>
+        </Style>
+        <Style Selector="Border.CloseHover:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Bg.Hover}"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="780" MinWidth="640">
+        <Border Background="{DynamicResource Bg.Card}" CornerRadius="14"
+                BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1"
+                PointerPressed="PopupContent_MouseLeftButtonDown">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Header -->
+                <Border Grid.Row="0" Padding="24,18,24,14" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="0,0,0,1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image x:Name="PopupHeaderIcon" Grid.Column="0" Width="24" Height="24" HorizontalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock Grid.Column="1" Text="{Binding [UnusedCodeTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="HeaderProjectName" Grid.Column="2" Text="" Foreground="{DynamicResource Text.Muted}" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="12,0,0,0"/>
+
+                        <!-- AI prompt button -->
+                        <Border x:Name="GeneratePromptButton" Grid.Column="3" Width="96" Height="28" CornerRadius="6" Cursor="Hand" Margin="12,0,0,0"
+                                PointerPressed="GenerateRemovalPrompt_Click" VerticalAlignment="Center" Background="{DynamicResource Bg.Muted}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1">
+                            <TextBlock Text="{Binding [UnusedCodeAIPrompt], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <!-- Close button -->
+                        <Border Grid.Column="4" Width="28" Height="28" CornerRadius="14" Cursor="Hand" Margin="12,0,0,0"
+                                PointerPressed="CloseButton_Click" VerticalAlignment="Center"
+                                Classes="CloseHover">
+                            <TextBlock Text="X" Foreground="{DynamicResource Text.Tertiary}" FontSize="11" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- Content -->
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" MaxHeight="560" Padding="0">
+                    <StackPanel Margin="24,18,24,24">
+
+                        <!-- Loading indicator -->
+                        <StackPanel x:Name="LoadingPanel" HorizontalAlignment="Center" Margin="0,40,0,40">
+                            <TextBlock Text="{Binding [UnusedCodeAnalyzing], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="14" HorizontalAlignment="Center"/>
+                            <ProgressBar IsIndeterminate="True" Width="200" Height="3" Margin="0,12,0,0" Foreground="{DynamicResource Accent.Primary}" Background="{DynamicResource Bg.Muted}" BorderThickness="0"/>
+                        </StackPanel>
+
+                        <!-- Results Panel -->
+                        <StackPanel x:Name="ResultsPanel" IsVisible="False">
+
+                            <!-- Summary info box -->
+                            <Border Background="{DynamicResource Bg.Muted}" CornerRadius="8" Padding="16,12" Margin="0,0,0,16"
+                                    BorderBrush="{DynamicResource Accent.Primary}" BorderThickness="3,0,0,0">
+                                <StackPanel>
+                                    <TextBlock x:Name="SummaryText" Foreground="{DynamicResource Text.Secondary}" FontSize="13" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Stat Cards Row -->
+                            <Grid Margin="0,0,0,18">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Total Issues -->
+                                <Border Grid.Column="0" Background="{DynamicResource Bg.Muted}" CornerRadius="8" Padding="14,10" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding [UnusedCodeTotalIssues], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="Medium" Margin="0,0,0,4"/>
+                                        <TextBlock x:Name="StatTotalIssues" Text="0" Foreground="{DynamicResource Text.Primary}" FontSize="20" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Unused Variables -->
+                                <Border Grid.Column="2" Background="{DynamicResource Bg.Muted}" CornerRadius="8" Padding="14,10" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding [UnusedCodeVariables], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="Medium" Margin="0,0,0,4"/>
+                                        <TextBlock x:Name="StatVariables" Text="0" Foreground="#F59E0B" FontSize="20" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Unused Methods -->
+                                <Border Grid.Column="4" Background="{DynamicResource Bg.Muted}" CornerRadius="8" Padding="14,10" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding [UnusedCodeMethods], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="Medium" Margin="0,0,0,4"/>
+                                        <TextBlock x:Name="StatMethods" Text="0" Foreground="#EF4444" FontSize="20" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Unused Types -->
+                                <Border Grid.Column="6" Background="{DynamicResource Bg.Muted}" CornerRadius="8" Padding="14,10" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding [UnusedCodeTypes], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="Medium" Margin="0,0,0,4"/>
+                                        <TextBlock x:Name="StatTypes" Text="0" Foreground="#8B5CF6" FontSize="20" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+
+                            <!-- No issues found message -->
+                            <Border x:Name="NoIssuesPanel" IsVisible="False" Background="{DynamicResource Bg.Muted}" CornerRadius="8" Padding="24,20" Margin="0,0,0,8">
+                                <StackPanel HorizontalAlignment="Center">
+                                    <TextBlock Text="&#x2713;" FontSize="32" Foreground="#10B981" HorizontalAlignment="Center" Margin="0,0,0,8"/>
+                                    <TextBlock Text="{Binding [UnusedCodeNoIssues], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding [UnusedCodeCleanProject], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="12" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Table Header -->
+                            <Grid x:Name="TableHeader" Margin="0,0,0,8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition Width="180"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="{Binding [UnusedCodeColType], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold"/>
+                                <TextBlock Grid.Column="1" Text="{Binding [UnusedCodeColName], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold"/>
+                                <TextBlock Grid.Column="2" Text="{Binding [UnusedCodeColLocation], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold"/>
+                                <TextBlock Grid.Column="3" Text="{Binding [UnusedCodeColHints], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold"/>
+                            </Grid>
+
+                            <Border x:Name="TableSeparator" Height="1" Background="{DynamicResource Border.Normal}" Margin="0,0,0,4"/>
+
+                            <!-- Results List -->
+                            <ItemsControl x:Name="ResultsListControl">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Padding="0,6" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="0,0,0,0.5">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="90"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="180"/>
+                                                    <ColumnDefinition Width="180"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Kind badge -->
+                                                <Border Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                                        Background="{Binding KindBackground}" CornerRadius="4" Padding="6,2">
+                                                    <TextBlock Text="{Binding Kind}" Foreground="{Binding KindForeground}" FontSize="10" FontWeight="Medium" FontFamily="Consolas"/>
+                                                </Border>
+
+                                                <!-- Name -->
+                                                <TextBlock Grid.Column="1" Text="{Binding Name}" Foreground="{DynamicResource Text.Primary}" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center"
+                                                           TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding Name}"/>
+
+                                                <!-- Location -->
+                                                <Border Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                                        Background="{DynamicResource Bg.Muted}" CornerRadius="3" Padding="5,1.5">
+                                                    <TextBlock Text="{Binding Location}" Foreground="{DynamicResource Text.Tertiary}" FontSize="9" FontWeight="Medium" FontFamily="Consolas"
+                                                               TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding Location}"/>
+                                                </Border>
+
+                                                <!-- Hints -->
+                                                <TextBlock Grid.Column="3" Text="{Binding HintsText}" Foreground="{DynamicResource Text.Muted}" FontSize="10" VerticalAlignment="Center"
+                                                           TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding HintsText}"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

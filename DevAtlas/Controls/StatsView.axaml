@@ -1,0 +1,547 @@
+<UserControl x:Class="DevAtlas.Controls.StatsView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+             xmlns:svc="using:DevAtlas.Services">
+
+    <UserControl.Styles>
+        <Style Selector="Border.SumCard">
+            <Setter Property="Background" Value="{DynamicResource Bg.Card}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Border.Normal}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="18,14"/>
+        </Style>
+
+        <Style Selector="Border.RangePill">
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="14,6"/>
+            <Setter Property="Margin" Value="0,0,6,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style Selector="Border.ChartCard">
+            <Setter Property="Background" Value="{DynamicResource Bg.Card}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Border.Normal}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="20,16"/>
+        </Style>
+
+        <Style Selector="Border.HeatmapCell">
+            <Setter Property="Width" Value="11"/>
+            <Setter Property="Height" Value="11"/>
+            <Setter Property="CornerRadius" Value="3"/>
+            <Setter Property="Margin" Value="0,0,0,4"/>
+        </Style>
+
+        <Style Selector="Button.GitFilterButton">
+            <Setter Property="Background" Value="{DynamicResource Bg.Muted}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Border.Normal}"/>
+            <Setter Property="Foreground" Value="{DynamicResource Text.Primary}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="16,10"/>
+            <Setter Property="MinHeight" Value="38"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border x:Name="Root"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <ContentPresenter Grid.Column="0"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="Center"
+                                              Margin="0,0,12,0"/>
+                            <Path x:Name="Arrow"
+                                  Grid.Column="1"
+                                  Margin="0,0,2,0"
+                                  Width="10"
+                                  Height="6"
+                                  VerticalAlignment="Center"
+                                  Stroke="{TemplateBinding Foreground}"
+                                  StrokeThickness="1.8"
+                                  Data="M 0 0 L 5 5 L 10 0"
+                                  Stretch="Fill"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="Button.GitFilterButton:pointerover /template/ Border#Root">
+            <Setter Property="Background" Value="{DynamicResource Bg.Hover}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Border.Normal}"/>
+        </Style>
+
+        <Style Selector="ListBoxItem.GitFilterOption">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border x:Name="OptionRoot" Background="Transparent" CornerRadius="8" Padding="10,8" Margin="4">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="ListBoxItem.GitFilterOption:pointerover /template/ Border#OptionRoot">
+            <Setter Property="Background" Value="#F8FAFC"/>
+        </Style>
+        <Style Selector="ListBoxItem.GitFilterOption:selected /template/ Border#OptionRoot">
+            <Setter Property="Background" Value="#ECFDF5"/>
+        </Style>
+
+        <Style Selector="Border.SkeletonCard">
+            <Setter Property="Background" Value="{DynamicResource Bg.Secondary}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Border.Normal}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="20,16"/>
+        </Style>
+
+        <Style Selector="Border.SkeletonBlock">
+            <Setter Property="Background" Value="{DynamicResource Bg.Muted}"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Opacity" Value="0.55"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled"
+                      IsVisible="{Binding !IsCalculating}">
+
+            <StackPanel Margin="32,24,32,32">
+                <Grid Margin="0,0,0,22">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="{Binding [StatsDashboardTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="22" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding [StatsDashboardSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="13" Margin="0,4,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                IsVisible="{Binding IsCalculating, FallbackValue=False}">
+                        <TextBlock Text="?" FontSize="14" Foreground="{DynamicResource Text.Muted}" VerticalAlignment="Center" Margin="0,0,6,0"
+                                   RenderTransformOrigin="0.5,0.5">
+                            <TextBlock.RenderTransform>
+                                <RotateTransform Angle="0"/>
+                            </TextBlock.RenderTransform>
+                            <TextBlock.Styles>
+                                <Style Selector="TextBlock">
+                                    <Style.Animations>
+                                        <Animation Duration="0:0:1" IterationCount="INFINITE">
+                                            <KeyFrame Cue="0%">
+                                                <Setter Property="RotateTransform.Angle" Value="0"/>
+                                            </KeyFrame>
+                                            <KeyFrame Cue="100%">
+                                                <Setter Property="RotateTransform.Angle" Value="360"/>
+                                            </KeyFrame>
+                                        </Animation>
+                                    </Style.Animations>
+                                </Style>
+                            </TextBlock.Styles>
+                        </TextBlock>
+                        <TextBlock Text="{Binding [StatsCalculating], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="12" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+
+                <UniformGrid Columns="4" Margin="0,0,0,22">
+                    <Border Classes="SumCard" Margin="0,0,10,0">
+                        <StackPanel>
+                            <TextBlock Text="{Binding [StatsProjectsAnalyzed], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" FontWeight="Medium"/>
+                            <TextBlock Text="{Binding ProjectsAnalyzed}" Foreground="{DynamicResource Text.Primary}" FontSize="26" FontWeight="Bold" Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Classes="SumCard" Margin="0,0,10,0">
+                        <StackPanel>
+                            <TextBlock Text="{Binding [StatsTrackedCodeLines], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" FontWeight="Medium"/>
+                            <TextBlock Text="{Binding TrackedCodeLines, StringFormat=N0}" Foreground="{DynamicResource Text.Primary}" FontSize="26" FontWeight="Bold" Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Classes="SumCard" Margin="0,0,10,0">
+                        <StackPanel>
+                            <TextBlock Text="{Binding [StatsGitAdditions], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" FontWeight="Medium"/>
+                            <TextBlock Text="{Binding GitAdditions, StringFormat=N0}" Foreground="#22C55E" FontSize="26" FontWeight="Bold" Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Classes="SumCard">
+                        <StackPanel>
+                            <TextBlock Text="{Binding [StatsGitDeletions], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" FontWeight="Medium"/>
+                            <TextBlock Text="{Binding GitDeletions, StringFormat=N0}" Foreground="#EF4444" FontSize="26" FontWeight="Bold" Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Border>
+                </UniformGrid>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                    <Border x:Name="RangeWeek" Classes="RangePill" Background="{DynamicResource Bg.Muted}" PointerPressed="DateRange_Click" Tag="Week">
+                        <TextBlock Text="{Binding [StatsRangeWeek], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" FontWeight="Medium"/>
+                    </Border>
+                    <Border x:Name="RangeMonth" Classes="RangePill" Background="{DynamicResource Accent.Primary}" PointerPressed="DateRange_Click" Tag="Month">
+                        <TextBlock Text="{Binding [StatsRangeMonth], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Inverse}" FontSize="12" FontWeight="Medium"/>
+                    </Border>
+                    <Border x:Name="RangeYear" Classes="RangePill" Background="{DynamicResource Bg.Muted}" PointerPressed="DateRange_Click" Tag="Year">
+                        <TextBlock Text="{Binding [StatsRangeYear], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" FontWeight="Medium"/>
+                    </Border>
+                    <Border x:Name="RangeAll" Classes="RangePill" Background="{DynamicResource Bg.Muted}" PointerPressed="DateRange_Click" Tag="AllTime">
+                        <TextBlock Text="{Binding [StatsRangeAllTime], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" FontWeight="Medium"/>
+                    </Border>
+                </StackPanel>
+
+                <Border Classes="ChartCard" Margin="0,0,0,20">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="{Binding [StatsGitActivityTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                                <TextBlock Text="{Binding [StatsGitActivitySubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11"/>
+                            </StackPanel>
+
+                            <Grid Grid.Column="1" Width="190">
+                                <Button x:Name="GitProjectFilterToggle"
+                                        Classes="GitFilterButton"
+                                        HorizontalAlignment="Stretch"
+                                        Tag="{Binding IsGitProjectFilterOpen}"
+                                        Click="GitProjectFilterToggle_Click">
+                                    <TextBlock Text="{Binding SelectedGitProjectFilterDisplayName}"
+                                               FontSize="12"
+                                               FontWeight="Medium"
+                                               TextTrimming="CharacterEllipsis"/>
+                                </Button>
+
+                                <Popup PlacementTarget="{Binding ElementName=GitProjectFilterToggle}"
+                                       Placement="Bottom"
+                                       VerticalOffset="8"
+                                       IsLightDismissEnabled="True"
+                                       IsOpen="{Binding IsGitProjectFilterOpen, Mode=TwoWay}"
+                                       Closed="GitProjectFilterPopup_Closed">
+                                    <Border Width="190"
+                                            Background="{DynamicResource Bg.Card}"
+                                            BorderBrush="{DynamicResource Border.Normal}"
+                                            BorderThickness="1"
+                                            CornerRadius="12"
+                                            Padding="6">
+                                        <ListBox ItemsSource="{Binding GitProjectFilters}"
+                                                 SelectedItem="{Binding SelectedGitProjectFilter, Mode=TwoWay}"
+                                                 SelectionChanged="GitProjectFilterSelectionChanged"
+                                                 Background="Transparent"
+                                                 BorderThickness="0"
+                                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                                 MaxHeight="240">
+                                            <ListBox.Styles>
+                                                <Style Selector="ListBoxItem">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                                    <Setter Property="Template">
+                                                        <ControlTemplate>
+                                                            <Border x:Name="OptionRoot" Background="Transparent" CornerRadius="8" Padding="10,8" Margin="4">
+                                                                <ContentPresenter Content="{TemplateBinding Content}"
+                                                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Setter>
+                                                </Style>
+                                                <Style Selector="ListBoxItem:pointerover /template/ Border#OptionRoot">
+                                                    <Setter Property="Background" Value="{DynamicResource Bg.Hover}"/>
+                                                </Style>
+                                                <Style Selector="ListBoxItem:selected /template/ Border#OptionRoot">
+                                                    <Setter Property="Background" Value="{DynamicResource Bg.SidebarActive}"/>
+                                                </Style>
+                                            </ListBox.Styles>
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding DisplayName}"
+                                                               Foreground="{DynamicResource Text.Primary}"
+                                                               FontSize="12"/>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.25*"/>
+                                <ColumnDefinition Width="16"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <lvc:CartesianChart Height="260"
+                                                   Series="{Binding GitActivitySeries}"
+                                                   XAxes="{Binding GitActivityXAxes}"
+                                                   YAxes="{Binding GitActivityYAxes}"
+                                                   TooltipPosition="Top"
+                                                   AnimationsSpeed="0:0:0"
+                                                   IsVisible="{Binding HasFilteredGitActivity}"/>
+
+                                <TextBlock Text="{Binding [StatsNoGitActivity], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}"
+                                           Foreground="{DynamicResource Text.Muted}"
+                                           FontSize="12"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           IsVisible="{Binding !HasFilteredGitActivity}"/>
+                            </Grid>
+
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="{Binding [StatsGitHeatmapTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="13" FontWeight="SemiBold"/>
+                                <TextBlock Text="{Binding [StatsGitHeatmapSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" Margin="0,4,0,12"/>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" Margin="0,18,10,0">
+                                        <TextBlock Text="{Binding MondayLabel}" Foreground="{DynamicResource Text.Muted}" FontSize="10" Margin="0,0,0,18"/>
+                                        <TextBlock Text="{Binding WednesdayLabel}" Foreground="{DynamicResource Text.Muted}" FontSize="10" Margin="0,0,0,18"/>
+                                        <TextBlock Text="{Binding FridayLabel}" Foreground="{DynamicResource Text.Muted}" FontSize="10"/>
+                                    </StackPanel>
+
+                                    <ScrollViewer Grid.Column="1"
+                                                  HorizontalScrollBarVisibility="Auto"
+                                                  VerticalScrollBarVisibility="Disabled">
+                                        <ItemsControl ItemsSource="{Binding GitHeatmapWeeks}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ItemsControl ItemsSource="{Binding Days}" Margin="0,0,4,0">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <StackPanel Orientation="Vertical"/>
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Border Classes="HeatmapCell"
+                                                                        Background="{Binding Fill}"
+                                                                        BorderBrush="{DynamicResource Border.Normal}"
+                                                                        BorderThickness="1"
+                                                                        IsVisible="{Binding !IsPlaceholder}">
+                                                                    <ToolTip.Tip>
+                                                                        <StackPanel>
+                                                                            <TextBlock Text="{Binding ContributionLabel}" FontSize="12" FontWeight="SemiBold"/>
+                                                                            <TextBlock Text="{Binding DateLabel}" FontSize="11" Foreground="{DynamicResource Text.Muted}" Margin="0,2,0,0"/>
+                                                                        </StackPanel>
+                                                                    </ToolTip.Tip>
+                                                                </Border>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </ScrollViewer>
+                                </Grid>
+
+                                <Grid Margin="0,12,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="{Binding [StatsHeatmapHint], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" VerticalAlignment="Center"/>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding [StatsLess], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                        <ItemsControl ItemsSource="{Binding HeatmapLegendBrushes}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border Width="10" Height="10" CornerRadius="3" Margin="0,0,4,0" Background="{Binding}" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1"/>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                        <TextBlock Text="{Binding [StatsMore], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Classes="ChartCard">
+                        <StackPanel>
+                            <TextBlock Text="{Binding [StatsLinesOfCodeTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                            <TextBlock Text="{Binding [StatsLinesOfCodeSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" Margin="0,0,0,14"/>
+                            <lvc:CartesianChart Height="300"
+                                               Series="{Binding CodeLinesSeries}"
+                                               XAxes="{Binding CodeLinesXAxes}"
+                                               YAxes="{Binding CodeLinesYAxes}"
+                                               TooltipPosition="Right"
+                                               AnimationsSpeed="0:0:0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="2" Classes="ChartCard">
+                        <StackPanel>
+                            <TextBlock Text="{Binding [StatsProjectTypesTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                            <TextBlock Text="{Binding [StatsProjectTypesSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" Margin="0,0,0,14"/>
+                            <lvc:PieChart Height="300"
+                                         Series="{Binding ProjectTypesSeries}"
+                                         TooltipPosition="Right"
+                                         AnimationsSpeed="0:0:0"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <Border Classes="ChartCard" Margin="0,0,0,20">
+                    <StackPanel>
+                        <TextBlock Text="{Binding [StatsFileCountTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                        <TextBlock Text="{Binding [StatsFileCountSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" Margin="0,0,0,14"/>
+                        <lvc:CartesianChart Height="300"
+                                           Series="{Binding FileCountSeries}"
+                                           XAxes="{Binding FileCountXAxes}"
+                                           YAxes="{Binding FileCountYAxes}"
+                                           TooltipPosition="Right"
+                                           AnimationsSpeed="0:0:0"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <ScrollViewer VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Disabled"
+                      IsVisible="{Binding IsCalculating, FallbackValue=False}"
+                      ZIndex="1000">
+            <StackPanel Margin="32,24,32,32">
+                <Grid Margin="0,0,0,22">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <Border Classes="SkeletonBlock" Width="220" Height="28" HorizontalAlignment="Left"/>
+                        <Border Classes="SkeletonBlock" Width="360" Height="14" Margin="0,8,0,0" HorizontalAlignment="Left"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Border Classes="SkeletonBlock" Width="18" Height="18" CornerRadius="9" Margin="0,0,8,0"/>
+                        <Border Classes="SkeletonBlock" Width="120" Height="14" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+
+                <UniformGrid Columns="4" Margin="0,0,0,22">
+                    <Border Classes="SkeletonCard" Margin="0,0,10,0">
+                        <StackPanel>
+                            <Border Classes="SkeletonBlock" Width="22" Height="22" HorizontalAlignment="Left"/>
+                            <Border Classes="SkeletonBlock" Width="110" Height="12" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                            <Border Classes="SkeletonBlock" Width="64" Height="30" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Classes="SkeletonCard" Margin="0,0,10,0">
+                        <StackPanel>
+                            <Border Classes="SkeletonBlock" Width="22" Height="22" HorizontalAlignment="Left"/>
+                            <Border Classes="SkeletonBlock" Width="130" Height="12" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                            <Border Classes="SkeletonBlock" Width="96" Height="30" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Classes="SkeletonCard" Margin="0,0,10,0">
+                        <StackPanel>
+                            <Border Classes="SkeletonBlock" Width="22" Height="22" HorizontalAlignment="Left"/>
+                            <Border Classes="SkeletonBlock" Width="96" Height="12" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                            <Border Classes="SkeletonBlock" Width="84" Height="30" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Classes="SkeletonCard">
+                        <StackPanel>
+                            <Border Classes="SkeletonBlock" Width="22" Height="22" HorizontalAlignment="Left"/>
+                            <Border Classes="SkeletonBlock" Width="96" Height="12" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                            <Border Classes="SkeletonBlock" Width="84" Height="30" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Border>
+                </UniformGrid>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                    <Border Classes="SkeletonBlock" Width="70" Height="32" Margin="0,0,6,0"/>
+                    <Border Classes="SkeletonBlock" Width="76" Height="32" Margin="0,0,6,0"/>
+                    <Border Classes="SkeletonBlock" Width="64" Height="32" Margin="0,0,6,0"/>
+                    <Border Classes="SkeletonBlock" Width="94" Height="32"/>
+                </StackPanel>
+
+                <Border Classes="SkeletonCard" Margin="0,0,0,20">
+                    <StackPanel>
+                        <Border Classes="SkeletonBlock" Width="140" Height="16" HorizontalAlignment="Left"/>
+                        <Border Classes="SkeletonBlock" Width="220" Height="12" Margin="0,8,0,0" HorizontalAlignment="Left"/>
+                        <Border Classes="SkeletonBlock" Height="260" Margin="0,18,0,0" CornerRadius="10"/>
+                    </StackPanel>
+                </Border>
+
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Classes="SkeletonCard">
+                        <StackPanel>
+                            <Border Classes="SkeletonBlock" Width="150" Height="16" HorizontalAlignment="Left"/>
+                            <Border Classes="SkeletonBlock" Width="200" Height="12" Margin="0,8,0,0" HorizontalAlignment="Left"/>
+                            <Border Classes="SkeletonBlock" Height="300" Margin="0,18,0,0" CornerRadius="10"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="2" Classes="SkeletonCard">
+                        <StackPanel>
+                            <Border Classes="SkeletonBlock" Width="130" Height="16" HorizontalAlignment="Left"/>
+                            <Border Classes="SkeletonBlock" Width="180" Height="12" Margin="0,8,0,0" HorizontalAlignment="Left"/>
+                            <Border Classes="SkeletonBlock" Height="300" Margin="0,18,0,0" CornerRadius="10"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <Border Classes="SkeletonCard" Margin="0,0,0,20">
+                    <StackPanel>
+                        <Border Classes="SkeletonBlock" Width="110" Height="16" HorizontalAlignment="Left"/>
+                        <Border Classes="SkeletonBlock" Width="210" Height="12" Margin="0,8,0,0" HorizontalAlignment="Left"/>
+                        <Border Classes="SkeletonBlock" Height="300" Margin="0,18,0,0" CornerRadius="10"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <!-- App General -->
+  <data name="AppName" xml:space="preserve"><value>DevAtlas</value></data>
+  <data name="AppTagline" xml:space="preserve"><value>您的开发指挥中心</value></data>
+  <data name="AppVersion" xml:space="preserve"><value>版本 {0}</value></data>
+  <data name="WindowTitleWorkspace" xml:space="preserve"><value>DevAtlas 工作区</value></data>
+
+  <!-- Tabs -->
+  <data name="TabAtlas" xml:space="preserve"><value>地图</value></data>
+  <data name="TabStats" xml:space="preserve"><value>统计</value></data>
+  <data name="TabNotebook" xml:space="preserve"><value>笔记本</value></data>
+  <data name="TabSettings" xml:space="preserve"><value>设置</value></data>
+
+  <!-- Sidebar -->
+  <data name="SidebarAllProjects" xml:space="preserve"><value>所有项目</value></data>
+  <data name="SidebarWeb" xml:space="preserve"><value>网页</value></data>
+  <data name="SidebarDesktop" xml:space="preserve"><value>桌面</value></data>
+  <data name="SidebarMobile" xml:space="preserve"><value>移动</value></data>
+  <data name="SidebarCloud" xml:space="preserve"><value>云</value></data>
+  <data name="SidebarScanProjects" xml:space="preserve"><value>扫描项目</value></data>
+  <data name="SidebarDarkMode" xml:space="preserve"><value>深色模式</value></data>
+  <data name="SidebarShowTour" xml:space="preserve"><value>显示导览</value></data>
+  <data name="SidebarExplorer" xml:space="preserve"><value>资源管理器</value></data>
+
+  <!-- Search -->
+  <data name="SearchProjects" xml:space="preserve"><value>搜索项目...</value></data>
+
+  <!-- Onboarding - Welcome -->
+  <data name="OnboardingWelcomeTitle" xml:space="preserve"><value>欢迎使用 DevAtlas</value></data>
+  <data name="OnboardingWelcomeSubtitle" xml:space="preserve"><value>您的开发指挥中心</value></data>
+  <data name="OnboardingGetStarted" xml:space="preserve"><value>开始</value></data>
+  <data name="OnboardingSkip" xml:space="preserve"><value>跳过</value></data>
+
+  <!-- Onboarding - Features -->
+  <data name="OnboardingFeaturesTitle" xml:space="preserve"><value>项目地图</value></data>
+  <data name="OnboardingFeaturesSubtitle" xml:space="preserve"><value>管理您所有的开发项目</value></data>
+  <data name="OnboardingFeature1Title" xml:space="preserve"><value>项目地图</value></data>
+  <data name="OnboardingFeature1Subtitle" xml:space="preserve"><value>管理您所有的开发项目</value></data>
+  <data name="OnboardingFeature2Title" xml:space="preserve"><value>统计</value></data>
+  <data name="OnboardingFeature2Subtitle" xml:space="preserve"><value>跟踪您的编码活动</value></data>
+  <data name="OnboardingFeature3Title" xml:space="preserve"><value>笔记本</value></data>
+  <data name="OnboardingFeature3Subtitle" xml:space="preserve"><value>记录您的项目</value></data>
+
+  <!-- Onboarding - Quick Actions -->
+  <data name="OnboardingQuickActionsTitle" xml:space="preserve"><value>快速操作</value></data>
+  <data name="OnboardingQuickActionsSubtitle" xml:space="preserve"><value>快速访问您的工具</value></data>
+
+  <!-- Onboarding - Stats & Notebook -->
+  <data name="OnboardingStatsNotebookTitle" xml:space="preserve"><value>统计 &amp; 笔记本</value></data>
+  <data name="OnboardingStatsNotebookSubtitle" xml:space="preserve"><value>跟踪进度并做笔记</value></data>
+
+  <!-- Onboarding - Appearance -->
+  <data name="OnboardingAppearanceTitle" xml:space="preserve"><value>外观</value></data>
+  <data name="OnboardingAppearanceSubtitle" xml:space="preserve"><value>选择 DevAtlas 的外观</value></data>
+  <data name="OnboardingAllSet" xml:space="preserve"><value>您已准备就绪！</value></data>
+  <data name="OnboardingStartUsing" xml:space="preserve"><value>开始使用 DevAtlas</value></data>
+
+  <!-- Onboarding - Additional -->
+  <data name="OnboardingChooseAccentColor" xml:space="preserve"><value>选择您喜爱的强调色</value></data>
+  <data name="OnboardingDiscoverProjects" xml:space="preserve"><value>发现和管理您的所有开发项目</value></data>
+  <data name="OnboardingTwoMoreFeatures" xml:space="preserve"><value>触手可及的另外两个强大功能</value></data>
+  <data name="OnboardingLightningAccess" xml:space="preserve"><value>快速访问您的开发工具</value></data>
+  <data name="OnboardingAutoScanTitle" xml:space="preserve"><value>自动扫描</value></data>
+  <data name="OnboardingAutoScanSubtitle" xml:space="preserve"><value>在所有磁盘中查找项目</value></data>
+  <data name="OnboardingSmartFiltersTitle" xml:space="preserve"><value>智能筛选</value></data>
+  <data name="OnboardingSmartFiltersSubtitle" xml:space="preserve"><value>按 Web、桌面、移动或云进行筛选</value></data>
+  <data name="OnboardingAutoScanProjectsTitle" xml:space="preserve"><value>自动扫描项目</value></data>
+  <data name="OnboardingAutoScanProjectsSubtitle" xml:space="preserve"><value>自动发现并索引您计算机上的所有项目</value></data>
+  <data name="OnboardingSmartCategoriesTitle" xml:space="preserve"><value>智能分类</value></data>
+  <data name="OnboardingSmartCategoriesSubtitle" xml:space="preserve"><value>项目被分类为 Web、桌面、移动和云</value></data>
+  <data name="OnboardingTechStackDetectionTitle" xml:space="preserve"><value>技术栈检测</value></data>
+  <data name="OnboardingTechStackDetectionSubtitle" xml:space="preserve"><value>自动检测使用的框架、语言和工具</value></data>
+  <data name="OnboardingOpenInEditorTitle" xml:space="preserve"><value>在编辑器中打开</value></data>
+  <data name="OnboardingOpenInEditorSubtitle" xml:space="preserve"><value>直接在 VS Code、Visual Studio 或任何编辑器中启动项目</value></data>
+  <data name="OnboardingRunProjectsTitle" xml:space="preserve"><value>运行项目</value></data>
+  <data name="OnboardingRunProjectsSubtitle" xml:space="preserve"><value>一键启动开发服务器和构建过程</value></data>
+  <data name="OnboardingAnalyzeCodeTitle" xml:space="preserve"><value>分析代码</value></data>
+  <data name="OnboardingAnalyzeCodeSubtitle" xml:space="preserve"><value>获取包括代码行数和文件数的详细指标</value></data>
+  <data name="OnboardingGitStatisticsTitle" xml:space="preserve"><value>Git 统计</value></data>
+  <data name="OnboardingGitStatisticsSubtitle" xml:space="preserve"><value>跟踪随时间变化的添加、删除和提交活动</value></data>
+  <data name="OnboardingProjectInsightsTitle" xml:space="preserve"><value>项目洞察</value></data>
+  <data name="OnboardingProjectInsightsSubtitle" xml:space="preserve"><value>可视化代码分布、项目类型和文件指标</value></data>
+  <data name="OnboardingSearchTitle" xml:space="preserve"><value>搜索</value></data>
+  <data name="OnboardingSearchSubtitle" xml:space="preserve"><value>按名称或技术栈查找项目</value></data>
+  <data name="OnboardingRecentActivityTitle" xml:space="preserve"><value>最近活动</value></data>
+  <data name="OnboardingRecentActivitySubtitle" xml:space="preserve"><value>查看最近处理的文件</value></data>
+  <data name="OnboardingVSCode" xml:space="preserve"><value>在 Visual Studio Code 中打开</value></data>
+  <data name="OnboardingTerminal" xml:space="preserve"><value>在项目位置打开终端</value></data>
+  <data name="OnboardingExplorer" xml:space="preserve"><value>在资源管理器中显示项目</value></data>
+  <data name="OnboardingRunProjects" xml:space="preserve"><value>运行项目</value></data>
+  <data name="OnboardingAnalyzeCode" xml:space="preserve"><value>分析代码</value></data>
+  <data name="OnboardingStatsLanguageBreakdown" xml:space="preserve"><value>按语言划分</value></data>
+  <data name="OnboardingStatsLineCount" xml:space="preserve"><value>代码行数分析</value></data>
+  <data name="OnboardingStatsTimeInsights" xml:space="preserve"><value>基于时间的洞察</value></data>
+  <data name="OnboardingStatsExportReports" xml:space="preserve"><value>导出报表</value></data>
+
+  <!-- Settings -->
+  <data name="SettingsTitle" xml:space="preserve"><value>设置</value></data>
+  <data name="SettingsAbout" xml:space="preserve"><value>关于</value></data>
+  <data name="SettingsAboutDescription" xml:space="preserve"><value>DevAtlas 是您的综合开发指挥中心。在一个地方组织、分析和跟踪所有项目。</value></data>
+  <data name="SettingsLanguage" xml:space="preserve"><value>语言</value></data>
+  <data name="SettingsSelectLanguage" xml:space="preserve"><value>选择语言</value></data>
+  <data name="SettingsAppearance" xml:space="preserve"><value>外观</value></data>
+  <data name="SettingsTheme" xml:space="preserve"><value>主题</value></data>
+  <data name="SettingsAccentColor" xml:space="preserve"><value>强调色</value></data>
+  <data name="SettingsLight" xml:space="preserve"><value>浅色</value></data>
+  <data name="SettingsDark" xml:space="preserve"><value>深色</value></data>
+  <data name="SettingsSystem" xml:space="preserve"><value>系统</value></data>
+  <data name="SettingsVersion" xml:space="preserve"><value>版本</value></data>
+  <data name="SettingsCopyright" xml:space="preserve"><value>© 2024 DevAtlas</value></data>
+
+  <!-- Languages -->
+  <data name="LanguageEn" xml:space="preserve"><value>英语</value></data>
+  <data name="LanguageTr" xml:space="preserve"><value>土耳其语</value></data>
+  <data name="LanguageDe" xml:space="preserve"><value>德语</value></data>
+  <data name="LanguageJa" xml:space="preserve"><value>日语</value></data>
+  <data name="LanguageZh" xml:space="preserve"><value>简体中文</value></data>
+  <data name="LanguageKo" xml:space="preserve"><value>韩语</value></data>
+  <data name="LanguageIt" xml:space="preserve"><value>意大利语</value></data>
+  <data name="LanguageFr" xml:space="preserve"><value>法语</value></data>
+
+  <!-- Common -->
+  <data name="CommonNext" xml:space="preserve"><value>下一步</value></data>
+  <data name="CommonPrevious" xml:space="preserve"><value>上一步</value></data>
+  <data name="CommonBack" xml:space="preserve"><value>返回</value></data>
+  <data name="CommonDone" xml:space="preserve"><value>完成</value></data>
+  <data name="CommonCancel" xml:space="preserve"><value>取消</value></data>
+  <data name="CommonSave" xml:space="preserve"><value>保存</value></data>
+  <data name="CommonClose" xml:space="preserve"><value>关闭</value></data>
+
+  <!-- Dashboard & Projects -->
+  <data name="DashboardQuickActions" xml:space="preserve"><value>快捷操作</value></data>
+  <data name="DashboardTechStack" xml:space="preserve"><value>技术栈</value></data>
+  <data name="DashboardRecentActivity" xml:space="preserve"><value>最近活动</value></data>
+  <data name="DashboardNoRecentActivity" xml:space="preserve"><value>没有最近活动</value></data>
+  <data name="DashboardSize" xml:space="preserve"><value>大小</value></data>
+  <data name="DashboardFiles" xml:space="preserve"><value>文件</value></data>
+  <data name="DashboardLines" xml:space="preserve"><value>代码行</value></data>
+  <data name="DashboardLang" xml:space="preserve"><value>语言</value></data>
+  <data name="DashboardFramework" xml:space="preserve"><value>框架</value></data>
+
+  <!-- Stats View -->
+  <data name="StatsProjectsAnalyzed" xml:space="preserve"><value>分析的项目</value></data>
+  <data name="StatsTrackedCodeLines" xml:space="preserve"><value>跟踪的代码行</value></data>
+  <data name="StatsGitAdditions" xml:space="preserve"><value>Git 增加</value></data>
+  <data name="StatsGitDeletions" xml:space="preserve"><value>Git 删除</value></data>
+  <data name="StatsGitActivity" xml:space="preserve"><value>Git 活动 ({0})</value></data>
+  <data name="StatsActivityVolume" xml:space="preserve"><value>活动量</value></data>
+  <data name="StatsCodeLinesByProject" xml:space="preserve"><value>各项目代码行数</value></data>
+  <data name="StatsProjectTypes" xml:space="preserve"><value>项目类型</value></data>
+  <data name="StatsAllProjects" xml:space="preserve"><value>所有项目</value></data>
+  <data name="StatsTopProjectsByFileCount" xml:space="preserve"><value>文件数最多的项目</value></data>
+  <data name="StatsNoGitActivity" xml:space="preserve"><value>在此期间未找到 Git 活动。</value></data>
+  <data name="StatsNoCodeLines" xml:space="preserve"><value>没有可用的代码行。</value></data>
+  <data name="StatsNoProjectsToRank" xml:space="preserve"><value>没有可排序的项目。</value></data>
+  <data name="StatsNoData" xml:space="preserve"><value>没有可用数据。</value></data>
+  <data name="StatsActivityHigh" xml:space="preserve"><value>高活动</value></data>
+  <data name="StatsActivityMedium" xml:space="preserve"><value>中等活动</value></data>
+  <data name="StatsActivityLow" xml:space="preserve"><value>低活动</value></data>
+
+  <!-- Projects -->
+  <data name="ProjectsNoProjectsFound" xml:space="preserve"><value>未找到项目</value></data>
+  <data name="ProjectsTryScanning" xml:space="preserve"><value>尝试扫描项目或调整搜索条件</value></data>
+  <data name="ProjectsScanProjects" xml:space="preserve"><value>扫描项目</value></data>
+  <data name="ProjectsBackToProjects" xml:space="preserve"><value>返回项目</value></data>
+  <data name="ProjectsActive" xml:space="preserve"><value>活跃</value></data>
+  <data name="ProjectsOpenInCodeEditor" xml:space="preserve"><value>在代码编辑器中打开</value></data>
+  <data name="ProjectsSelectEditor" xml:space="preserve"><value>选择编辑器</value></data>
+  <data name="ProjectsRunProject" xml:space="preserve"><value>运行项目</value></data>
+  <data name="ProjectsStartDevServer" xml:space="preserve"><value>启动开发服务器</value></data>
+  <data name="ProjectsOpenTerminal" xml:space="preserve"><value>打开终端</value></data>
+  <data name="ProjectsCommandPrompt" xml:space="preserve"><value>命令提示符</value></data>
+  <data name="ProjectsRevealInExplorer" xml:space="preserve"><value>在资源管理器中显示</value></data>
+  <data name="ProjectsOpenFileExplorer" xml:space="preserve"><value>打开文件资源管理器</value></data>
+  <data name="ProjectsAnalyzeProject" xml:space="preserve"><value>分析项目</value></data>
+  <data name="ProjectsCodeLineStats" xml:space="preserve"><value>代码行统计</value></data>
+  <data name="ProjectsType" xml:space="preserve"><value>类型：</value></data>
+  <data name="ProjectsFooterProjects" xml:space="preserve"><value>项目</value></data>
+  <data name="ProjectsFooterFiles" xml:space="preserve"><value>文件</value></data>
+  <data name="ProjectsFooterLines" xml:space="preserve"><value>代码行</value></data>
+
+  <!-- Navigation -->
+  <data name="NavWorkspace" xml:space="preserve"><value>工作区</value></data>
+  <data name="NavProjects" xml:space="preserve"><value>项目</value></data>
+  <data name="NavAllLocations" xml:space="preserve"><value>所有位置</value></data>
+  <data name="NavExport" xml:space="preserve"><value>导出</value></data>
+  <data name="NavNavigation" xml:space="preserve"><value>导航</value></data>
+
+  <data name="StatsDashboardTitle" xml:space="preserve"><value>统计仪表板</value></data>
+  <data name="StatsDashboardSubtitle" xml:space="preserve"><value>工作区活动和项目指标的概览</value></data>
+  <data name="StatsCalculating" xml:space="preserve"><value>计算中...</value></data>
+  <data name="StatsLoadingGitData" xml:space="preserve"><value>加载 Git 数据中...</value></data>
+  <data name="StatsRangeWeek" xml:space="preserve"><value>周</value></data>
+  <data name="StatsRangeMonth" xml:space="preserve"><value>月</value></data>
+  <data name="StatsRangeYear" xml:space="preserve"><value>年</value></data>
+  <data name="StatsRangeAllTime" xml:space="preserve"><value>所有时间</value></data>
+  <data name="StatsGitActivityTitle" xml:space="preserve"><value>Git 活动</value></data>
+  <data name="StatsGitActivitySubtitle" xml:space="preserve"><value>随时间添加和删除的行</value></data>
+  <data name="StatsGitHeatmapTitle" xml:space="preserve"><value>贡献热力图</value></data>
+  <data name="StatsGitHeatmapSubtitle" xml:space="preserve"><value>所选项目的每日提交密度</value></data>
+  <data name="StatsHeatmapHint" xml:space="preserve"><value>将鼠标悬停在块上以查看详情</value></data>
+  <data name="StatsLess" xml:space="preserve"><value>少</value></data>
+  <data name="StatsMore" xml:space="preserve"><value>多</value></data>
+  <data name="StatsContribution" xml:space="preserve"><value>贡献</value></data>
+  <data name="StatsContributions" xml:space="preserve"><value>贡献</value></data>
+  <data name="StatsLinesOfCodeTitle" xml:space="preserve"><value>代码行</value></data>
+  <data name="StatsLinesOfCodeSubtitle" xml:space="preserve"><value>按代码行数排名前 10 的项目</value></data>
+  <data name="StatsProjectTypesTitle" xml:space="preserve"><value>项目类型</value></data>
+  <data name="StatsProjectTypesSubtitle" xml:space="preserve"><value>按项目类型的分布</value></data>
+  <data name="StatsFileCountTitle" xml:space="preserve"><value>文件数量</value></data>
+  <data name="StatsFileCountSubtitle" xml:space="preserve"><value>按文件数量排名前 10 的项目</value></data>
+
+  <!-- Scan -->
+  <data name="ScanFoundProjects" xml:space="preserve"><value>已找到 {0} 个项目</value></data>
+  <data name="ScanStarting" xml:space="preserve"><value>开始扫描...</value></data>
+  <data name="ScanInitializing" xml:space="preserve"><value>初始化中...</value></data>
+
+  <data name="EditorsNoEditorsFound" xml:space="preserve"><value>系统中未找到代码编辑器</value></data>
+
+  <data name="ProjectsAnalyzingProject" xml:space="preserve"><value>分析项目...</value></data>
+  <data name="ProjectsTotalFiles" xml:space="preserve"><value>总文件数</value></data>
+  <data name="ProjectsTotalLines" xml:space="preserve"><value>总行数</value></data>
+  <data name="ProjectsAvgLinesPerFile" xml:space="preserve"><value>平均行/文件</value></data>
+  <data name="ProjectsLargestFile" xml:space="preserve"><value>最大文件</value></data>
+  <data name="ProjectsFile" xml:space="preserve"><value>文件</value></data>
+  <data name="ProjectsExtension" xml:space="preserve"><value>扩展名</value></data>
+  <data name="ProjectsLines" xml:space="preserve"><value>行数</value></data>
+  <data name="ProjectsOpenInVisualStudio" xml:space="preserve"><value>在 Visual Studio 中打开</value></data>
+  <data name="ProjectsLaunchIDE" xml:space="preserve"><value>启动 IDE</value></data>
+  <data name="ProjectsProperties" xml:space="preserve"><value>属性</value></data>
+
+  <!-- Time Groups -->
+  <data name="TimeGroupToday" xml:space="preserve"><value>今天</value></data>
+  <data name="TimeGroupYesterday" xml:space="preserve"><value>昨天</value></data>
+  <data name="TimeGroupThisWeek" xml:space="preserve"><value>本周</value></data>
+  <data name="TimeGroupThisMonth" xml:space="preserve"><value>本月</value></data>
+  <data name="TimeGroup1to3MonthsAgo" xml:space="preserve"><value>1-3 个月前</value></data>
+  <data name="TimeGroupOlder" xml:space="preserve"><value>更早</value></data>
+
+  <!-- Date Range Filters -->
+  <data name="DateRange7Days" xml:space="preserve"><value>7 天</value></data>
+  <data name="DateRange30Days" xml:space="preserve"><value>30 天</value></data>
+  <data name="DateRangeYear" xml:space="preserve"><value>年</value></data>
+  <data name="DateRangeAllTime" xml:space="preserve"><value>全部时间</value></data>
+
+  <!-- Stats Chart Labels -->
+  <data name="StatsAdditions" xml:space="preserve"><value>添加</value></data>
+  <data name="StatsDeletions" xml:space="preserve"><value>删除</value></data>
+  <data name="StatsLinesOfCode" xml:space="preserve"><value>代码行数</value></data>
+  <data name="StatsFileCount" xml:space="preserve"><value>文件数量</value></data>
+
+  <!-- Run Project States -->
+  <data name="RunProjectStop" xml:space="preserve"><value>停止项目</value></data>
+  <data name="RunProjectServerRunning" xml:space="preserve"><value>服务器运行中</value></data>
+  <data name="RunProjectStart" xml:space="preserve"><value>运行项目</value></data>
+  <data name="RunProjectStartDevServer" xml:space="preserve"><value>启动开发服务器</value></data>
+
+  <!-- Messages -->
+  <data name="MessageAllLocations" xml:space="preserve"><value>所有位置</value></data>
+  <data name="MessageEditorNotFound" xml:space="preserve"><value>未找到编辑器</value></data>
+  <data name="MessageVSCodeNotFound" xml:space="preserve"><value>找不到 VSCode。</value></data>
+  <data name="MessageComingSoon" xml:space="preserve"><value>即将推出</value></data>
+  <data name="MessageFavoritesComingSoon" xml:space="preserve"><value>收藏功能即将推出！</value></data>
+  <data name="MessageTagEditingComingSoon" xml:space="preserve"><value>标签编辑功能即将推出！</value></data>
+  <data name="MessageError" xml:space="preserve"><value>错误</value></data>
+  <data name="MessageCouldNotFindStartScript" xml:space="preserve"><value>在 package.json 中找不到 start/dev/serve 脚本</value></data>
+  <data name="MessageFailedToStartDevServer" xml:space="preserve"><value>启动开发服务器失败</value></data>
+  <data name="MessageFailedToRunProject" xml:space="preserve"><value>运行项目失败：{0}</value></data>
+  <data name="MessageInitializationError" xml:space="preserve"><value>初始化错误</value></data>
+  <data name="MessageFailedToInitializeServices" xml:space="preserve"><value>初始化可扩展性服务失败：{0}</value></data>
+
+  <!-- Categories -->
+  <data name="CategoryOther" xml:space="preserve"><value>其他</value></data>
+  <data name="CategoryUnknown" xml:space="preserve"><value>未知</value></data>
+  <data name="CategoryWeb" xml:space="preserve"><value>Web</value></data>
+  <data name="CategoryDesktop" xml:space="preserve"><value>桌面</value></data>
+  <data name="CategoryMobile" xml:space="preserve"><value>移动</value></data>
+  <data name="CategoryCloud" xml:space="preserve"><value>云</value></data>
+
+  <data name="StatsDashboardTitle" xml:space="preserve"><value>统计仪表板</value></data>
+  <data name="StatsDashboardSubtitle" xml:space="preserve"><value>工作区活动和项目指标的概览</value></data>
+  <data name="StatsCalculating" xml:space="preserve"><value>计算中...</value></data>
+  <data name="StatsLoadingGitData" xml:space="preserve"><value>加载 Git 数据中...</value></data>
+  <data name="StatsRangeWeek" xml:space="preserve"><value>周</value></data>
+  <data name="StatsRangeMonth" xml:space="preserve"><value>月</value></data>
+  <data name="StatsRangeYear" xml:space="preserve"><value>年</value></data>
+  <data name="StatsRangeAllTime" xml:space="preserve"><value>所有时间</value></data>
+  <data name="StatsGitActivityTitle" xml:space="preserve"><value>Git 活动</value></data>
+  <data name="StatsGitActivitySubtitle" xml:space="preserve"><value>随时间添加和删除的行</value></data>
+  <data name="StatsLinesOfCodeTitle" xml:space="preserve"><value>代码行</value></data>
+  <data name="StatsLinesOfCodeSubtitle" xml:space="preserve"><value>按代码行数排名前 10 的项目</value></data>
+  <data name="StatsProjectTypesTitle" xml:space="preserve"><value>项目类型</value></data>
+  <data name="StatsProjectTypesSubtitle" xml:space="preserve"><value>按项目类型的分布</value></data>
+  <data name="StatsFileCountTitle" xml:space="preserve"><value>文件数量</value></data>
+  <data name="StatsFileCountSubtitle" xml:space="preserve"><value>按文件数量排名前 10 的项目</value></data>
+
+  <!-- Unused Code Analysis -->
+  <data name="UnusedCodeTitle" xml:space="preserve"><value>查找未使用的代码</value></data>
+  <data name="UnusedCodeAnalyzing" xml:space="preserve"><value>正在分析未使用的代码...</value></data>
+  <data name="UnusedCodeTotalIssues" xml:space="preserve"><value>总问题数</value></data>
+  <data name="UnusedCodeVariables" xml:space="preserve"><value>变量</value></data>
+  <data name="UnusedCodeMethods" xml:space="preserve"><value>方法</value></data>
+  <data name="UnusedCodeTypes" xml:space="preserve"><value>类型</value></data>
+  <data name="UnusedCodeNoIssues" xml:space="preserve"><value>未找到未使用的代码！</value></data>
+  <data name="UnusedCodeCleanProject" xml:space="preserve"><value>您的项目很干净。太棒了！</value></data>
+  <data name="UnusedCodeColType" xml:space="preserve"><value>类型</value></data>
+  <data name="UnusedCodeColName" xml:space="preserve"><value>名称</value></data>
+  <data name="UnusedCodeColLocation" xml:space="preserve"><value>位置</value></data>
+  <data name="UnusedCodeColHints" xml:space="preserve"><value>提示</value></data>
+  <data name="UnusedCodeFindUnused" xml:space="preserve"><value>查找未使用</value></data>
+  <data name="UnusedCodeDetectUnused" xml:space="preserve"><value>检测未使用的代码</value></data>
+  <data name="UnusedCodeAIPrompt" xml:space="preserve"><value>AI提示词</value></data>
+  <data name="DepsPackage" xml:space="preserve"><value>包</value></data>
+  <data name="DepsVersion" xml:space="preserve"><value>版本</value></data>
+  <data name="DepsSource" xml:space="preserve"><value>来源</value></data>
+  <data name="DepsLoading" xml:space="preserve"><value>正在加载依赖项...</value></data>
+  <data name="DepsCheckingUpdates" xml:space="preserve"><value>正在检查更新...</value></data>
+  <data name="DepsNoDependencies" xml:space="preserve"><value>未找到依赖项</value></data>
+  <!-- AI Prompt Library -->
+  <data name="tab.aiPrompts" xml:space="preserve"><value>AI提示词</value></data>
+  <data name="aiprompts.title" xml:space="preserve"><value>AI提示词库</value></data>
+  <data name="aiprompts.subtitle" xml:space="preserve"><value>%d个分类 · %d个专业提示词</value></data>
+  <data name="aiprompts.description" xml:space="preserve"><value>复制这些详细的提示词并将其粘贴到您的AI助手(ChatGPT、Claude、Gemini等)中，以分析您自己的项目。每个提示词旨在生成专家级的分析输出。</value></data>
+  <data name="aiprompts.wordCount" xml:space="preserve"><value>%d词</value></data>
+  <data name="aiprompts.copied" xml:space="preserve"><value>已复制！</value></data>
+  <data name="aiprompts.copy" xml:space="preserve"><value>复制</value></data>
+  <data name="aiprompts.collapse" xml:space="preserve"><value>收起</value></data>
+  <data name="aiprompts.expand" xml:space="preserve"><value>查看全部</value></data>
+  <data name="aiprompts.category.codeQuality" xml:space="preserve"><value>代码质量</value></data>
+  <data name="aiprompts.category.performance" xml:space="preserve"><value>性能</value></data>
+  <data name="aiprompts.category.architecture" xml:space="preserve"><value>架构与设计</value></data>
+  <data name="aiprompts.category.testing" xml:space="preserve"><value>测试</value></data>
+  <data name="aiprompts.category.documentation" xml:space="preserve"><value>文档</value></data>
+  <data name="aiprompts.category.debugging" xml:space="preserve"><value>调试与分析</value></data>
+  <data name="aiprompts.category.networking" xml:space="preserve"><value>API与网络</value></data>
+  <data name="aiprompts.category.accessibility" xml:space="preserve"><value>无障碍访问</value></data>
+  <data name="aiprompts.category.localization" xml:space="preserve"><value>i18n与本地化</value></data>
+  <data name="aiprompts.category.cicd" xml:space="preserve"><value>Git与CI/CD</value></data>
+  <data name="aiprompts.category.dependencies" xml:space="preserve"><value>依赖管理</value></data>
+  <data name="aiprompts.category.codeGeneration" xml:space="preserve"><value>代码生成</value></data>
+  <data name="aiprompts.prompt.unusedCode.title" xml:space="preserve"><value>未使用的代码</value></data>
+  <data name="aiprompts.prompt.unusedCode.desc" xml:space="preserve"><value>检测项目中未使用的函数、变量、类和导入。</value></data>
+  <data name="aiprompts.prompt.codeSmells.title" xml:space="preserve"><value>代码异味与反模式</value></data>
+  <data name="aiprompts.prompt.codeSmells.desc" xml:space="preserve"><value>深度检测代码异味、反模式和潜在的错误。</value></data>
+  <data name="aiprompts.prompt.memoryLeaks.title" xml:space="preserve"><value>内存泄漏与保留环</value></data>
+  <data name="aiprompts.prompt.memoryLeaks.desc" xml:space="preserve"><value>全面分析Swift/Apple项目中的内存泄漏、保留环和资源管理错误。</value></data>
+  <data name="aiprompts.prompt.securityAudit.title" xml:space="preserve"><value>安全审计</value></data>
+  <data name="aiprompts.prompt.securityAudit.desc" xml:space="preserve"><value>全面审计安全漏洞、危险的代码模式和数据保护缺陷。</value></data>
+  <data name="aiprompts.prompt.errorHandling.title" xml:space="preserve"><value>错误处理审计</value></data>
+  <data name="aiprompts.prompt.errorHandling.desc" xml:space="preserve"><value>检测错误处理缺陷、强制解包和崩溃风险。</value></data>
+  <data name="aiprompts.prompt.bottleneck.title" xml:space="preserve"><value>性能瓶颈分析</value></data>
+  <data name="aiprompts.prompt.bottleneck.desc" xml:space="preserve"><value>检测整个代码库中的性能瓶颈、响应迟缓点和不必要的工作负载。</value></data>
+  <data name="aiprompts.prompt.swiftuiRender.title" xml:space="preserve"><value>SwiftUI渲染优化</value></data>
+  <data name="aiprompts.prompt.swiftuiRender.desc" xml:space="preserve"><value>检测SwiftUI视图层级中不必要的重新渲染、状态管理错误和UI性能问题。</value></data>
+  <data name="aiprompts.prompt.appLaunch.title" xml:space="preserve"><value>应用启动优化</value></data>
+  <data name="aiprompts.prompt.appLaunch.desc" xml:space="preserve"><value>分析应用启动时间、冷/热启动性能以及首屏显示速度。</value></data>
+  <data name="aiprompts.prompt.architectureDeep.title" xml:space="preserve"><value>架构深度审查</value></data>
+  <data name="aiprompts.prompt.architectureDeep.desc" xml:space="preserve"><value>从SOLID原则、依赖管理和模块化的角度深入评估项目的架构。</value></data>
+  <data name="aiprompts.prompt.designPatterns.title" xml:space="preserve"><value>设计模式与最佳实践</value></data>
+  <data name="aiprompts.prompt.designPatterns.desc" xml:space="preserve"><value>分析当前的设计模式使用情况，建议缺失的模式，并检测反模式。</value></data>
+  <data name="aiprompts.prompt.refactoringGuide.title" xml:space="preserve"><value>重构指南</value></data>
+  <data name="aiprompts.prompt.refactoringGuide.desc" xml:space="preserve"><value>根据Martin Fowler的重构目录标记需要重构的代码块，并提供分步指南。</value></data>
+  <data name="aiprompts.prompt.testCoverage.title" xml:space="preserve"><value>测试覆盖率与差距分析</value></data>
+  <data name="aiprompts.prompt.testCoverage.desc" xml:space="preserve"><value>全面分析测试覆盖率差距、缺失的测试场景和未经测试的关键代码路径。</value></data>
+  <data name="aiprompts.prompt.unitTestAudit.title" xml:space="preserve"><value>单元测试质量审计</value></data>
+  <data name="aiprompts.prompt.unitTestAudit.desc" xml:space="preserve"><value>审计现有单元测试的质量、可靠性和可维护性。</value></data>
+  <data name="aiprompts.prompt.testGenerator.title" xml:space="preserve"><value>测试编写助手</value></data>
+  <data name="aiprompts.prompt.testGenerator.desc" xml:space="preserve"><value>为提供的代码文件生成全面的、可运行的单元测试。</value></data>
+  <data name="aiprompts.prompt.apiDocs.title" xml:space="preserve"><value>自动化API文档</value></data>
+  <data name="aiprompts.prompt.apiDocs.desc" xml:space="preserve"><value>以Swift DocC格式为所有公共API生成详细文档。</value></data>
+  <data name="aiprompts.prompt.readmeDocs.title" xml:space="preserve"><value>README与项目文档</value></data>
+  <data name="aiprompts.prompt.readmeDocs.desc" xml:space="preserve"><value>创建专业、全面的README和项目文档。</value></data>
+  <data name="aiprompts.prompt.commentsAudit.title" xml:space="preserve"><value>代码注释分析</value></data>
+  <data name="aiprompts.prompt.commentsAudit.desc" xml:space="preserve"><value>分析现有注释，检测过时/错误的注释，并提供改进建议。</value></data>
+  <data name="aiprompts.prompt.crashBugAudit.title" xml:space="preserve"><value>崩溃与错误分析</value></data>
+  <data name="aiprompts.prompt.crashBugAudit.desc" xml:space="preserve"><value>分析崩溃日志和错误报告，找出根本原因，并建议修复方案。</value></data>
+  <data name="aiprompts.prompt.instrumentsGuide.title" xml:space="preserve"><value>Instruments与分析指南</value></data>
+  <data name="aiprompts.prompt.instrumentsGuide.desc" xml:space="preserve"><value>提供使用Xcode Instruments进行分析的指南以及特定于项目的建议。</value></data>
+  <data name="aiprompts.prompt.networkAudit.title" xml:space="preserve"><value>网络层审计</value></data>
+  <data name="aiprompts.prompt.networkAudit.desc" xml:space="preserve"><value>全面审计网络层、API调用、错误处理和数据流。</value></data>
+  <data name="aiprompts.prompt.apiMock.title" xml:space="preserve"><value>API Mock与测试基础设施</value></data>
+  <data name="aiprompts.prompt.apiMock.desc" xml:space="preserve"><value>创建API测试基础设施、Mock服务器配置和网络测试策略。</value></data>
+  <data name="aiprompts.prompt.a11yAudit.title" xml:space="preserve"><value>无障碍访问审计</value></data>
+  <data name="aiprompts.prompt.a11yAudit.desc" xml:space="preserve"><value>审计对无障碍标准的遵守情况，检测VoiceOver、Dynamic Type和颜色对比度问题。</value></data>
+  <data name="aiprompts.prompt.i18nAudit.title" xml:space="preserve"><value>本地化全面审计</value></data>
+  <data name="aiprompts.prompt.i18nAudit.desc" xml:space="preserve"><value>全面审计硬编码字符串、缺失的翻译、日期/数字格式以及RTL支持。</value></data>
+  <data name="aiprompts.prompt.gitWorkflow.title" xml:space="preserve"><value>Git工作流优化</value></data>
+  <data name="aiprompts.prompt.gitWorkflow.desc" xml:space="preserve"><value>审计Git历史记录、分支策略、提交质量和.gitignore配置。</value></data>
+  <data name="aiprompts.prompt.cicdPipeline.title" xml:space="preserve"><value>CI/CD流水线设计</value></data>
+  <data name="aiprompts.prompt.cicdPipeline.desc" xml:space="preserve"><value>创建适合项目类型的CI/CD流水线设计、构建优化和部署策略。</value></data>
+  <data name="aiprompts.prompt.depAudit.title" xml:space="preserve"><value>依赖关系审计</value></data>
+  <data name="aiprompts.prompt.depAudit.desc" xml:space="preserve"><value>从安全性、最新状态、许可证合规性和必要性方面审计所有依赖项。</value></data>
+  <data name="aiprompts.prompt.crudGen.title" xml:space="preserve"><value>CRUD功能生成器</value></data>
+  <data name="aiprompts.prompt.crudGen.desc" xml:space="preserve"><value>为新实体生成完整的CRUD功能(Model、Service、ViewModel、View)。</value></data>
+  <data name="aiprompts.prompt.boilerplateGen.title" xml:space="preserve"><value>项目模板生成器</value></data>
+  <data name="aiprompts.prompt.boilerplateGen.desc" xml:space="preserve"><value>为新模块或功能创建所有必需的文件和文件夹结构。</value></data>
+  <data name="aiprompts.prompt.projectReport.title" xml:space="preserve"><value>项目分析报告</value></data>
+  <data name="aiprompts.prompt.projectReport.desc" xml:space="preserve"><value>提供项目的整体透视图(架构、质量、风险和改进建议)。</value></data>
+  <!-- End AI Prompt Library -->
+</root>

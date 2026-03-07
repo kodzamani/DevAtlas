@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <!-- App General -->
+  <data name="AppName" xml:space="preserve"><value>DevAtlas</value></data>
+  <data name="AppTagline" xml:space="preserve"><value>Geliştirme Komut Merkezi</value></data>
+  <data name="AppVersion" xml:space="preserve"><value>Sürüm {0}</value></data>
+  <data name="WindowTitleWorkspace" xml:space="preserve"><value>DevAtlas Çalışma Alanı</value></data>
+
+  <!-- Tabs -->
+  <data name="TabAtlas" xml:space="preserve"><value>Atlas</value></data>
+  <data name="TabStats" xml:space="preserve"><value>İstatistikler</value></data>
+  <data name="TabNotebook" xml:space="preserve"><value>Not Defteri</value></data>
+  <data name="TabSettings" xml:space="preserve"><value>Ayarlar</value></data>
+
+  <!-- Sidebar -->
+  <data name="SidebarAllProjects" xml:space="preserve"><value>Tüm Projeler</value></data>
+  <data name="SidebarWeb" xml:space="preserve"><value>Web</value></data>
+  <data name="SidebarDesktop" xml:space="preserve"><value>Masaüstü</value></data>
+  <data name="SidebarMobile" xml:space="preserve"><value>Mobil</value></data>
+  <data name="SidebarCloud" xml:space="preserve"><value>Bulut</value></data>
+  <data name="SidebarScanProjects" xml:space="preserve"><value>Projeleri Tara</value></data>
+  <data name="SidebarDarkMode" xml:space="preserve"><value>Karanlık Mod</value></data>
+  <data name="SidebarShowTour" xml:space="preserve"><value>Turu Göster</value></data>
+  <data name="SidebarExplorer" xml:space="preserve"><value>GEZGİN</value></data>
+
+  <!-- Search -->
+  <data name="SearchProjects" xml:space="preserve"><value>Projeleri ara...</value></data>
+
+  <!-- Onboarding - Welcome -->
+  <data name="OnboardingWelcomeTitle" xml:space="preserve"><value>DevAtlas'a Hoş Geldiniz</value></data>
+  <data name="OnboardingWelcomeSubtitle" xml:space="preserve"><value>Geliştirme Komut Merkeziniz</value></data>
+  <data name="OnboardingGetStarted" xml:space="preserve"><value>Başla</value></data>
+  <data name="OnboardingSkip" xml:space="preserve"><value>Atla</value></data>
+
+  <!-- Onboarding - Features -->
+  <data name="OnboardingFeaturesTitle" xml:space="preserve"><value>Proje Atlası</value></data>
+  <data name="OnboardingFeaturesSubtitle" xml:space="preserve"><value>Tüm geliştirme projelerinizi yönetin</value></data>
+  <data name="OnboardingFeature1Title" xml:space="preserve"><value>Proje Atlası</value></data>
+  <data name="OnboardingFeature1Subtitle" xml:space="preserve"><value>Tüm geliştirme projelerinizi yönetin</value></data>
+  <data name="OnboardingFeature2Title" xml:space="preserve"><value>İstatistikler</value></data>
+  <data name="OnboardingFeature2Subtitle" xml:space="preserve"><value>Kodlama aktivitenizi takip edin</value></data>
+  <data name="OnboardingFeature3Title" xml:space="preserve"><value>Not Defteri</value></data>
+  <data name="OnboardingFeature3Subtitle" xml:space="preserve"><value>Projelerinizi belgeleyin</value></data>
+
+  <!-- Onboarding - Quick Actions -->
+  <data name="OnboardingQuickActionsTitle" xml:space="preserve"><value>Hızlı Eylemler</value></data>
+  <data name="OnboardingQuickActionsSubtitle" xml:space="preserve"><value>Araçlarınıza hızlı erişim</value></data>
+
+  <!-- Onboarding - Stats & Notebook -->
+  <data name="OnboardingStatsNotebookTitle" xml:space="preserve"><value>İstatistikler &amp; Not Defteri</value></data>
+  <data name="OnboardingStatsNotebookSubtitle" xml:space="preserve"><value>İlerlemeyi takip edin ve notlar alın</value></data>
+
+  <!-- Onboarding - Appearance -->
+  <data name="OnboardingAppearanceTitle" xml:space="preserve"><value>Görünüm</value></data>
+  <data name="OnboardingAppearanceSubtitle" xml:space="preserve"><value>DevAtlas'ın nasıl görüneceğini seçin</value></data>
+  <data name="OnboardingAllSet" xml:space="preserve"><value>Hazırsınız!</value></data>
+  <data name="OnboardingStartUsing" xml:space="preserve"><value>DevAtlas'ı Kullanmaya Başla</value></data>
+
+  <!-- Onboarding - Additional -->
+  <data name="OnboardingChooseAccentColor" xml:space="preserve"><value>Favori vurgu renginizi seçin</value></data>
+  <data name="OnboardingDiscoverProjects" xml:space="preserve"><value>Tüm geliştirme projelerinizi keşfedin ve yönetin</value></data>
+  <data name="OnboardingTwoMoreFeatures" xml:space="preserve"><value>Parmaklarınızın ucunda iki güçlü özellik daha</value></data>
+  <data name="OnboardingLightningAccess" xml:space="preserve"><value>Geliştirme araçlarınıza lightning-fast erişim</value></data>
+  <data name="OnboardingAutoScanTitle" xml:space="preserve"><value>Otomatik Tarama</value></data>
+  <data name="OnboardingAutoScanSubtitle" xml:space="preserve"><value>Tüm sürücülerinizdeki projeleri bulur</value></data>
+  <data name="OnboardingSmartFiltersTitle" xml:space="preserve"><value>Akıllı Filtreler</value></data>
+  <data name="OnboardingSmartFiltersSubtitle" xml:space="preserve"><value>Web, Masaüstü, Mobil veya Bulut'a göre filtreleyin</value></data>
+  <data name="OnboardingAutoScanProjectsTitle" xml:space="preserve"><value>Otomatik Proje Taraması</value></data>
+  <data name="OnboardingAutoScanProjectsSubtitle" xml:space="preserve"><value>Makinenizdeki tüm projeleri otomatik olarak keşfedin ve dizine ekleyin</value></data>
+  <data name="OnboardingSmartCategoriesTitle" xml:space="preserve"><value>Akıllı Kategoriler</value></data>
+  <data name="OnboardingSmartCategoriesSubtitle" xml:space="preserve"><value>Projeler Web, Masaüstü, Mobil ve Bulut olarak kategorize edilir</value></data>
+  <data name="OnboardingTechStackDetectionTitle" xml:space="preserve"><value>Teknoloji Yığını Tespiti</value></data>
+  <data name="OnboardingTechStackDetectionSubtitle" xml:space="preserve"><value>Kullanılan framework'leri, dilleri ve araçları otomatik olarak tespit edin</value></data>
+  <data name="OnboardingOpenInEditorTitle" xml:space="preserve"><value>Düzenleyicide Aç</value></data>
+  <data name="OnboardingOpenInEditorSubtitle" xml:space="preserve"><value>Projeleri doğrudan VS Code, Visual Studio veya herhangi bir düzenleyicide başlatın</value></data>
+  <data name="OnboardingRunProjectsTitle" xml:space="preserve"><value>Projeleri Çalıştır</value></data>
+  <data name="OnboardingRunProjectsSubtitle" xml:space="preserve"><value>Geliştirme sunucularını ve yapı süreçlerini tek tıkla başlatın</value></data>
+  <data name="OnboardingAnalyzeCodeTitle" xml:space="preserve"><value>Kodu Analiz Et</value></data>
+  <data name="OnboardingAnalyzeCodeSubtitle" xml:space="preserve"><value>Kod satırları ve dosya sayıları dahil detaylı metrikler alın</value></data>
+  <data name="OnboardingGitStatisticsTitle" xml:space="preserve"><value>Git İstatistikleri</value></data>
+  <data name="OnboardingGitStatisticsSubtitle" xml:space="preserve"><value>Zaman içinde eklemeleri, silmeleri ve commit aktivitesini takip edin</value></data>
+  <data name="OnboardingProjectInsightsTitle" xml:space="preserve"><value>Proje İçgörüleri</value></data>
+  <data name="OnboardingProjectInsightsSubtitle" xml:space="preserve"><value>Kod dağılımını, proje türlerini ve dosya metriklerini görselleştirin</value></data>
+  <data name="OnboardingSearchTitle" xml:space="preserve"><value>Arama</value></data>
+  <data name="OnboardingSearchSubtitle" xml:space="preserve"><value>İsme veya teknoloji yığınına göre herhangi bir projeyi bulun</value></data>
+  <data name="OnboardingRecentActivityTitle" xml:space="preserve"><value>Son Aktivite</value></data>
+  <data name="OnboardingRecentActivitySubtitle" xml:space="preserve"><value>Çalıştığınız son dosyaları görün</value></data>
+  <data name="OnboardingVSCode" xml:space="preserve"><value>Visual Studio Code'da aç</value></data>
+  <data name="OnboardingTerminal" xml:space="preserve"><value>Proje konumunda terminal aç</value></data>
+  <data name="OnboardingExplorer" xml:space="preserve"><value>Projeyi Gezgin'de göster</value></data>
+  <data name="OnboardingRunProjects" xml:space="preserve"><value>Projeleri Çalıştır</value></data>
+  <data name="OnboardingAnalyzeCode" xml:space="preserve"><value>Kodu Analiz Et</value></data>
+  <data name="OnboardingStatsLanguageBreakdown" xml:space="preserve"><value>Dil dağılımı</value></data>
+  <data name="OnboardingStatsLineCount" xml:space="preserve"><value>Satır sayısı analizi</value></data>
+  <data name="OnboardingStatsTimeInsights" xml:space="preserve"><value>Zamana dayalı içgörüler</value></data>
+  <data name="OnboardingStatsExportReports" xml:space="preserve"><value>Raporları dışa aktar</value></data>
+
+  <!-- Settings -->
+  <data name="SettingsTitle" xml:space="preserve"><value>Ayarlar</value></data>
+  <data name="SettingsAbout" xml:space="preserve"><value>Hakkında</value></data>
+  <data name="SettingsAboutDescription" xml:space="preserve"><value>DevAtlas kapsamlı geliştirme komut merkezinizdir. Tüm projelerinizi tek bir yerde organize edin, analiz edin ve takip edin.</value></data>
+  <data name="SettingsLanguage" xml:space="preserve"><value>Dil</value></data>
+  <data name="SettingsSelectLanguage" xml:space="preserve"><value>Dil Seç</value></data>
+  <data name="SettingsAppearance" xml:space="preserve"><value>Görünüm</value></data>
+  <data name="SettingsTheme" xml:space="preserve"><value>Tema</value></data>
+  <data name="SettingsAccentColor" xml:space="preserve"><value>Vurgu Rengi</value></data>
+  <data name="SettingsLight" xml:space="preserve"><value>Açık</value></data>
+  <data name="SettingsDark" xml:space="preserve"><value>Koyu</value></data>
+  <data name="SettingsSystem" xml:space="preserve"><value>Sistem</value></data>
+  <data name="SettingsVersion" xml:space="preserve"><value>Sürüm</value></data>
+  <data name="SettingsCopyright" xml:space="preserve"><value>© 2024 DevAtlas</value></data>
+
+  <!-- Languages -->
+  <data name="LanguageEn" xml:space="preserve"><value>İngilizce</value></data>
+  <data name="LanguageTr" xml:space="preserve"><value>Türkçe</value></data>
+  <data name="LanguageDe" xml:space="preserve"><value>Almanca</value></data>
+  <data name="LanguageJa" xml:space="preserve"><value>Japonca</value></data>
+  <data name="LanguageZh" xml:space="preserve"><value>Çince (Basitleştirilmiş)</value></data>
+  <data name="LanguageKo" xml:space="preserve"><value>Korece</value></data>
+  <data name="LanguageIt" xml:space="preserve"><value>İtalyanca</value></data>
+  <data name="LanguageFr" xml:space="preserve"><value>Fransızca</value></data>
+
+  <!-- Common -->
+  <data name="CommonNext" xml:space="preserve"><value>Sonraki</value></data>
+  <data name="CommonPrevious" xml:space="preserve"><value>Önceki</value></data>
+  <data name="CommonBack" xml:space="preserve"><value>Geri</value></data>
+  <data name="CommonDone" xml:space="preserve"><value>Tamam</value></data>
+  <data name="CommonCancel" xml:space="preserve"><value>İptal</value></data>
+  <data name="CommonSave" xml:space="preserve"><value>Kaydet</value></data>
+  <data name="CommonClose" xml:space="preserve"><value>Kapat</value></data>
+
+  <!-- Dashboard & Projects -->
+  <data name="DashboardQuickActions" xml:space="preserve"><value>Hızlı Eylemler</value></data>
+  <data name="DashboardTechStack" xml:space="preserve"><value>Teknoloji Yığını</value></data>
+  <data name="DashboardRecentActivity" xml:space="preserve"><value>Son Aktivite</value></data>
+  <data name="DashboardNoRecentActivity" xml:space="preserve"><value>Son aktivite yok</value></data>
+  <data name="DashboardSize" xml:space="preserve"><value>BOYUT</value></data>
+  <data name="DashboardFiles" xml:space="preserve"><value>DOSYALAR</value></data>
+  <data name="DashboardLines" xml:space="preserve"><value>SATIRLAR</value></data>
+  <data name="DashboardLang" xml:space="preserve"><value>DİL</value></data>
+  <data name="DashboardFramework" xml:space="preserve"><value>FRAMEWORK</value></data>
+
+  <!-- Stats View -->
+  <data name="StatsProjectsAnalyzed" xml:space="preserve"><value>Analiz Edilen Projeler</value></data>
+  <data name="StatsTrackedCodeLines" xml:space="preserve"><value>Takip Edilen Kod Satırları</value></data>
+  <data name="StatsGitAdditions" xml:space="preserve"><value>Git Eklemeleri</value></data>
+  <data name="StatsGitDeletions" xml:space="preserve"><value>Git Silmeleri</value></data>
+  <data name="StatsGitActivity" xml:space="preserve"><value>Git Aktivitesi ({0})</value></data>
+  <data name="StatsActivityVolume" xml:space="preserve"><value>Aktivite Hacmi</value></data>
+  <data name="StatsCodeLinesByProject" xml:space="preserve"><value>Projeye Göre Kod Satırları</value></data>
+  <data name="StatsProjectTypes" xml:space="preserve"><value>Proje Türleri</value></data>
+  <data name="StatsAllProjects" xml:space="preserve"><value>Tüm Projeler</value></data>
+  <data name="StatsTopProjectsByFileCount" xml:space="preserve"><value>Dosya Sayısına Göre En İyi Projeler</value></data>
+  <data name="StatsNoGitActivity" xml:space="preserve"><value>Bu dönemde git aktivitesi bulunamadı.</value></data>
+  <data name="StatsNoCodeLines" xml:space="preserve"><value>Gösterilecek kod satırı yok.</value></data>
+  <data name="StatsNoProjectsToRank" xml:space="preserve"><value>Sıralanacak proje yok.</value></data>
+  <data name="StatsNoData" xml:space="preserve"><value>Veri bulunmuyor.</value></data>
+  <data name="StatsActivityHigh" xml:space="preserve"><value>Yüksek Aktivite</value></data>
+  <data name="StatsActivityMedium" xml:space="preserve"><value>Orta Aktivite</value></data>
+  <data name="StatsActivityLow" xml:space="preserve"><value>Düşük Aktivite</value></data>
+
+  <!-- Projects -->
+  <data name="ProjectsNoProjectsFound" xml:space="preserve"><value>Proje bulunamadı</value></data>
+  <data name="ProjectsTryScanning" xml:space="preserve"><value>Projeleri taramayı deneyin veya aramanızı ayarlayın</value></data>
+  <data name="ProjectsScanProjects" xml:space="preserve"><value>Projeleri Tara</value></data>
+  <data name="ProjectsBackToProjects" xml:space="preserve"><value>Projelere Geri Dön</value></data>
+  <data name="ProjectsActive" xml:space="preserve"><value>Aktif</value></data>
+  <data name="ProjectsOpenInCodeEditor" xml:space="preserve"><value>Kod Düzenleyicide Aç</value></data>
+  <data name="ProjectsSelectEditor" xml:space="preserve"><value>Düzenleyici seç</value></data>
+  <data name="ProjectsRunProject" xml:space="preserve"><value>Projeyi Çalıştır</value></data>
+  <data name="ProjectsStartDevServer" xml:space="preserve"><value>Geliştirme sunucusunu başlat</value></data>
+  <data name="ProjectsOpenTerminal" xml:space="preserve"><value>Terminal Aç</value></data>
+  <data name="ProjectsCommandPrompt" xml:space="preserve"><value>Komut istemi</value></data>
+  <data name="ProjectsRevealInExplorer" xml:space="preserve"><value>Gezgin'de Göster</value></data>
+  <data name="ProjectsOpenFileExplorer" xml:space="preserve"><value>Dosya gezginini aç</value></data>
+  <data name="ProjectsAnalyzeProject" xml:space="preserve"><value>Projeyi Analiz Et</value></data>
+  <data name="ProjectsCodeLineStats" xml:space="preserve"><value>Kod satırı istatistikleri</value></data>
+  <data name="ProjectsOpenInVisualStudio" xml:space="preserve"><value>Visual Studio'da Aç</value></data>
+  <data name="ProjectsLaunchIDE" xml:space="preserve"><value>IDE'yi Başlat</value></data>
+  <data name="ProjectsProperties" xml:space="preserve"><value>Özellikler</value></data>
+  <data name="ProjectsType" xml:space="preserve"><value>Tür:</value></data>
+  <data name="ProjectsFooterProjects" xml:space="preserve"><value>Projeler</value></data>
+  <data name="ProjectsFooterFiles" xml:space="preserve"><value>Dosyalar</value></data>
+  <data name="ProjectsFooterLines" xml:space="preserve"><value>Satırlar</value></data>
+
+  <!-- Navigation -->
+  <data name="NavWorkspace" xml:space="preserve"><value>Çalışma Alanı</value></data>
+  <data name="NavProjects" xml:space="preserve"><value>Projeler</value></data>
+  <data name="NavAllLocations" xml:space="preserve"><value>Tüm Konumlar</value></data>
+  <data name="NavExport" xml:space="preserve"><value>Dışa Aktar</value></data>
+  <data name="NavNavigation" xml:space="preserve"><value>Navigasyon</value></data>
+
+  <!-- Scan -->
+  <data name="ScanFoundProjects" xml:space="preserve"><value>{0} proje bulundu</value></data>
+  <data name="ScanStarting" xml:space="preserve"><value>Tarama başlatılıyor...</value></data>
+  <data name="ScanInitializing" xml:space="preserve"><value>Başlatılıyor...</value></data>
+
+  <data name="EditorsNoEditorsFound" xml:space="preserve"><value>Sisteminizde kod düzenleyici bulunamadı</value></data>
+
+  <data name="ProjectsAnalyzingProject" xml:space="preserve"><value>Proje analiz ediliyor...</value></data>
+  <data name="ProjectsTotalFiles" xml:space="preserve"><value>Toplam Dosyalar</value></data>
+  <data name="ProjectsTotalLines" xml:space="preserve"><value>Toplam Satırlar</value></data>
+  <data name="ProjectsAvgLinesPerFile" xml:space="preserve"><value>Ort Satır/Dosya</value></data>
+  <data name="ProjectsLargestFile" xml:space="preserve"><value>En Büyük Dosya</value></data>
+  <data name="ProjectsFile" xml:space="preserve"><value>Dosya</value></data>
+  <data name="ProjectsExtension" xml:space="preserve"><value>Uzantı</value></data>
+  <data name="ProjectsLines" xml:space="preserve"><value>Satırlar</value></data>
+
+  <!-- Time Groups -->
+  <data name="TimeGroupToday" xml:space="preserve"><value>Bugün</value></data>
+  <data name="TimeGroupYesterday" xml:space="preserve"><value>Dün</value></data>
+  <data name="TimeGroupThisWeek" xml:space="preserve"><value>Bu Hafta</value></data>
+  <data name="TimeGroupThisMonth" xml:space="preserve"><value>Bu Ay</value></data>
+  <data name="TimeGroup1to3MonthsAgo" xml:space="preserve"><value>1-3 Ay Önce</value></data>
+  <data name="TimeGroupOlder" xml:space="preserve"><value>Daha Eski</value></data>
+
+  <!-- Date Range Filters -->
+  <data name="DateRange7Days" xml:space="preserve"><value>7 Gün</value></data>
+  <data name="DateRange30Days" xml:space="preserve"><value>30 Gün</value></data>
+  <data name="DateRangeYear" xml:space="preserve"><value>Yıl</value></data>
+  <data name="DateRangeAllTime" xml:space="preserve"><value>Tüm Zamanlar</value></data>
+
+  <!-- Stats Chart Labels -->
+  <data name="StatsAdditions" xml:space="preserve"><value>Eklemeler</value></data>
+  <data name="StatsDeletions" xml:space="preserve"><value>Silmeler</value></data>
+  <data name="StatsLinesOfCode" xml:space="preserve"><value>Kod Satırları</value></data>
+  <data name="StatsFileCount" xml:space="preserve"><value>Dosya Sayısı</value></data>
+
+  <!-- Run Project States -->
+  <data name="RunProjectStop" xml:space="preserve"><value>Projeyi Durdur</value></data>
+  <data name="RunProjectServerRunning" xml:space="preserve"><value>Sunucu çalışıyor</value></data>
+  <data name="RunProjectStart" xml:space="preserve"><value>Projeyi Çalıştır</value></data>
+  <data name="RunProjectStartDevServer" xml:space="preserve"><value>Geliştirme sunucusunu başlat</value></data>
+
+  <!-- Messages -->
+  <data name="MessageAllLocations" xml:space="preserve"><value>Tüm Konumlar</value></data>
+  <data name="MessageEditorNotFound" xml:space="preserve"><value>Düzenleyici Bulunamadı</value></data>
+  <data name="MessageVSCodeNotFound" xml:space="preserve"><value>VSCode bulunamadı.</value></data>
+  <data name="MessageComingSoon" xml:space="preserve"><value>Yakında</value></data>
+  <data name="MessageFavoritesComingSoon" xml:space="preserve"><value>Favoriler özelliği yakında geliyor!</value></data>
+  <data name="MessageTagEditingComingSoon" xml:space="preserve"><value>Etiket düzenleme özelliği yakında geliyor!</value></data>
+  <data name="MessageError" xml:space="preserve"><value>Hata</value></data>
+  <data name="MessageCouldNotFindStartScript" xml:space="preserve"><value>package.json içinde start/dev/serve betiği bulunamadı</value></data>
+  <data name="MessageFailedToStartDevServer" xml:space="preserve"><value>Geliştirme sunucusu başlatılamadı</value></data>
+  <data name="MessageFailedToRunProject" xml:space="preserve"><value>Proje çalıştırılamadı: {0}</value></data>
+  <data name="MessageInitializationError" xml:space="preserve"><value>Başlatma Hatası</value></data>
+  <data name="MessageFailedToInitializeServices" xml:space="preserve"><value>Ölçeklenebilirlik hizmetleri başlatılamadı: {0}</value></data>
+
+  <!-- Categories -->
+  <data name="CategoryOther" xml:space="preserve"><value>Diğer</value></data>
+  <data name="CategoryUnknown" xml:space="preserve"><value>Bilinmiyor</value></data>
+  <data name="CategoryWeb" xml:space="preserve"><value>Web</value></data>
+  <data name="CategoryDesktop" xml:space="preserve"><value>Masaüstü</value></data>
+  <data name="CategoryMobile" xml:space="preserve"><value>Mobil</value></data>
+  <data name="CategoryCloud" xml:space="preserve"><value>Bulut</value></data>
+
+  <data name="StatsDashboardTitle" xml:space="preserve"><value>İstatistik Paneli</value></data>
+  <data name="StatsDashboardSubtitle" xml:space="preserve"><value>Çalışma alanı aktivitenizin ve proje metriklerinizin genel görünümü</value></data>
+  <data name="StatsCalculating" xml:space="preserve"><value>Hesaplanıyor...</value></data>
+  <data name="StatsLoadingGitData" xml:space="preserve"><value>Git verisi yükleniyor...</value></data>
+  <data name="StatsRangeWeek" xml:space="preserve"><value>Hafta</value></data>
+  <data name="StatsRangeMonth" xml:space="preserve"><value>Ay</value></data>
+  <data name="StatsRangeYear" xml:space="preserve"><value>Yıl</value></data>
+  <data name="StatsRangeAllTime" xml:space="preserve"><value>Tüm Zamanlar</value></data>
+  <data name="StatsGitActivityTitle" xml:space="preserve"><value>Git Aktivitesi</value></data>
+  <data name="StatsGitActivitySubtitle" xml:space="preserve"><value>Zaman içinde eklenen ve silinen satırlar</value></data>
+  <data name="StatsLinesOfCodeTitle" xml:space="preserve"><value>Kod Satırları</value></data>
+  <data name="StatsLinesOfCodeSubtitle" xml:space="preserve"><value>Kod satırı sayısına göre ilk 10 proje</value></data>
+  <data name="StatsProjectTypesTitle" xml:space="preserve"><value>Proje Türleri</value></data>
+  <data name="StatsProjectTypesSubtitle" xml:space="preserve"><value>Proje türüne göre dağılım</value></data>
+  <data name="StatsFileCountTitle" xml:space="preserve"><value>Dosya Sayısı</value></data>
+  <data name="StatsFileCountSubtitle" xml:space="preserve"><value>Dosya sayısına göre ilk 10 proje</value></data>
+
+  <!-- Unused Code Analysis -->
+  <data name="UnusedCodeTitle" xml:space="preserve"><value>Kullanılmayan Kodu Bul</value></data>
+  <data name="UnusedCodeAnalyzing" xml:space="preserve"><value>Kullanılmayan kod analiz ediliyor...</value></data>
+  <data name="UnusedCodeTotalIssues" xml:space="preserve"><value>Toplam Sorun</value></data>
+  <data name="UnusedCodeVariables" xml:space="preserve"><value>Değişkenler</value></data>
+  <data name="UnusedCodeMethods" xml:space="preserve"><value>Metotlar</value></data>
+  <data name="UnusedCodeTypes" xml:space="preserve"><value>Tipler</value></data>
+  <data name="UnusedCodeNoIssues" xml:space="preserve"><value>Kullanılmayan kod bulunamadı!</value></data>
+  <data name="UnusedCodeCleanProject" xml:space="preserve"><value>Projeniz temiz. Harika!</value></data>
+  <data name="UnusedCodeColType" xml:space="preserve"><value>Tür</value></data>
+  <data name="UnusedCodeColName" xml:space="preserve"><value>İsim</value></data>
+  <data name="UnusedCodeColLocation" xml:space="preserve"><value>Konum</value></data>
+  <data name="UnusedCodeColHints" xml:space="preserve"><value>İpuçları</value></data>
+  <data name="UnusedCodeFindUnused" xml:space="preserve"><value>Kullanılmayanı Bul</value></data>
+  <data name="UnusedCodeDetectUnused" xml:space="preserve"><value>Kullanılmayan kodu tespit et</value></data>
+  <data name="UnusedCodeAIPrompt" xml:space="preserve"><value>AI Prompt</value></data>
+  <data name="DepsPackage" xml:space="preserve"><value>Paket</value></data>
+  <data name="DepsVersion" xml:space="preserve"><value>Sürüm</value></data>
+  <data name="DepsSource" xml:space="preserve"><value>Kaynak</value></data>
+  <data name="DepsLoading" xml:space="preserve"><value>Bağımlılıklar yükleniyor...</value></data>
+  <data name="DepsCheckingUpdates" xml:space="preserve"><value>Güncellemeler kontrol ediliyor...</value></data>
+  <data name="DepsNoDependencies" xml:space="preserve"><value>Bağımlılık bulunamadı</value></data>
+  <data name="StatsGitHeatmapTitle" xml:space="preserve"><value>Katkı Isı Haritası</value></data>
+  <data name="StatsGitHeatmapSubtitle" xml:space="preserve"><value>Seçili proje için günlük commit yoğunluğu</value></data>
+  <data name="StatsHeatmapHint" xml:space="preserve"><value>Ayrıntılar için bir kutunun üzerine gelin</value></data>
+  <data name="StatsLess" xml:space="preserve"><value>Az</value></data>
+  <data name="StatsMore" xml:space="preserve"><value>Fazla</value></data>
+  <data name="StatsContribution" xml:space="preserve"><value>katkı</value></data>
+  <data name="StatsContributions" xml:space="preserve"><value>katkı</value></data>
+  <!-- AI Prompt Library -->
+  <data name="tab.aiPrompts" xml:space="preserve"><value>AI Prompt</value></data>
+  <data name="aiprompts.title" xml:space="preserve"><value>AI Prompt Kütüphanesi</value></data>
+  <data name="aiprompts.subtitle" xml:space="preserve"><value>%d kategori · %d profesyonel prompt</value></data>
+  <data name="aiprompts.description" xml:space="preserve"><value>Kendi projelerini analiz etmek için bu detaylı promptları kopyala ve AI asistanına (ChatGPT, Claude, Gemini v.b.) yapıştır. Her prompt, uzman seviyesinde analiz çıktısı üretmek için tasarlandı.</value></data>
+  <data name="aiprompts.wordCount" xml:space="preserve"><value>%d kelime</value></data>
+  <data name="aiprompts.copied" xml:space="preserve"><value>Kopyalandı!</value></data>
+  <data name="aiprompts.copy" xml:space="preserve"><value>Kopyala</value></data>
+  <data name="aiprompts.collapse" xml:space="preserve"><value>Daralt</value></data>
+  <data name="aiprompts.expand" xml:space="preserve"><value>Tamamını Gör</value></data>
+  <data name="aiprompts.category.codeQuality" xml:space="preserve"><value>Kod Kalitesi</value></data>
+  <data name="aiprompts.category.performance" xml:space="preserve"><value>Performans</value></data>
+  <data name="aiprompts.category.architecture" xml:space="preserve"><value>Mimari &amp; Tasarım</value></data>
+  <data name="aiprompts.category.testing" xml:space="preserve"><value>Testing</value></data>
+  <data name="aiprompts.category.documentation" xml:space="preserve"><value>Dokümantasyon</value></data>
+  <data name="aiprompts.category.debugging" xml:space="preserve"><value>Debugging &amp; Profiling</value></data>
+  <data name="aiprompts.category.networking" xml:space="preserve"><value>API &amp; Networking</value></data>
+  <data name="aiprompts.category.accessibility" xml:space="preserve"><value>Erişilebilirlik</value></data>
+  <data name="aiprompts.category.localization" xml:space="preserve"><value>i18n &amp; Localization</value></data>
+  <data name="aiprompts.category.cicd" xml:space="preserve"><value>Git &amp; CI/CD</value></data>
+  <data name="aiprompts.category.dependencies" xml:space="preserve"><value>Dependency Yönetimi</value></data>
+  <data name="aiprompts.category.codeGeneration" xml:space="preserve"><value>Kod Üretimi</value></data>
+  <data name="aiprompts.prompt.unusedCode.title" xml:space="preserve"><value>Unused Code (Kullanılmayan Kod)</value></data>
+  <data name="aiprompts.prompt.unusedCode.desc" xml:space="preserve"><value>Projendeki kullanılmayan fonksiyonları, değişkenleri, sınıfları ve import&apos;ları tespit eder.</value></data>
+  <data name="aiprompts.prompt.codeSmells.title" xml:space="preserve"><value>Code Smells &amp; Anti-Patterns</value></data>
+  <data name="aiprompts.prompt.codeSmells.desc" xml:space="preserve"><value>Kod kokuları, anti-pattern&apos;leri ve potansiyel bug&apos;ları derinlemesine tespit eder.</value></data>
+  <data name="aiprompts.prompt.memoryLeaks.title" xml:space="preserve"><value>Memory Leaks &amp; Retain Cycles</value></data>
+  <data name="aiprompts.prompt.memoryLeaks.desc" xml:space="preserve"><value>Swift/Apple projelerindeki bellek sızıntılarını, retain cycle&apos;ları ve kaynak yönetim hatalarını kapsamlı analiz eder.</value></data>
+  <data name="aiprompts.prompt.securityAudit.title" xml:space="preserve"><value>Security Audit</value></data>
+  <data name="aiprompts.prompt.securityAudit.desc" xml:space="preserve"><value>Güvenlik açıklarını, tehlikeli kod kalıplarını ve veri koruma eksikliklerini kapsamlı denetler.</value></data>
+  <data name="aiprompts.prompt.errorHandling.title" xml:space="preserve"><value>Error Handling Audit</value></data>
+  <data name="aiprompts.prompt.errorHandling.desc" xml:space="preserve"><value>Hata yönetimindeki eksiklikleri, force unwrap&apos;ları ve crash risklerini tespit eder.</value></data>
+  <data name="aiprompts.prompt.bottleneck.title" xml:space="preserve"><value>Performance Bottleneck Analizi</value></data>
+  <data name="aiprompts.prompt.bottleneck.desc" xml:space="preserve"><value>Tüm kod tabanındaki performans darboğazlarını, yavaş noktaları ve gereksiz iş yüklerini tespit eder.</value></data>
+  <data name="aiprompts.prompt.swiftuiRender.title" xml:space="preserve"><value>SwiftUI Render Optimizasyonu</value></data>
+  <data name="aiprompts.prompt.swiftuiRender.desc" xml:space="preserve"><value>SwiftUI view hiyerarşisindeki gereksiz re-render&apos;ları, state yönetimi hatalarını ve UI performans sorunlarını tespit eder.</value></data>
+  <data name="aiprompts.prompt.appLaunch.title" xml:space="preserve"><value>App Launch &amp; Startup Optimizasyonu</value></data>
+  <data name="aiprompts.prompt.appLaunch.desc" xml:space="preserve"><value>Uygulama başlangıç süresini, cold/warm launch performansını ve ilk ekran gösterim hızını analiz eder.</value></data>
+  <data name="aiprompts.prompt.architectureDeep.title" xml:space="preserve"><value>Architecture Deep Review</value></data>
+  <data name="aiprompts.prompt.architectureDeep.desc" xml:space="preserve"><value>Projenin mimari yapısını SOLID prensipleri, bağımlılık yönetimi ve modülerlik açısından derinlemesine değerlendirir.</value></data>
+  <data name="aiprompts.prompt.designPatterns.title" xml:space="preserve"><value>Design Patterns &amp; Best Practices</value></data>
+  <data name="aiprompts.prompt.designPatterns.desc" xml:space="preserve"><value>Mevcut design pattern kullanımını analiz eder, eksik pattern&apos;leri önerir ve anti-pattern&apos;leri tespit eder.</value></data>
+  <data name="aiprompts.prompt.refactoringGuide.title" xml:space="preserve"><value>Refactoring Rehberi</value></data>
+  <data name="aiprompts.prompt.refactoringGuide.desc" xml:space="preserve"><value>Refactoring gerektiren kod bloklarını Martin Fowler&apos;ın refactoring kataloguna göre işaretler ve adım adım rehber sunar.</value></data>
+  <data name="aiprompts.prompt.testCoverage.title" xml:space="preserve"><value>Test Coverage &amp; Gap Analizi</value></data>
+  <data name="aiprompts.prompt.testCoverage.desc" xml:space="preserve"><value>Test coverage boşluklarını, eksik test senaryolarını ve kritik test edilmemiş kod yollarını kapsamlı analiz eder.</value></data>
+  <data name="aiprompts.prompt.unitTestAudit.title" xml:space="preserve"><value>Unit Test Kalite Denetimi</value></data>
+  <data name="aiprompts.prompt.unitTestAudit.desc" xml:space="preserve"><value>Mevcut unit testlerin kalitesini, güvenilirliğini ve sürdürülebilirliğini denetler.</value></data>
+  <data name="aiprompts.prompt.testGenerator.title" xml:space="preserve"><value>Test Yazma Asistanı</value></data>
+  <data name="aiprompts.prompt.testGenerator.desc" xml:space="preserve"><value>Verdiğin kod dosyası için kapsamlı, çalışır durumda unit test&apos;ler üretir.</value></data>
+  <data name="aiprompts.prompt.apiDocs.title" xml:space="preserve"><value>Otomatik API Dokümantasyonu</value></data>
+  <data name="aiprompts.prompt.apiDocs.desc" xml:space="preserve"><value>Tüm public API&apos;lerin Swift DocC formatında detaylı dokümantasyonunu üretir.</value></data>
+  <data name="aiprompts.prompt.readmeDocs.title" xml:space="preserve"><value>README &amp; Proje Dokümantasyonu</value></data>
+  <data name="aiprompts.prompt.readmeDocs.desc" xml:space="preserve"><value>Profesyonel, kapsamlı README ve proje dokümantasyonu oluşturur.</value></data>
+  <data name="aiprompts.prompt.commentsAudit.title" xml:space="preserve"><value>Kod Yorumları Analizi</value></data>
+  <data name="aiprompts.prompt.commentsAudit.desc" xml:space="preserve"><value>Mevcut yorumları analiz eder, eskimiş/hatalı olanları tespit eder ve iyileştirme önerileri sunar.</value></data>
+  <data name="aiprompts.prompt.crashBugAudit.title" xml:space="preserve"><value>Crash &amp; Bug Analizi</value></data>
+  <data name="aiprompts.prompt.crashBugAudit.desc" xml:space="preserve"><value>Crash log&apos;larını, bug raporlarını analiz eder, kök nedeni bulur ve düzeltme önerir.</value></data>
+  <data name="aiprompts.prompt.instrumentsGuide.title" xml:space="preserve"><value>Instruments &amp; Profiling Rehberi</value></data>
+  <data name="aiprompts.prompt.instrumentsGuide.desc" xml:space="preserve"><value>Xcode Instruments ile profiling yapma rehberi ve projeye özel tavsiyeler sunar.</value></data>
+  <data name="aiprompts.prompt.networkAudit.title" xml:space="preserve"><value>Network Layer Audit</value></data>
+  <data name="aiprompts.prompt.networkAudit.desc" xml:space="preserve"><value>Networking katmanını, API çağrılarını, hata yönetimini ve veri akışını kapsamlı denetler.</value></data>
+  <data name="aiprompts.prompt.apiMock.title" xml:space="preserve"><value>API Mock &amp; Test Altyapısı</value></data>
+  <data name="aiprompts.prompt.apiMock.desc" xml:space="preserve"><value>API test altyapısı, mock sunucu yapılandırması ve network test stratejisi oluşturur.</value></data>
+  <data name="aiprompts.prompt.a11yAudit.title" xml:space="preserve"><value>Accessibility Audit</value></data>
+  <data name="aiprompts.prompt.a11yAudit.desc" xml:space="preserve"><value>Erişilebilirlik standartlarına uyumu denetler, VoiceOver, Dynamic Type ve renk kontrastı sorunlarını tespit eder.</value></data>
+  <data name="aiprompts.prompt.i18nAudit.title" xml:space="preserve"><value>Localization Tam Denetim</value></data>
+  <data name="aiprompts.prompt.i18nAudit.desc" xml:space="preserve"><value>Hardcoded string&apos;leri, eksik çevirileri, tarih/sayı formatlarını ve RTL desteğini kapsamlı denetler.</value></data>
+  <data name="aiprompts.prompt.gitWorkflow.title" xml:space="preserve"><value>Git Workflow Optimizasyonu</value></data>
+  <data name="aiprompts.prompt.gitWorkflow.desc" xml:space="preserve"><value>Git geçmişini, branch stratejisini, commit kalitesini ve .gitignore yapılandırmasını denetler.</value></data>
+  <data name="aiprompts.prompt.cicdPipeline.title" xml:space="preserve"><value>CI/CD Pipeline Tasarımı</value></data>
+  <data name="aiprompts.prompt.cicdPipeline.desc" xml:space="preserve"><value>Proje tipine uygun CI/CD pipeline tasarımı, build optimizasyonu ve deployment stratejisi oluşturur.</value></data>
+  <data name="aiprompts.prompt.depAudit.title" xml:space="preserve"><value>Dependency Audit</value></data>
+  <data name="aiprompts.prompt.depAudit.desc" xml:space="preserve"><value>Tüm bağımlılıkları güvenlik, güncellik, lisans uyumu ve gereklililik açısından denetler.</value></data>
+  <data name="aiprompts.prompt.crudGen.title" xml:space="preserve"><value>CRUD Feature Generator</value></data>
+  <data name="aiprompts.prompt.crudGen.desc" xml:space="preserve"><value>Yeni bir entity için komple CRUD feature (Model, Service, ViewModel, View) üretir.</value></data>
+  <data name="aiprompts.prompt.boilerplateGen.title" xml:space="preserve"><value>Proje Boilerplate Generator</value></data>
+  <data name="aiprompts.prompt.boilerplateGen.desc" xml:space="preserve"><value>Yeni bir modül veya feature için gerekli tüm dosya ve klasör yapısını oluşturur.</value></data>
+  <data name="aiprompts.prompt.projectReport.title" xml:space="preserve"><value>Proje Analiz Raporu</value></data>
+  <data name="aiprompts.prompt.projectReport.desc" xml:space="preserve"><value>Projenin bütünsel bir röntgenini çıkarır: mimari, kalite, risk ve iyileştirme önerileri.</value></data>
+  <!-- End AI Prompt Library -->
+</root>

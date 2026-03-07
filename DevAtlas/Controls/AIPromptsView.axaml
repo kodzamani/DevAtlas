@@ -1,0 +1,224 @@
+<UserControl x:Class="DevAtlas.Controls.AIPromptsView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:DevAtlas.ViewModels">
+
+    <UserControl.Styles>
+        <Style Selector="Border.PromptCard">
+            <Setter Property="Background" Value="{DynamicResource Bg.Card}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Border.Normal}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="14"/>
+            <Setter Property="Padding" Value="18,16"/>
+        </Style>
+
+        <Style Selector="Button.FlatPromptButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+
+    <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+        <Grid Margin="0,24,0,32">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="1">
+            <StackPanel Margin="0,0,0,28">
+                <DockPanel LastChildFill="True">
+                    <Border Width="50" Height="50"
+                            CornerRadius="14"
+                            Background="{DynamicResource Bg.SidebarActive}"
+                            Margin="0,0,14,0"
+                            VerticalAlignment="Top">
+                        <Image Tag="avares://DevAtlas/Assets/Sidebar/ai_prompts.svg"
+                                        Width="28"
+                                        Height="28"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                    </Border>
+
+                    <StackPanel>
+                        <TextBlock Text="{Binding Title}"
+                                   Foreground="{DynamicResource Text.Primary}"
+                                   FontSize="28"
+                                   FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Subtitle}"
+                                   Foreground="{DynamicResource Text.Muted}"
+                                   FontSize="12"
+                                   Margin="0,4,0,0"/>
+                    </StackPanel>
+                </DockPanel>
+
+                <TextBlock Text="{Binding Description}"
+                           Foreground="{DynamicResource Text.Secondary}"
+                           FontSize="13"
+                           TextWrapping="Wrap"
+                           Margin="0,14,0,0"/>
+
+                <Border Height="1"
+                        Background="{DynamicResource Border.Normal}"
+                        Margin="0,18,0,0"/>
+            </StackPanel>
+
+            <ItemsControl ItemsSource="{Binding Categories}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type vm:AIPromptCategoryViewModel}">
+                        <StackPanel Margin="0,0,0,26">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                                <Border Width="18"
+                                        Height="18"
+                                        CornerRadius="9"
+                                        Background="{DynamicResource Bg.SidebarActive}"
+                                        BorderBrush="{DynamicResource Accent.Primary}"
+                                        BorderThickness="1"
+                                        Margin="0,0,8,0"
+                                        VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding IconGlyph}"
+                                               Foreground="{DynamicResource Accent.Primary}"
+                                               FontSize="10"
+                                               FontFamily="Segoe UI Symbol"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Border>
+
+                                <TextBlock Text="{Binding Title}"
+                                           Foreground="{DynamicResource Text.Primary}"
+                                           FontSize="18"
+                                           FontWeight="SemiBold"
+                                           VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <ItemsControl ItemsSource="{Binding Prompts}" Margin="0,0,-20,0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="3"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vm:AIPromptCardViewModel}">
+                                        <Border Classes="PromptCard" Margin="0,0,20,20">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Grid Grid.Row="0" Margin="0,0,0,12">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <TextBlock Grid.Column="0"
+                                                               Text="{Binding Title}"
+                                                               Foreground="{DynamicResource Text.Primary}"
+                                                               FontSize="17"
+                                                               FontWeight="SemiBold"
+                                                               TextWrapping="Wrap"
+                                                               Margin="0,0,12,0"/>
+
+                                                    <Border Grid.Column="1"
+                                                            Background="{DynamicResource Bg.Muted}"
+                                                            CornerRadius="10"
+                                                            Padding="8,3"
+                                                            Margin="0,0,10,0"
+                                                            VerticalAlignment="Top">
+                                                        <TextBlock Text="{Binding WordCountLabel}"
+                                                                   Foreground="{DynamicResource Text.Muted}"
+                                                                   FontSize="10"
+                                                                   FontWeight="SemiBold"/>
+                                                    </Border>
+
+                                                    <Button Grid.Column="2"
+                                                            Classes="FlatPromptButton"
+                                                            Click="CopyPrompt_Click"
+                                                            CommandParameter="{Binding}">
+                                                        <Border x:Name="CopyButtonBorder"
+                                                                Background="#14007ACC"
+                                                                CornerRadius="8"
+                                                                Padding="10,6">
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock x:Name="CopyText"
+                                                                           Text="{Binding CopyLabel}"
+                                                                           Foreground="{DynamicResource Accent.Primary}"
+                                                                           FontSize="11"
+                                                                           FontWeight="SemiBold"
+                                                                           VerticalAlignment="Center"/>
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </Button>
+                                                </Grid>
+
+                                                <TextBlock Grid.Row="1"
+                                                           Text="{Binding Description}"
+                                                           Foreground="{DynamicResource Text.Muted}"
+                                                           FontSize="12"
+                                                           TextWrapping="Wrap"
+                                                           Margin="0,0,0,14"/>
+
+                                                <Border Grid.Row="2"
+                                                        Background="{DynamicResource Bg.Muted}"
+                                                        CornerRadius="10"
+                                                        Padding="12">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="84"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Border Grid.Row="0" ClipToBounds="True">
+                                                            <TextBlock Text="{Binding Prompt}"
+                                                                       Foreground="{DynamicResource Text.Tertiary}"
+                                                                       FontFamily="Consolas"
+                                                                       FontSize="11"
+                                                                       TextWrapping="Wrap"/>
+                                                        </Border>
+
+                                                        <Button Grid.Row="1"
+                                                                Classes="FlatPromptButton"
+                                                                Click="ShowMore_Click"
+                                                                CommandParameter="{Binding}"
+                                                                Margin="0,8,0,0">
+                                                            <TextBlock Text="{Binding ExpandLabel}"
+                                                                       Foreground="{DynamicResource Accent.Primary}"
+                                                                       FontSize="11"
+                                                                       FontWeight="SemiBold"/>
+                                                        </Button>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

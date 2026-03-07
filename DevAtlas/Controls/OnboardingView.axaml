@@ -1,0 +1,234 @@
+﻿<UserControl x:Class="DevAtlas.Controls.OnboardingView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:svc="using:DevAtlas.Services">
+
+    <UserControl.Styles>
+        <Style Selector="Ellipse.PageDot">
+            <Setter Property="Width" Value="8"/>
+            <Setter Property="Height" Value="8"/>
+            <Setter Property="Margin" Value="4,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style Selector="Border.NavBtn">
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="24,10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style Selector="Border.FeatureCard">
+            <Setter Property="Background" Value="{DynamicResource Bg.Muted}"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="18,14"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid x:Name="OverlayRoot" IsVisible="{Binding IsPresented}">
+        <Border Background="#99000000"/>
+
+        <Border Background="{DynamicResource Bg.Window}" CornerRadius="16" MaxWidth="620" MaxHeight="620"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1"
+                BoxShadow="0 10 40 0 #4D000000">
+
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+                    <Grid Margin="40,36,40,20">
+                        <StackPanel x:Name="PageWelcome" IsVisible="True" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Image Source="avares://DevAtlas/Assets/logo_brand.png" Width="72" Height="72"
+                                   RenderOptions.BitmapInterpolationMode="HighQuality" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                            <TextBlock Text="{Binding PageTitle}" Foreground="{DynamicResource Text.Primary}" FontSize="26" FontWeight="Bold"
+                                       HorizontalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Text="{Binding PageSubtitle}" Foreground="{DynamicResource Text.Muted}" FontSize="14"
+                                       HorizontalAlignment="Center" TextAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" MaxWidth="420"/>
+                        </StackPanel>
+
+                        <StackPanel x:Name="PageLanguage" IsVisible="False">
+                            <TextBlock Text="{Binding PageIcon}" FontSize="36" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                            <TextBlock Text="{Binding PageTitle}" Foreground="{DynamicResource Text.Primary}" FontSize="22" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                            <TextBlock Text="{Binding PageSubtitle}" Foreground="{DynamicResource Text.Muted}" FontSize="12"
+                                       HorizontalAlignment="Center" Margin="0,0,0,20" TextWrapping="Wrap"/>
+                            <StackPanel x:Name="OnboardingLanguageList" MaxWidth="400" HorizontalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel x:Name="PageFeatures" IsVisible="False">
+                            <TextBlock Text="{Binding PageIcon}" FontSize="36" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                            <TextBlock Text="{Binding PageTitle}" Foreground="{DynamicResource Text.Primary}" FontSize="22" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                            <TextBlock Text="{Binding PageSubtitle}" Foreground="{DynamicResource Text.Muted}" FontSize="12"
+                                       HorizontalAlignment="Center" Margin="0,0,0,20" TextWrapping="Wrap"/>
+
+                            <Border Classes="FeatureCard">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x1F50D;" FontSize="24" VerticalAlignment="Center" Margin="0,0,14,0"/>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding [OnboardingAutoScanProjectsTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="13" FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding [OnboardingAutoScanProjectsSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Classes="FeatureCard">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x1F4C1;" FontSize="24" VerticalAlignment="Center" Margin="0,0,14,0"/>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding [OnboardingSmartCategoriesTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="13" FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding [OnboardingSmartCategoriesSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Classes="FeatureCard">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x1F3F7;&#xFE0F;" FontSize="24" VerticalAlignment="Center" Margin="0,0,14,0"/>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding [OnboardingTechStackDetectionTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="13" FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding [OnboardingTechStackDetectionSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel x:Name="PageQuickActions" IsVisible="False">
+                            <TextBlock Text="{Binding PageIcon}" FontSize="36" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                            <TextBlock Text="{Binding PageTitle}" Foreground="{DynamicResource Text.Primary}" FontSize="22" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                            <TextBlock Text="{Binding PageSubtitle}" Foreground="{DynamicResource Text.Muted}" FontSize="12"
+                                       HorizontalAlignment="Center" Margin="0,0,0,20" TextWrapping="Wrap"/>
+
+                            <Border Classes="FeatureCard">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x1F4BB;" FontSize="24" VerticalAlignment="Center" Margin="0,0,14,0"/>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding [OnboardingOpenInEditorTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="13" FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding [OnboardingOpenInEditorSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Classes="FeatureCard">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x25B6;&#xFE0F;" FontSize="24" VerticalAlignment="Center" Margin="0,0,14,0"/>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding [OnboardingRunProjectsTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="13" FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding [OnboardingRunProjectsSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Classes="FeatureCard">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x1F4CA;" FontSize="24" VerticalAlignment="Center" Margin="0,0,14,0"/>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding [OnboardingAnalyzeCodeTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="13" FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding [OnboardingAnalyzeCodeSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel x:Name="PageStats" IsVisible="False">
+                            <TextBlock Text="{Binding PageIcon}" FontSize="36" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                            <TextBlock Text="{Binding PageTitle}" Foreground="{DynamicResource Text.Primary}" FontSize="22" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                            <TextBlock Text="{Binding PageSubtitle}" Foreground="{DynamicResource Text.Muted}" FontSize="12"
+                                       HorizontalAlignment="Center" Margin="0,0,0,20" TextWrapping="Wrap"/>
+
+                            <Border Classes="FeatureCard">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x1F4C8;" FontSize="24" VerticalAlignment="Center" Margin="0,0,14,0"/>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding [OnboardingGitStatisticsTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="13" FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding [OnboardingGitStatisticsSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Classes="FeatureCard">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#x1F9E0;" FontSize="24" VerticalAlignment="Center" Margin="0,0,14,0"/>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding [OnboardingProjectInsightsTitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="13" FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding [OnboardingProjectInsightsSubtitle], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="11" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel x:Name="PageAppearance" IsVisible="False">
+                            <TextBlock Text="{Binding PageIcon}" FontSize="36" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                            <TextBlock Text="{Binding PageTitle}" Foreground="{DynamicResource Text.Primary}" FontSize="22" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                            <TextBlock Text="{Binding PageSubtitle}" Foreground="{DynamicResource Text.Muted}" FontSize="12"
+                                       HorizontalAlignment="Center" Margin="0,0,0,20" TextWrapping="Wrap"/>
+
+                            <TextBlock Text="{Binding [SettingsTheme], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" FontWeight="Medium" Margin="0,0,0,8"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+                                <Border x:Name="OBThemeLight" CornerRadius="8" Padding="20,10" Margin="0,0,8,0" Cursor="Hand"
+                                        Background="{DynamicResource Bg.Muted}" BorderThickness="2" BorderBrush="Transparent"
+                                        PointerPressed="OBTheme_Click" Tag="Light">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#x2600;&#xFE0F;" FontSize="16" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding [SettingsLight], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="12" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border x:Name="OBThemeDark" CornerRadius="8" Padding="20,10" Cursor="Hand"
+                                        Background="{DynamicResource Bg.Muted}" BorderThickness="2" BorderBrush="Transparent"
+                                        PointerPressed="OBTheme_Click" Tag="Dark">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#x1F319;" FontSize="16" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding [SettingsDark], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="12" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+
+                            <TextBlock Text="{Binding [SettingsAccentColor], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" FontWeight="Medium" Margin="0,0,0,8"/>
+                            <WrapPanel x:Name="OBAccentPanel" HorizontalAlignment="Center" Margin="0,0,0,12"/>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+
+                <Border Grid.Row="1" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="0,1,0,0" Padding="24,16">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Classes="NavBtn" Background="Transparent"
+                                PointerPressed="Skip_Click">
+                            <TextBlock Text="{Binding [OnboardingSkip], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="12" FontWeight="Medium"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Ellipse x:Name="Dot0" Classes="PageDot" Fill="{DynamicResource Accent.Primary}" PointerPressed="Dot_Click" Tag="0"/>
+                            <Ellipse x:Name="Dot1" Classes="PageDot" Fill="{DynamicResource Border.Normal}" PointerPressed="Dot_Click" Tag="1"/>
+                            <Ellipse x:Name="Dot2" Classes="PageDot" Fill="{DynamicResource Border.Normal}" PointerPressed="Dot_Click" Tag="2"/>
+                            <Ellipse x:Name="Dot3" Classes="PageDot" Fill="{DynamicResource Border.Normal}" PointerPressed="Dot_Click" Tag="3"/>
+                            <Ellipse x:Name="Dot4" Classes="PageDot" Fill="{DynamicResource Border.Normal}" PointerPressed="Dot_Click" Tag="4"/>
+                            <Ellipse x:Name="Dot5" Classes="PageDot" Fill="{DynamicResource Border.Normal}" PointerPressed="Dot_Click" Tag="5"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal">
+                            <Border x:Name="PrevBtn" Classes="NavBtn" Background="{DynamicResource Bg.Muted}"
+                                    PointerPressed="Prev_Click" Margin="0,0,8,0" IsVisible="False">
+                                <TextBlock Foreground="{DynamicResource Text.Secondary}" FontSize="12" FontWeight="Medium">
+                                    <Run Text="&#x2190; "/>
+                                    <Run Text="{Binding [CommonBack], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}"/>
+                                </TextBlock>
+                            </Border>
+                            <Border x:Name="NextBtn" Classes="NavBtn" Background="{DynamicResource Accent.Primary}"
+                                    PointerPressed="Next_Click">
+                                <TextBlock x:Name="NextBtnText" Foreground="{DynamicResource Text.Inverse}" FontSize="12" FontWeight="SemiBold"/>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

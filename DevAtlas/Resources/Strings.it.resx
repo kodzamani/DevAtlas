@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <!-- App General -->
+  <data name="AppName" xml:space="preserve"><value>DevAtlas</value></data>
+  <data name="AppTagline" xml:space="preserve"><value>Il Tuo Centro di Comando per lo Sviluppo</value></data>
+  <data name="AppVersion" xml:space="preserve"><value>Versione {0}</value></data>
+  <data name="WindowTitleWorkspace" xml:space="preserve"><value>Workspace DevAtlas</value></data>
+
+  <!-- Tabs -->
+  <data name="TabAtlas" xml:space="preserve"><value>Atlante</value></data>
+  <data name="TabStats" xml:space="preserve"><value>Statistiche</value></data>
+  <data name="TabNotebook" xml:space="preserve"><value>Quaderno</value></data>
+  <data name="TabSettings" xml:space="preserve"><value>Impostazioni</value></data>
+
+  <!-- Sidebar -->
+  <data name="SidebarAllProjects" xml:space="preserve"><value>Tutti i Progetti</value></data>
+  <data name="SidebarWeb" xml:space="preserve"><value>Web</value></data>
+  <data name="SidebarDesktop" xml:space="preserve"><value>Desktop</value></data>
+  <data name="SidebarMobile" xml:space="preserve"><value>Mobile</value></data>
+  <data name="SidebarCloud" xml:space="preserve"><value>Cloud</value></data>
+  <data name="SidebarScanProjects" xml:space="preserve"><value>Scansiona Progetti</value></data>
+  <data name="SidebarDarkMode" xml:space="preserve"><value>Modalità Scura</value></data>
+  <data name="SidebarShowTour" xml:space="preserve"><value>Mostra Tour</value></data>
+  <data name="SidebarExplorer" xml:space="preserve"><value>ESPLORA</value></data>
+
+  <!-- Search -->
+  <data name="SearchProjects" xml:space="preserve"><value>Cerca progetti...</value></data>
+
+  <!-- Onboarding - Welcome -->
+  <data name="OnboardingWelcomeTitle" xml:space="preserve"><value>Benvenuto su DevAtlas</value></data>
+  <data name="OnboardingWelcomeSubtitle" xml:space="preserve"><value>Il Tuo Centro di Comando per lo Sviluppo</value></data>
+  <data name="OnboardingGetStarted" xml:space="preserve"><value>Inizia</value></data>
+  <data name="OnboardingSkip" xml:space="preserve"><value>Salta</value></data>
+
+  <!-- Onboarding - Features -->
+  <data name="OnboardingFeaturesTitle" xml:space="preserve"><value>Atlante dei Progetti</value></data>
+  <data name="OnboardingFeaturesSubtitle" xml:space="preserve"><value>Gestisci tutti i tuoi progetti di sviluppo</value></data>
+  <data name="OnboardingFeature1Title" xml:space="preserve"><value>Atlante dei Progetti</value></data>
+  <data name="OnboardingFeature1Subtitle" xml:space="preserve"><value>Gestisci tutti i tuoi progetti di sviluppo</value></data>
+  <data name="OnboardingFeature2Title" xml:space="preserve"><value>Statistiche</value></data>
+  <data name="OnboardingFeature2Subtitle" xml:space="preserve"><value>Traccia la tua attività di codifica</value></data>
+  <data name="OnboardingFeature3Title" xml:space="preserve"><value>Quaderno</value></data>
+  <data name="OnboardingFeature3Subtitle" xml:space="preserve"><value>Documenta i tuoi progetti</value></data>
+
+  <!-- Onboarding - Quick Actions -->
+  <data name="OnboardingQuickActionsTitle" xml:space="preserve"><value>Azioni Rapide</value></data>
+  <data name="OnboardingQuickActionsSubtitle" xml:space="preserve"><value>Accesso rapido ai tuoi strumenti</value></data>
+
+  <!-- Onboarding - Stats & Notebook -->
+  <data name="OnboardingStatsNotebookTitle" xml:space="preserve"><value>Statistiche &amp; Quaderno</value></data>
+  <data name="OnboardingStatsNotebookSubtitle" xml:space="preserve"><value>Traccia i progressi e prendi appunti</value></data>
+
+  <!-- Onboarding - Appearance -->
+  <data name="OnboardingAppearanceTitle" xml:space="preserve"><value>Aspetto</value></data>
+  <data name="OnboardingAppearanceSubtitle" xml:space="preserve"><value>Scegli come appare DevAtlas</value></data>
+  <data name="OnboardingAllSet" xml:space="preserve"><value>Sei pronto!</value></data>
+  <data name="OnboardingStartUsing" xml:space="preserve"><value>Inizia a Usare DevAtlas</value></data>
+
+  <!-- Onboarding - Additional -->
+  <data name="OnboardingChooseAccentColor" xml:space="preserve"><value>Scegli il tuo colore di accento preferito</value></data>
+  <data name="OnboardingDiscoverProjects" xml:space="preserve"><value>Scopri e gestisci tutti i tuoi progetti di sviluppo</value></data>
+  <data name="OnboardingTwoMoreFeatures" xml:space="preserve"><value>Altre due potenti funzionalità a portata di mano</value></data>
+  <data name="OnboardingLightningAccess" xml:space="preserve"><value>Accesso istantaneo ai tuoi strumenti di sviluppo</value></data>
+  <data name="OnboardingAutoScanTitle" xml:space="preserve"><value>Scansione Automatica</value></data>
+  <data name="OnboardingAutoScanSubtitle" xml:space="preserve"><value>Trova progetti su tutte le tue unità</value></data>
+  <data name="OnboardingSmartFiltersTitle" xml:space="preserve"><value>Filtri Intelligenti</value></data>
+  <data name="OnboardingSmartFiltersSubtitle" xml:space="preserve"><value>Filtra per Web, Desktop, Mobile o Cloud</value></data>
+  <data name="OnboardingAutoScanProjectsTitle" xml:space="preserve"><value>Scansione Automatica Progetti</value></data>
+  <data name="OnboardingAutoScanProjectsSubtitle" xml:space="preserve"><value>Scopri e indicizza automaticamente tutti i progetti sulla tua macchina</value></data>
+  <data name="OnboardingSmartCategoriesTitle" xml:space="preserve"><value>Categorie Intelligenti</value></data>
+  <data name="OnboardingSmartCategoriesSubtitle" xml:space="preserve"><value>I progetti sono categorizzati in Web, Desktop, Mobile e Cloud</value></data>
+  <data name="OnboardingTechStackDetectionTitle" xml:space="preserve"><value>Rilevamento Stack Tecnologico</value></data>
+  <data name="OnboardingTechStackDetectionSubtitle" xml:space="preserve"><value>Rileva automaticamente framework, linguaggi e strumenti utilizzati</value></data>
+  <data name="OnboardingOpenInEditorTitle" xml:space="preserve"><value>Apri nell'Editor</value></data>
+  <data name="OnboardingOpenInEditorSubtitle" xml:space="preserve"><value>Avvia progetti direttamente in VS Code, Visual Studio o qualsiasi editor</value></data>
+  <data name="OnboardingRunProjectsTitle" xml:space="preserve"><value>Esegui Progetti</value></data>
+  <data name="OnboardingRunProjectsSubtitle" xml:space="preserve"><value>Avvia server di sviluppo e processi di build con un clic</value></data>
+  <data name="OnboardingAnalyzeCodeTitle" xml:space="preserve"><value>Analizza Codice</value></data>
+  <data name="OnboardingAnalyzeCodeSubtitle" xml:space="preserve"><value>Ottieni metriche dettagliate incluse linee di codice e conteggio file</value></data>
+  <data name="OnboardingGitStatisticsTitle" xml:space="preserve"><value>Statistiche Git</value></data>
+  <data name="OnboardingGitStatisticsSubtitle" xml:space="preserve"><value>Traccia aggiunte, eliminazioni e attività di commit nel tempo</value></data>
+  <data name="OnboardingProjectInsightsTitle" xml:space="preserve"><value>Insight Progetto</value></data>
+  <data name="OnboardingProjectInsightsSubtitle" xml:space="preserve"><value>Visualizza distribuzione codice, tipi di progetto e metriche file</value></data>
+  <data name="OnboardingSearchTitle" xml:space="preserve"><value>Ricerca</value></data>
+  <data name="OnboardingSearchSubtitle" xml:space="preserve"><value>Trova qualsiasi progetto per nome o stack tecnologico</value></data>
+  <data name="OnboardingRecentActivityTitle" xml:space="preserve"><value>Attività Recente</value></data>
+  <data name="OnboardingRecentActivitySubtitle" xml:space="preserve"><value>Vedi gli ultimi file su cui hai lavorato</value></data>
+  <data name="OnboardingVSCode" xml:space="preserve"><value>Apri in Visual Studio Code</value></data>
+  <data name="OnboardingTerminal" xml:space="preserve"><value>Apri il terminale nella cartella del progetto</value></data>
+  <data name="OnboardingExplorer" xml:space="preserve"><value>Mostra il progetto in Esplora risorse</value></data>
+  <data name="OnboardingRunProjects" xml:space="preserve"><value>Esegui i progetti</value></data>
+  <data name="OnboardingAnalyzeCode" xml:space="preserve"><value>Analizza il codice</value></data>
+  <data name="OnboardingStatsLanguageBreakdown" xml:space="preserve"><value>Suddivisione per linguaggio</value></data>
+  <data name="OnboardingStatsLineCount" xml:space="preserve"><value>Analisi del numero di righe</value></data>
+  <data name="OnboardingStatsTimeInsights" xml:space="preserve"><value>Approfondimenti basati sul tempo</value></data>
+  <data name="OnboardingStatsExportReports" xml:space="preserve"><value>Esporta report</value></data>
+
+  <!-- Settings -->
+  <data name="SettingsTitle" xml:space="preserve"><value>Impostazioni</value></data>
+  <data name="SettingsAbout" xml:space="preserve"><value>Info</value></data>
+  <data name="SettingsAboutDescription" xml:space="preserve"><value>DevAtlas è il tuo centro di comando completo per lo sviluppo. Organizza, analizza e traccia tutti i tuoi progetti in un unico posto.</value></data>
+  <data name="SettingsLanguage" xml:space="preserve"><value>Lingua</value></data>
+  <data name="SettingsSelectLanguage" xml:space="preserve"><value>Seleziona Lingua</value></data>
+  <data name="SettingsAppearance" xml:space="preserve"><value>Aspetto</value></data>
+  <data name="SettingsTheme" xml:space="preserve"><value>Tema</value></data>
+  <data name="SettingsAccentColor" xml:space="preserve"><value>Colore Accento</value></data>
+  <data name="SettingsLight" xml:space="preserve"><value>Chiaro</value></data>
+  <data name="SettingsDark" xml:space="preserve"><value>Scuro</value></data>
+  <data name="SettingsSystem" xml:space="preserve"><value>Sistema</value></data>
+  <data name="SettingsVersion" xml:space="preserve"><value>Versione</value></data>
+  <data name="SettingsCopyright" xml:space="preserve"><value>© 2024 DevAtlas</value></data>
+
+  <!-- Languages -->
+  <data name="LanguageEn" xml:space="preserve"><value>Inglese</value></data>
+  <data name="LanguageTr" xml:space="preserve"><value>Turco</value></data>
+  <data name="LanguageDe" xml:space="preserve"><value>Tedesco</value></data>
+  <data name="LanguageJa" xml:space="preserve"><value>Giapponese</value></data>
+  <data name="LanguageZh" xml:space="preserve"><value>Cinese (Semplificato)</value></data>
+  <data name="LanguageKo" xml:space="preserve"><value>Coreano</value></data>
+  <data name="LanguageIt" xml:space="preserve"><value>Italiano</value></data>
+  <data name="LanguageFr" xml:space="preserve"><value>Francese</value></data>
+
+  <!-- Common -->
+  <data name="CommonNext" xml:space="preserve"><value>Avanti</value></data>
+  <data name="CommonPrevious" xml:space="preserve"><value>Indietro</value></data>
+  <data name="CommonBack" xml:space="preserve"><value>Indietro</value></data>
+  <data name="CommonDone" xml:space="preserve"><value>Fatto</value></data>
+  <data name="CommonCancel" xml:space="preserve"><value>Annulla</value></data>
+  <data name="CommonSave" xml:space="preserve"><value>Salva</value></data>
+  <data name="CommonClose" xml:space="preserve"><value>Chiudi</value></data>
+
+  <!-- Dashboard & Projects -->
+  <data name="DashboardQuickActions" xml:space="preserve"><value>Azioni Rapide</value></data>
+  <data name="DashboardTechStack" xml:space="preserve"><value>Stack Tecnologico</value></data>
+  <data name="DashboardRecentActivity" xml:space="preserve"><value>Attività Recente</value></data>
+  <data name="DashboardNoRecentActivity" xml:space="preserve"><value>Nessuna attività recente</value></data>
+  <data name="DashboardSize" xml:space="preserve"><value>DIM.</value></data>
+  <data name="DashboardFiles" xml:space="preserve"><value>FILE</value></data>
+  <data name="DashboardLines" xml:space="preserve"><value>RIGHE</value></data>
+  <data name="DashboardLang" xml:space="preserve"><value>LINGUA</value></data>
+  <data name="DashboardFramework" xml:space="preserve"><value>FRAMEWORK</value></data>
+
+  <!-- Stats View -->
+  <data name="StatsProjectsAnalyzed" xml:space="preserve"><value>Progetti Analizzati</value></data>
+  <data name="StatsTrackedCodeLines" xml:space="preserve"><value>Righe di Codice Tracciate</value></data>
+  <data name="StatsGitAdditions" xml:space="preserve"><value>Aggiunte Git</value></data>
+  <data name="StatsGitDeletions" xml:space="preserve"><value>Eliminazioni Git</value></data>
+  <data name="StatsGitActivity" xml:space="preserve"><value>Attività Git ({0})</value></data>
+  <data name="StatsActivityVolume" xml:space="preserve"><value>Volume Attività</value></data>
+  <data name="StatsCodeLinesByProject" xml:space="preserve"><value>Righe di Codice per Progetto</value></data>
+  <data name="StatsProjectTypes" xml:space="preserve"><value>Tipi di Progetto</value></data>
+  <data name="StatsAllProjects" xml:space="preserve"><value>Tutti i Progetti</value></data>
+  <data name="StatsTopProjectsByFileCount" xml:space="preserve"><value>Migliori Progetti per Numero di File</value></data>
+  <data name="StatsNoGitActivity" xml:space="preserve"><value>Nessuna attività git trovata in questo periodo.</value></data>
+  <data name="StatsNoCodeLines" xml:space="preserve"><value>Nessuna riga di codice disponibile.</value></data>
+  <data name="StatsNoProjectsToRank" xml:space="preserve"><value>Nessun progetto da classificare.</value></data>
+  <data name="StatsNoData" xml:space="preserve"><value>Nessun dato disponibile.</value></data>
+  <data name="StatsActivityHigh" xml:space="preserve"><value>Attività alta</value></data>
+  <data name="StatsActivityMedium" xml:space="preserve"><value>Attività media</value></data>
+  <data name="StatsActivityLow" xml:space="preserve"><value>Attività bassa</value></data>
+
+  <!-- Projects -->
+  <data name="ProjectsNoProjectsFound" xml:space="preserve"><value>Nessun progetto trovato</value></data>
+  <data name="ProjectsTryScanning" xml:space="preserve"><value>Prova a scansionare i progetti o modifica la ricerca</value></data>
+  <data name="ProjectsScanProjects" xml:space="preserve"><value>Scansiona i Progetti</value></data>
+  <data name="ProjectsBackToProjects" xml:space="preserve"><value>Torna ai Progetti</value></data>
+  <data name="ProjectsActive" xml:space="preserve"><value>Attivo</value></data>
+  <data name="ProjectsOpenInCodeEditor" xml:space="preserve"><value>Apri nell'editor codice</value></data>
+  <data name="ProjectsSelectEditor" xml:space="preserve"><value>Scegli editor</value></data>
+  <data name="ProjectsRunProject" xml:space="preserve"><value>Esegui progetto</value></data>
+  <data name="ProjectsStartDevServer" xml:space="preserve"><value>Avvia server dev</value></data>
+  <data name="ProjectsOpenTerminal" xml:space="preserve"><value>Apri Terminale</value></data>
+  <data name="ProjectsCommandPrompt" xml:space="preserve"><value>Prompt dei comandi</value></data>
+  <data name="ProjectsRevealInExplorer" xml:space="preserve"><value>Mostra in Esplora risorse</value></data>
+  <data name="ProjectsOpenFileExplorer" xml:space="preserve"><value>Apri Esplora risorse</value></data>
+  <data name="ProjectsAnalyzeProject" xml:space="preserve"><value>Analizza progetto</value></data>
+  <data name="ProjectsCodeLineStats" xml:space="preserve"><value>Statistiche righe codice</value></data>
+  <data name="ProjectsType" xml:space="preserve"><value>Tipo:</value></data>
+  <data name="ProjectsFooterProjects" xml:space="preserve"><value>Progetti</value></data>
+  <data name="ProjectsFooterFiles" xml:space="preserve"><value>File</value></data>
+  <data name="ProjectsFooterLines" xml:space="preserve"><value>Righe</value></data>
+
+  <!-- Navigation -->
+  <data name="NavWorkspace" xml:space="preserve"><value>Workspace</value></data>
+  <data name="NavProjects" xml:space="preserve"><value>Progetti</value></data>
+  <data name="NavAllLocations" xml:space="preserve"><value>Tutte le Posizioni</value></data>
+  <data name="NavExport" xml:space="preserve"><value>Esporta</value></data>
+  <data name="NavNavigation" xml:space="preserve"><value>NAVIGAZIONE</value></data>
+
+  <!-- Scan -->
+  <data name="ScanFoundProjects" xml:space="preserve"><value>{0} progetti trovati</value></data>
+  <data name="ScanStarting" xml:space="preserve"><value>Avvio scansione...</value></data>
+  <data name="ScanInitializing" xml:space="preserve"><value>Inizializzazione...</value></data>
+
+  <data name="EditorsNoEditorsFound" xml:space="preserve"><value>Nessun editor di codice trovato sul tuo sistema</value></data>
+
+  <data name="ProjectsAnalyzingProject" xml:space="preserve"><value>Analisi progetto...</value></data>
+  <data name="ProjectsTotalFiles" xml:space="preserve"><value>Totale File</value></data>
+  <data name="ProjectsTotalLines" xml:space="preserve"><value>Totale Righe</value></data>
+  <data name="ProjectsAvgLinesPerFile" xml:space="preserve"><value>Medio Righe/File</value></data>
+  <data name="ProjectsLargestFile" xml:space="preserve"><value>File Più Grande</value></data>
+  <data name="ProjectsFile" xml:space="preserve"><value>File</value></data>
+  <data name="ProjectsExtension" xml:space="preserve"><value>Estensione</value></data>
+  <data name="ProjectsLines" xml:space="preserve"><value>Righe</value></data>
+  <data name="ProjectsOpenInVisualStudio" xml:space="preserve"><value>Apri in Visual Studio</value></data>
+  <data name="ProjectsLaunchIDE" xml:space="preserve"><value>Avvia IDE</value></data>
+  <data name="ProjectsProperties" xml:space="preserve"><value>Proprietà</value></data>
+
+  <!-- Time Groups -->
+  <data name="TimeGroupToday" xml:space="preserve"><value>Oggi</value></data>
+  <data name="TimeGroupYesterday" xml:space="preserve"><value>Ieri</value></data>
+  <data name="TimeGroupThisWeek" xml:space="preserve"><value>Questa Settimana</value></data>
+  <data name="TimeGroupThisMonth" xml:space="preserve"><value>Questo Mese</value></data>
+  <data name="TimeGroup1to3MonthsAgo" xml:space="preserve"><value>1-3 Mesi Fa</value></data>
+  <data name="TimeGroupOlder" xml:space="preserve"><value>Meno Recente</value></data>
+
+  <!-- Date Range Filters -->
+  <data name="DateRange7Days" xml:space="preserve"><value>7 Giorni</value></data>
+  <data name="DateRange30Days" xml:space="preserve"><value>30 Giorni</value></data>
+  <data name="DateRangeYear" xml:space="preserve"><value>Anno</value></data>
+  <data name="DateRangeAllTime" xml:space="preserve"><value>Sempre</value></data>
+
+  <!-- Stats Chart Labels -->
+  <data name="StatsAdditions" xml:space="preserve"><value>Aggiunte</value></data>
+  <data name="StatsDeletions" xml:space="preserve"><value>Eliminazioni</value></data>
+  <data name="StatsLinesOfCode" xml:space="preserve"><value>Righe di Codice</value></data>
+  <data name="StatsFileCount" xml:space="preserve"><value>Conteggio File</value></data>
+
+  <!-- Run Project States -->
+  <data name="RunProjectStop" xml:space="preserve"><value>Ferma Progetto</value></data>
+  <data name="RunProjectServerRunning" xml:space="preserve"><value>Server in esecuzione</value></data>
+  <data name="RunProjectStart" xml:space="preserve"><value>Esegui Progetto</value></data>
+  <data name="RunProjectStartDevServer" xml:space="preserve"><value>Avvia server dev</value></data>
+
+  <!-- Messages -->
+  <data name="MessageAllLocations" xml:space="preserve"><value>Tutte le Posizioni</value></data>
+  <data name="MessageEditorNotFound" xml:space="preserve"><value>Editor Non Trovato</value></data>
+  <data name="MessageVSCodeNotFound" xml:space="preserve"><value>VSCode non è stato trovato.</value></data>
+  <data name="MessageComingSoon" xml:space="preserve"><value>Prossimamente</value></data>
+  <data name="MessageFavoritesComingSoon" xml:space="preserve"><value>La funzione Preferiti arriverà presto!</value></data>
+  <data name="MessageTagEditingComingSoon" xml:space="preserve"><value>La modifica dei tag arriverà presto!</value></data>
+  <data name="MessageError" xml:space="preserve"><value>Errore</value></data>
+  <data name="MessageCouldNotFindStartScript" xml:space="preserve"><value>Impossibile trovare uno script start/dev/serve in package.json</value></data>
+  <data name="MessageFailedToStartDevServer" xml:space="preserve"><value>Impossibile avviare il server di sviluppo</value></data>
+  <data name="MessageFailedToRunProject" xml:space="preserve"><value>Impossibile eseguire il progetto: {0}</value></data>
+  <data name="MessageInitializationError" xml:space="preserve"><value>Errore di Inizializzazione</value></data>
+  <data name="MessageFailedToInitializeServices" xml:space="preserve"><value>Impossibile inizializzare i servizi di scalabilità: {0}</value></data>
+
+  <!-- Categories -->
+  <data name="CategoryOther" xml:space="preserve"><value>Altro</value></data>
+  <data name="CategoryUnknown" xml:space="preserve"><value>Sconosciuto</value></data>
+  <data name="CategoryWeb" xml:space="preserve"><value>Web</value></data>
+  <data name="CategoryDesktop" xml:space="preserve"><value>Desktop</value></data>
+  <data name="CategoryMobile" xml:space="preserve"><value>Mobile</value></data>
+  <data name="CategoryCloud" xml:space="preserve"><value>Cloud</value></data>
+
+  <data name="StatsDashboardTitle" xml:space="preserve"><value>Dashboard Statistiche</value></data>
+  <data name="StatsDashboardSubtitle" xml:space="preserve"><value>Panoramica dell'attività del tuo spazio di lavoro e delle metriche del progetto</value></data>
+  <data name="StatsCalculating" xml:space="preserve"><value>Calcolo in corso...</value></data>
+  <data name="StatsLoadingGitData" xml:space="preserve"><value>Caricamento dati Git...</value></data>
+  <data name="StatsRangeWeek" xml:space="preserve"><value>Settimana</value></data>
+  <data name="StatsRangeMonth" xml:space="preserve"><value>Mese</value></data>
+  <data name="StatsRangeYear" xml:space="preserve"><value>Anno</value></data>
+  <data name="StatsRangeAllTime" xml:space="preserve"><value>Tutto il Periodo</value></data>
+  <data name="StatsGitActivityTitle" xml:space="preserve"><value>Attività Git</value></data>
+  <data name="StatsGitActivitySubtitle" xml:space="preserve"><value>Righe aggiunte e eliminate nel tempo</value></data>
+  <data name="StatsLinesOfCodeTitle" xml:space="preserve"><value>Righe di Codice</value></data>
+  <data name="StatsLinesOfCodeSubtitle" xml:space="preserve"><value>Top 10 progetti per righe di codice</value></data>
+  <data name="StatsProjectTypesTitle" xml:space="preserve"><value>Tipi di Progetto</value></data>
+  <data name="StatsProjectTypesSubtitle" xml:space="preserve"><value>Distribuzione per tipo di progetto</value></data>
+  <data name="StatsFileCountTitle" xml:space="preserve"><value>Numero di File</value></data>
+  <data name="StatsFileCountSubtitle" xml:space="preserve"><value>Top 10 progetti per numero di file</value></data>
+
+  <!-- Unused Code Analysis -->
+  <data name="UnusedCodeTitle" xml:space="preserve"><value>Trova codice inutilizzato</value></data>
+  <data name="UnusedCodeAnalyzing" xml:space="preserve"><value>Analisi del codice inutilizzato...</value></data>
+  <data name="UnusedCodeTotalIssues" xml:space="preserve"><value>Problemi totali</value></data>
+  <data name="UnusedCodeVariables" xml:space="preserve"><value>Variabili</value></data>
+  <data name="UnusedCodeMethods" xml:space="preserve"><value>Metodi</value></data>
+  <data name="UnusedCodeTypes" xml:space="preserve"><value>Tipi</value></data>
+  <data name="UnusedCodeNoIssues" xml:space="preserve"><value>Nessun codice inutilizzato trovato!</value></data>
+  <data name="UnusedCodeCleanProject" xml:space="preserve"><value>Il tuo progetto è pulito. Ottimo!</value></data>
+  <data name="UnusedCodeColType" xml:space="preserve"><value>Tipo</value></data>
+  <data name="UnusedCodeColName" xml:space="preserve"><value>Nome</value></data>
+  <data name="UnusedCodeColLocation" xml:space="preserve"><value>Posizione</value></data>
+  <data name="UnusedCodeColHints" xml:space="preserve"><value>Suggerimenti</value></data>
+  <data name="UnusedCodeFindUnused" xml:space="preserve"><value>Trova inutilizzato</value></data>
+  <data name="UnusedCodeDetectUnused" xml:space="preserve"><value>Rileva codice inutilizzato</value></data>
+  <data name="UnusedCodeAIPrompt" xml:space="preserve"><value>Prompt IA</value></data>
+  <data name="DepsPackage" xml:space="preserve"><value>Pacchetto</value></data>
+  <data name="DepsVersion" xml:space="preserve"><value>Versione</value></data>
+  <data name="DepsSource" xml:space="preserve"><value>Fonte</value></data>
+  <data name="DepsLoading" xml:space="preserve"><value>Caricamento dipendenze...</value></data>
+  <data name="DepsCheckingUpdates" xml:space="preserve"><value>Controllo aggiornamenti...</value></data>
+  <data name="DepsNoDependencies" xml:space="preserve"><value>Nessuna dipendenza trovata</value></data>
+  <!-- AI Prompt Library -->
+  <data name="tab.aiPrompts" xml:space="preserve"><value>Prompt IA</value></data>
+  <data name="aiprompts.title" xml:space="preserve"><value>Libreria di Prompt AI</value></data>
+  <data name="aiprompts.subtitle" xml:space="preserve"><value>%d categorie · %d prompt professionali</value></data>
+  <data name="aiprompts.description" xml:space="preserve"><value>Copia questi prompt dettagliati e incollali nel tuo assistente IA (ChatGPT, Claude, Gemini, ecc.) per analizzare i tuoi progetti. Ogni prompt è progettato per generare un output di analisi di livello esperto.</value></data>
+  <data name="aiprompts.wordCount" xml:space="preserve"><value>%d parole</value></data>
+  <data name="aiprompts.copied" xml:space="preserve"><value>Copiato!</value></data>
+  <data name="aiprompts.copy" xml:space="preserve"><value>Copia</value></data>
+  <data name="aiprompts.collapse" xml:space="preserve"><value>Comprimi</value></data>
+  <data name="aiprompts.expand" xml:space="preserve"><value>Vedi tutto</value></data>
+  <data name="aiprompts.category.codeQuality" xml:space="preserve"><value>Qualità del Codice</value></data>
+  <data name="aiprompts.category.performance" xml:space="preserve"><value>Prestazioni</value></data>
+  <data name="aiprompts.category.architecture" xml:space="preserve"><value>Architettura &amp; Design</value></data>
+  <data name="aiprompts.category.testing" xml:space="preserve"><value>Testing</value></data>
+  <data name="aiprompts.category.documentation" xml:space="preserve"><value>Documentazione</value></data>
+  <data name="aiprompts.category.debugging" xml:space="preserve"><value>Debugging &amp; Profiling</value></data>
+  <data name="aiprompts.category.networking" xml:space="preserve"><value>API &amp; Reti</value></data>
+  <data name="aiprompts.category.accessibility" xml:space="preserve"><value>Accessibilità</value></data>
+  <data name="aiprompts.category.localization" xml:space="preserve"><value>i18n &amp; Localizzazione</value></data>
+  <data name="aiprompts.category.cicd" xml:space="preserve"><value>Git &amp; CI/CD</value></data>
+  <data name="aiprompts.category.dependencies" xml:space="preserve"><value>Gestione delle Dipendenze</value></data>
+  <data name="aiprompts.category.codeGeneration" xml:space="preserve"><value>Generazione di Codice</value></data>
+  <data name="aiprompts.prompt.unusedCode.title" xml:space="preserve"><value>Codice Inutilizzato</value></data>
+  <data name="aiprompts.prompt.unusedCode.desc" xml:space="preserve"><value>Rileva funzioni, variabili, classi e importazioni inutilizzate nel tuo progetto.</value></data>
+  <data name="aiprompts.prompt.codeSmells.title" xml:space="preserve"><value>Code Smell &amp; Anti-Pattern</value></data>
+  <data name="aiprompts.prompt.codeSmells.desc" xml:space="preserve"><value>Rileva approfonditamente code smell, anti-pattern e potenziali bug.</value></data>
+  <data name="aiprompts.prompt.memoryLeaks.title" xml:space="preserve"><value>Perdite di Memoria &amp; Retain Cycle</value></data>
+  <data name="aiprompts.prompt.memoryLeaks.desc" xml:space="preserve"><value>Analizza in modo completo perdite di memoria, retain cycle ed errori di gestione delle risorse nei progetti Swift/Apple.</value></data>
+  <data name="aiprompts.prompt.securityAudit.title" xml:space="preserve"><value>Audit di Sicurezza</value></data>
+  <data name="aiprompts.prompt.securityAudit.desc" xml:space="preserve"><value>Verifica in modo completo vulnerabilità di sicurezza, pattern di codice pericolosi e carenze nella protezione dei dati.</value></data>
+  <data name="aiprompts.prompt.errorHandling.title" xml:space="preserve"><value>Audit della Gestione degli Errori</value></data>
+  <data name="aiprompts.prompt.errorHandling.desc" xml:space="preserve"><value>Rileva carenze nella gestione degli errori, force unwrap e rischi di crash.</value></data>
+  <data name="aiprompts.prompt.bottleneck.title" xml:space="preserve"><value>Analisi dei Colli di Bottiglia nelle Prestazioni</value></data>
+  <data name="aiprompts.prompt.bottleneck.desc" xml:space="preserve"><value>Rileva colli di bottiglia nelle prestazioni, punti lenti e carichi di lavoro non necessari nell&apos;intera base di codice.</value></data>
+  <data name="aiprompts.prompt.swiftuiRender.title" xml:space="preserve"><value>Ottimizzazione del Rendering di SwiftUI</value></data>
+  <data name="aiprompts.prompt.swiftuiRender.desc" xml:space="preserve"><value>Rileva re-rendering non necessari, errori di gestione dello stato e problemi di prestazioni dell&apos;interfaccia utente nella gerarchia delle viste SwiftUI.</value></data>
+  <data name="aiprompts.prompt.appLaunch.title" xml:space="preserve"><value>Ottimizzazione del Lancio &amp; Avvio dell&apos;App</value></data>
+  <data name="aiprompts.prompt.appLaunch.desc" xml:space="preserve"><value>Analizza il tempo di avvio dell&apos;app, le prestazioni di lancio a freddo/caldo e la velocità di visualizzazione della prima schermata.</value></data>
+  <data name="aiprompts.prompt.architectureDeep.title" xml:space="preserve"><value>Revisione Approfondita dell&apos;Architettura</value></data>
+  <data name="aiprompts.prompt.architectureDeep.desc" xml:space="preserve"><value>Valuta profondamente l&apos;architettura del progetto in termini di principi SOLID, gestione delle dipendenze e modularità.</value></data>
+  <data name="aiprompts.prompt.designPatterns.title" xml:space="preserve"><value>Design Pattern &amp; Best Practice</value></data>
+  <data name="aiprompts.prompt.designPatterns.desc" xml:space="preserve"><value>Analizza l&apos;uso attuale dei design pattern, suggerisce pattern mancanti e rileva anti-pattern.</value></data>
+  <data name="aiprompts.prompt.refactoringGuide.title" xml:space="preserve"><value>Guida al Refactoring</value></data>
+  <data name="aiprompts.prompt.refactoringGuide.desc" xml:space="preserve"><value>Contrassegna i blocchi di codice che richiedono il refactoring in base al catalogo di refactoring di Martin Fowler e fornisce una guida passo-passo.</value></data>
+  <data name="aiprompts.prompt.testCoverage.title" xml:space="preserve"><value>Copertura dei Test &amp; Analisi dei Gap</value></data>
+  <data name="aiprompts.prompt.testCoverage.desc" xml:space="preserve"><value>Analizza in modo completo i gap nella copertura dei test, gli scenari di test mancanti e i percorsi di codice critici non testati.</value></data>
+  <data name="aiprompts.prompt.unitTestAudit.title" xml:space="preserve"><value>Audit di Qualità dei Test Unitari</value></data>
+  <data name="aiprompts.prompt.unitTestAudit.desc" xml:space="preserve"><value>Verifica la qualità, l&apos;affidabilità e la manutenibilità degli unit test esistenti.</value></data>
+  <data name="aiprompts.prompt.testGenerator.title" xml:space="preserve"><value>Assistente alla Scrittura di Test</value></data>
+  <data name="aiprompts.prompt.testGenerator.desc" xml:space="preserve"><value>Genera unit test completi e funzionanti per il file di codice fornito.</value></data>
+  <data name="aiprompts.prompt.apiDocs.title" xml:space="preserve"><value>Documentazione API Automatizzata</value></data>
+  <data name="aiprompts.prompt.apiDocs.desc" xml:space="preserve"><value>Genera documentazione dettagliata per tutte le API pubbliche nel formato Swift DocC.</value></data>
+  <data name="aiprompts.prompt.readmeDocs.title" xml:space="preserve"><value>README &amp; Documentazione del Progetto</value></data>
+  <data name="aiprompts.prompt.readmeDocs.desc" xml:space="preserve"><value>Crea un README professionale e completo e la documentazione del progetto.</value></data>
+  <data name="aiprompts.prompt.commentsAudit.title" xml:space="preserve"><value>Analisi dei Commenti nel Codice</value></data>
+  <data name="aiprompts.prompt.commentsAudit.desc" xml:space="preserve"><value>Analizza i commenti esistenti, rileva quelli obsoleti/errati e fornisce suggerimenti per il miglioramento.</value></data>
+  <data name="aiprompts.prompt.crashBugAudit.title" xml:space="preserve"><value>Analisi di Crash &amp; Bug</value></data>
+  <data name="aiprompts.prompt.crashBugAudit.desc" xml:space="preserve"><value>Analizza i log di crash e le segnalazioni di bug, trova la causa principale e suggerisce correzioni.</value></data>
+  <data name="aiprompts.prompt.instrumentsGuide.title" xml:space="preserve"><value>Guida a Instruments &amp; Profiling</value></data>
+  <data name="aiprompts.prompt.instrumentsGuide.desc" xml:space="preserve"><value>Fornisce una guida alla profilazione con Xcode Instruments e offre raccomandazioni specifiche per il progetto.</value></data>
+  <data name="aiprompts.prompt.networkAudit.title" xml:space="preserve"><value>Audit del Livello di Rete</value></data>
+  <data name="aiprompts.prompt.networkAudit.desc" xml:space="preserve"><value>Verifica in modo completo il livello di rete, le chiamate API, la gestione degli errori e il flusso di dati.</value></data>
+  <data name="aiprompts.prompt.apiMock.title" xml:space="preserve"><value>Mock API &amp; Infrastruttura di Test</value></data>
+  <data name="aiprompts.prompt.apiMock.desc" xml:space="preserve"><value>Crea l&apos;infrastruttura di test API, la configurazione del server mock e la strategia di test di rete.</value></data>
+  <data name="aiprompts.prompt.a11yAudit.title" xml:space="preserve"><value>Audit di Accessibilità</value></data>
+  <data name="aiprompts.prompt.a11yAudit.desc" xml:space="preserve"><value>Verifica la conformità agli standard di accessibilità, rilevando problemi di VoiceOver, Dynamic Type e contrasto dei colori.</value></data>
+  <data name="aiprompts.prompt.i18nAudit.title" xml:space="preserve"><value>Audit Completo della Localizzazione</value></data>
+  <data name="aiprompts.prompt.i18nAudit.desc" xml:space="preserve"><value>Verifica in modo completo le stringhe hardcoded, le traduzioni mancanti, i formati data/numero e il supporto RTL.</value></data>
+  <data name="aiprompts.prompt.gitWorkflow.title" xml:space="preserve"><value>Ottimizzazione del Workflow Git</value></data>
+  <data name="aiprompts.prompt.gitWorkflow.desc" xml:space="preserve"><value>Verifica la cronologia Git, la strategia dei rami, la qualità dei commit e la configurazione di .gitignore.</value></data>
+  <data name="aiprompts.prompt.cicdPipeline.title" xml:space="preserve"><value>Progettazione della Pipeline CI/CD</value></data>
+  <data name="aiprompts.prompt.cicdPipeline.desc" xml:space="preserve"><value>Crea una progettazione della pipeline CI/CD, l&apos;ottimizzazione della build e la strategia di distribuzione adatta al tipo di progetto.</value></data>
+  <data name="aiprompts.prompt.depAudit.title" xml:space="preserve"><value>Audit delle Dipendenze</value></data>
+  <data name="aiprompts.prompt.depAudit.desc" xml:space="preserve"><value>Verifica tutte le dipendenze in termini di sicurezza, aggiornamento, conformità della licenza e necessità.</value></data>
+  <data name="aiprompts.prompt.crudGen.title" xml:space="preserve"><value>Generatore di Funzionalità CRUD</value></data>
+  <data name="aiprompts.prompt.crudGen.desc" xml:space="preserve"><value>Genera una funzionalità CRUD completa (Model, Service, ViewModel, View) per una nuova entità.</value></data>
+  <data name="aiprompts.prompt.boilerplateGen.title" xml:space="preserve"><value>Generatore di Boilerplate di Progetto</value></data>
+  <data name="aiprompts.prompt.boilerplateGen.desc" xml:space="preserve"><value>Crea tutte le strutture di file e cartelle necessarie per un nuovo modulo o funzionalità.</value></data>
+  <data name="aiprompts.prompt.projectReport.title" xml:space="preserve"><value>Report di Analisi del Progetto</value></data>
+  <data name="aiprompts.prompt.projectReport.desc" xml:space="preserve"><value>Fornisce una radiografia olistica del progetto: architettura, qualità, rischi e suggerimenti per il miglioramento.</value></data>
+  <!-- End AI Prompt Library -->
+</root>

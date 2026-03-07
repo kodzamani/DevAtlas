@@ -1,0 +1,156 @@
+<UserControl x:Class="DevAtlas.Controls.AIPromptDetailPopup"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#B3000000"
+             IsVisible="False"
+             PointerPressed="Overlay_MouseLeftButtonDown">
+
+    <UserControl.Styles>
+        <Style Selector="Button.FlatPopupButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="920" MinWidth="720">
+        <Border Background="{DynamicResource Bg.Card}"
+                BorderBrush="{DynamicResource Border.Normal}"
+                BorderThickness="1"
+                CornerRadius="16"
+                PointerPressed="PopupContent_MouseLeftButtonDown">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0"
+                        Padding="24,18,24,16"
+                        BorderBrush="{DynamicResource Border.Normal}"
+                        BorderThickness="0,0,0,1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="42"
+                                    Height="42"
+                                    CornerRadius="12"
+                                    Background="{DynamicResource Bg.SidebarActive}"
+                                    Margin="0,0,14,0"
+                                    VerticalAlignment="Top">
+                                <Image Tag="avares://DevAtlas/Assets/Sidebar/ai_prompts.svg"
+                                                Width="22"
+                                                Height="22"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"/>
+                            </Border>
+
+                            <StackPanel>
+                                <TextBlock Text="{Binding Title}"
+                                           Foreground="{DynamicResource Text.Primary}"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                           TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding WordCountLabel}"
+                                           Foreground="{DynamicResource Text.Muted}"
+                                           FontSize="11"
+                                           Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <Button Grid.Column="1"
+                                Classes="FlatPopupButton"
+                                Click="CloseButton_Click">
+                            <Border Width="28"
+                                    Height="28"
+                                    CornerRadius="14"
+                                    Background="{DynamicResource Bg.Muted}">
+                                <TextBlock Text="X"
+                                           Foreground="{DynamicResource Text.Tertiary}"
+                                           FontSize="12"
+                                           FontWeight="SemiBold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Border>
+                        </Button>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="1" Margin="24,18,24,24">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" MaxHeight="440"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Text="{Binding Description}"
+                               Foreground="{DynamicResource Text.Secondary}"
+                               FontSize="13"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,16"/>
+
+                    <ScrollViewer Grid.Row="1"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  MaxHeight="440">
+                        <Border Background="{DynamicResource Bg.Muted}"
+                                CornerRadius="12"
+                                Padding="16">
+                            <TextBlock Text="{Binding Prompt}"
+                                       Foreground="{DynamicResource Text.Primary}"
+                                       FontFamily="Consolas"
+                                       FontSize="12"
+                                       TextWrapping="Wrap"/>
+                        </Border>
+                    </ScrollViewer>
+
+                    <Grid Grid.Row="2" Margin="0,16,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   Text="{Binding WordCountLabel}"
+                                   Foreground="{DynamicResource Text.Muted}"
+                                   FontSize="11"
+                                   VerticalAlignment="Center"/>
+
+                        <Button Grid.Column="1"
+                                Classes="FlatPopupButton"
+                                HorizontalAlignment="Right"
+                                Click="CopyPrompt_Click">
+                            <Border x:Name="CopyButtonBorder"
+                                    Background="{DynamicResource Accent.Primary}"
+                                    CornerRadius="10"
+                                    Width="132"
+                                    Padding="0,10">
+                                <TextBlock x:Name="CopyText"
+                                           Text="{Binding CopyLabel}"
+                                           Foreground="{DynamicResource Text.Inverse}"
+                                           FontSize="13"
+                                           FontWeight="SemiBold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Border>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

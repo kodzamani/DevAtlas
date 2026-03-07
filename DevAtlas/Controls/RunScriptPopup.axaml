@@ -1,0 +1,184 @@
+﻿<UserControl x:Class="DevAtlas.Controls.RunScriptPopup"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#CC000000"
+             IsVisible="False">
+
+    <UserControl.Styles>
+        <Style Selector="Border.ScriptCard">
+            <Setter Property="Background" Value="{DynamicResource Bg.Muted}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Border.Normal}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style Selector="Border.ScriptCard:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Bg.Hover}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Border.Normal}"/>
+        </Style>
+        <Style Selector="Border.CloseHover">
+            <Setter Property="Background" Value="{DynamicResource Bg.Muted}"/>
+        </Style>
+        <Style Selector="Border.CloseHover:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Bg.Hover}"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Background="{DynamicResource Bg.Card}"
+                CornerRadius="14"
+                Padding="18,16"
+                BorderBrush="{DynamicResource Border.Normal}"
+                BorderThickness="1"
+                Width="900"
+                MaxHeight="600">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="0,0,0,16">
+                    <TextBlock Text="Select Script to Run"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource Text.Primary}"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="ProjectNameText"
+                               FontSize="13"
+                               Foreground="{DynamicResource Text.Tertiary}"
+                               HorizontalAlignment="Center"
+                               Margin="0,6,0,0"/>
+                </StackPanel>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border x:Name="NpmInstallWarning"
+                            Grid.Row="0"
+                            Background="#FFFEF3C7"
+                            BorderBrush="#F59E0B"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="12"
+                            Margin="0,0,0,12"
+                            IsVisible="False">
+                        <StackPanel>
+                            <TextBlock Text="node_modules not found"
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Foreground="#92400E"/>
+                            <TextBlock Text="npm install will be run automatically before executing the script."
+                                       FontSize="12"
+                                       Foreground="#92400E"
+                                       TextWrapping="Wrap"
+                                       Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <ScrollViewer Grid.Row="1"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  MaxHeight="400"
+                                  Margin="0,0,0,10">
+                        <ItemsControl x:Name="ScriptsList">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="4" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border PointerPressed="ScriptItem_Click"
+                                            Tag="{Binding}"
+                                            Margin="5"
+                                            Classes="ScriptCard">
+
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                                <TextBlock Text="{Binding Name}"
+                                                           FontSize="14"
+                                                           FontWeight="Medium"
+                                                           Foreground="{DynamicResource Text.Primary}"
+                                                           VerticalAlignment="Center"/>
+                                                
+                                                <Border Background="{DynamicResource Accent.Primary}"
+                                                        CornerRadius="4"
+                                                        Padding="6,2"
+                                                        Margin="6,0,0,0"
+                                                        VerticalAlignment="Center"
+                                                        IsVisible="{Binding BadgeText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+                                                    <TextBlock Text="{Binding BadgeText}"
+                                                               FontSize="9"
+                                                               FontWeight="SemiBold"
+                                                               Foreground="White"
+                                                               VerticalAlignment="Center"/>
+                                                </Border>
+                                            </StackPanel>
+
+                                            <TextBlock Text="{Binding Command}"
+                                                       FontSize="11"
+                                                       Foreground="{DynamicResource Text.Tertiary}"
+                                                       TextTrimming="CharacterEllipsis"
+                                                       ToolTip.Tip="{Binding Command}"
+                                                       Margin="0,0,0,4"/>
+
+                                            <TextBlock Text="{Binding Description}"
+                                                       FontSize="11"
+                                                       Foreground="{DynamicResource Text.Muted}"
+                                                       TextWrapping="Wrap"
+                                                       IsVisible="{Binding Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                    <StackPanel x:Name="LoadingPanel"
+                                Grid.RowSpan="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                IsVisible="False">
+                        <TextBlock Text="Running npm install..."
+                                   FontSize="14"
+                                   Foreground="{DynamicResource Text.Primary}"
+                                   HorizontalAlignment="Center"/>
+                        <ProgressBar IsIndeterminate="True"
+                                     Width="200"
+                                     Height="4"
+                                     Margin="0,12,0,0"/>
+                    </StackPanel>
+
+                    <TextBlock x:Name="NoScriptsMessage"
+                               Grid.RowSpan="2"
+                               Text="No scripts found in package.json"
+                               FontSize="13"
+                               Foreground="{DynamicResource Text.Tertiary}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               IsVisible="False"/>
+                </Grid>
+
+                <Border Grid.Row="2"
+                        CornerRadius="8"
+                        Padding="20,12"
+                        HorizontalAlignment="Center"
+                        Cursor="Hand"
+                        PointerPressed="CloseButton_Click"
+                        Margin="0,16,0,0"
+                        Classes="CloseHover">
+                    <TextBlock Text="Cancel"
+                               FontSize="13"
+                               FontWeight="Medium"
+                               Foreground="{DynamicResource Text.Primary}"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

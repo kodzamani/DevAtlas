@@ -1,0 +1,240 @@
+<UserControl x:Class="DevAtlas.Controls.ProjectAnalyzePopup"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:DevAtlas.Controls"
+             xmlns:svc="using:DevAtlas.Services"
+             Background="#CC000000"
+             IsVisible="False"
+             PointerPressed="Overlay_MouseLeftButtonDown">
+
+    <UserControl.Styles>
+        <Style Selector="Border.CloseHover">
+            <Setter Property="Background" Value="{DynamicResource Bg.Muted}"/>
+        </Style>
+        <Style Selector="Border.CloseHover:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Bg.Hover}"/>
+        </Style>
+        <Style Selector="Border.AccentHover">
+            <Setter Property="Background" Value="{DynamicResource Accent.Primary}"/>
+        </Style>
+        <Style Selector="Border.AccentHover:pointerover">
+            <Setter Property="Background" Value="{DynamicResource Accent.PrimaryHover}"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="700" MinWidth="600">
+        <Border Background="{DynamicResource Bg.Card}" CornerRadius="14"
+                BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1"
+                PointerPressed="PopupContent_MouseLeftButtonDown">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Header -->
+                <Border Grid.Row="0" Padding="24,18,24,14" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="0,0,0,1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" x:Name="PopupHeaderIcon" Width="24" Height="24" HorizontalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock Grid.Column="1" Text="{Binding [ProjectsAnalyzeProject], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="HeaderProjectName" Grid.Column="2" Text="" Foreground="{DynamicResource Text.Muted}" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="12,0,0,0"/>
+
+                        <!-- Close button -->
+                        <Border Grid.Column="3" Width="28" Height="28" CornerRadius="14" Cursor="Hand" Margin="12,0,0,0"
+                                PointerPressed="CloseButton_Click" VerticalAlignment="Center"
+                                Classes="CloseHover">
+                            <TextBlock Text="X" Foreground="{DynamicResource Text.Tertiary}" FontSize="11" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- Content -->
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" MaxHeight="560" Padding="0">
+                    <StackPanel Margin="24,18,24,24">
+
+                        <!-- Loading indicator -->
+                        <StackPanel x:Name="LoadingPanel" HorizontalAlignment="Center" Margin="0,40,0,40">
+                            <TextBlock Text="{Binding [ProjectsAnalyzingProject], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="14" HorizontalAlignment="Center"/>
+                            <ProgressBar IsIndeterminate="True" Width="200" Height="3" Margin="0,12,0,0" Foreground="{DynamicResource Accent.Primary}" Background="{DynamicResource Bg.Muted}" BorderThickness="0"/>
+                        </StackPanel>
+
+                        <!-- Results Panel -->
+                        <StackPanel x:Name="ResultsPanel" IsVisible="False">
+
+                            <!-- Title + file count + Find Unuseds button -->
+                            <Grid Margin="0,0,0,16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding [ProjectsAnalyzeProject], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Primary}" FontSize="15" FontWeight="SemiBold"/>
+                                <TextBlock x:Name="AnalyzedFileCountText" Grid.Column="1" Text="" Foreground="{DynamicResource Text.Muted}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <Border Grid.Column="2" CornerRadius="6" Padding="10,4" Cursor="Hand"
+                                        PointerPressed="FindUnusedsButton_Click" VerticalAlignment="Center"
+                                        Classes="AccentHover">
+                                    <TextBlock Text="Find Unuseds" Foreground="White" FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+
+                            <!-- Stat Cards -->
+                            <Grid Margin="0,0,0,18">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Total Files -->
+                                <Border Grid.Column="0" Background="{DynamicResource Bg.Muted}" CornerRadius="8" Padding="14,10" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                            <TextBlock Text="{Binding [ProjectsTotalFiles], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="Medium"/>
+                                        </StackPanel>
+                                        <TextBlock x:Name="StatTotalFiles" Text="0" Foreground="{DynamicResource Text.Primary}" FontSize="20" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Total Lines -->
+                                <Border Grid.Column="2" Background="{DynamicResource Bg.Muted}" CornerRadius="8" Padding="14,10" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                            <TextBlock Text="{Binding [ProjectsTotalLines], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="Medium"/>
+                                        </StackPanel>
+                                        <TextBlock x:Name="StatTotalLines" Text="0" Foreground="{DynamicResource Text.Primary}" FontSize="20" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Avg Lines/File -->
+                                <Border Grid.Column="4" Background="{DynamicResource Bg.Muted}" CornerRadius="8" Padding="14,10" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                            <TextBlock Text="{Binding [ProjectsAvgLinesPerFile], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="Medium"/>
+                                        </StackPanel>
+                                        <TextBlock x:Name="StatAvgLines" Text="0" Foreground="{DynamicResource Text.Primary}" FontSize="20" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Largest File -->
+                                <Border Grid.Column="6" Background="{DynamicResource Bg.Muted}" CornerRadius="8" Padding="14,10" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                            <TextBlock Text="{Binding [ProjectsLargestFile], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="Medium"/>
+                                        </StackPanel>
+                                        <TextBlock x:Name="StatLargestFile" Text="0" Foreground="{DynamicResource Text.Primary}" FontSize="20" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+
+                            <!-- Language Distribution Bar -->
+                            <Border Background="{DynamicResource Bg.Muted}" CornerRadius="5" Height="12" Margin="0,0,0,10" ClipToBounds="True"
+                                    BorderBrush="{DynamicResource Border.Normal}" BorderThickness="1">
+                                <Grid x:Name="LanguageBar" ClipToBounds="True"/>
+                            </Border>
+
+                            <!-- Language Legend -->
+                            <ItemsControl x:Name="LanguageLegend" Margin="0,0,0,18">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,16,4">
+                                            <Ellipse Width="8" Height="8" Margin="0,0,5,0" VerticalAlignment="Center">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="{Binding Color}"/>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <TextBlock Foreground="{DynamicResource Text.Secondary}" FontSize="11" VerticalAlignment="Center">
+                                                <Run Text="{Binding Name, Mode=OneWay}"/>
+                                                <Run Text="{Binding PercentageText, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}"/>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <!-- File List Header -->
+                            <Grid Margin="0,0,0,8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="70"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="#" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold"/>
+                                <TextBlock Grid.Column="1" Text="{Binding [ProjectsFile], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold"/>
+                                <TextBlock Grid.Column="2" Text="{Binding [ProjectsExtension], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Text="{Binding [ProjectsLines], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Muted}" FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Right"/>
+                            </Grid>
+
+                            <Border Height="1" Background="{DynamicResource Border.Normal}" Margin="0,0,0,4"/>
+
+                            <!-- File List -->
+                            <ItemsControl x:Name="FileListControl">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Padding="0,6" BorderBrush="{DynamicResource Border.Normal}" BorderThickness="0,0,0,0.5">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="30"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="80"/>
+                                                    <ColumnDefinition Width="70"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Row number -->
+                                                <TextBlock Grid.Column="0" Text="{Binding RowNumber}" Foreground="{DynamicResource Text.Muted}" FontSize="11" VerticalAlignment="Center"/>
+
+                                                <!-- File path -->
+                                                <TextBlock Grid.Column="1" Text="{Binding RelativePath}" Foreground="{DynamicResource Text.Secondary}" FontSize="11" VerticalAlignment="Center"
+                                                           TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding RelativePath}"/>
+
+                                                <!-- Extension badge -->
+                                                <Border Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Border Grid.Column="0" Background="{DynamicResource Bg.Muted}" CornerRadius="3" Padding="5,1.5" Margin="0,0,4,0">
+                                                            <TextBlock Text="{Binding Extension}" Foreground="{DynamicResource Text.Tertiary}" FontSize="9" FontWeight="Medium"/>
+                                                        </Border>
+                                                        <!-- Mini color bar representing relative size -->
+                                                        <Border Grid.Column="1" CornerRadius="2" Height="4" Width="{Binding BarWidth}" VerticalAlignment="Center">
+                                                            <Border.Background>
+                                                                <SolidColorBrush Color="{Binding BarColor}"/>
+                                                            </Border.Background>
+                                                        </Border>
+                                                    </Grid>
+                                                </Border>
+
+                                                <!-- Line count -->
+                                                <TextBlock Grid.Column="3" Text="{Binding LinesFormatted}" Foreground="{DynamicResource Text.Primary}" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
