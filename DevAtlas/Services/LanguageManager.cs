@@ -7,7 +7,7 @@ using System.Text.Json;
 namespace DevAtlas.Services;
 
 /// <summary>
-/// Manages localization, theme, and accent color settings for the application.
+/// Manages localization, appearance, and scanning preferences for the application.
 /// Provides reactive property change notifications for WPF data binding.
 /// </summary>
 public sealed class LanguageManager : INotifyPropertyChanged
@@ -24,6 +24,7 @@ public sealed class LanguageManager : INotifyPropertyChanged
     private AppAccentColor _accentColor;
     private AppThemeMode _themeMode;
     private bool _hasCompletedOnboarding;
+    private bool _includeWslProjects;
     private List<string> _excludePaths = new();
 
     private static readonly string SettingsFolder = Path.Combine(
@@ -50,6 +51,7 @@ public sealed class LanguageManager : INotifyPropertyChanged
                     _accentColor = Enum.TryParse<AppAccentColor>(settings.AccentColor, out var accent) ? accent : AppAccentColor.Blue;
                     _themeMode = Enum.TryParse<AppThemeMode>(settings.ThemeMode, out var theme) ? theme : AppThemeMode.Light;
                     _hasCompletedOnboarding = settings.HasCompletedOnboarding;
+                    _includeWslProjects = settings.IncludeWslProjects;
                     _excludePaths = settings.ExcludePaths ?? new List<string>();
                     return;
                 }
@@ -61,6 +63,7 @@ public sealed class LanguageManager : INotifyPropertyChanged
         _accentColor = AppAccentColor.Blue;
         _themeMode = AppThemeMode.Light;
         _hasCompletedOnboarding = false;
+        _includeWslProjects = false;
         _excludePaths = new List<string>();
     }
 
@@ -75,6 +78,7 @@ public sealed class LanguageManager : INotifyPropertyChanged
                 AccentColor = _accentColor.ToString(),
                 ThemeMode = _themeMode.ToString(),
                 HasCompletedOnboarding = _hasCompletedOnboarding,
+                IncludeWslProjects = _includeWslProjects,
                 ExcludePaths = _excludePaths
             };
             File.WriteAllText(SettingsFile, JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true }));
@@ -88,6 +92,7 @@ public sealed class LanguageManager : INotifyPropertyChanged
         public string AccentColor { get; set; } = "Blue";
         public string ThemeMode { get; set; } = "Light";
         public bool HasCompletedOnboarding { get; set; }
+        public bool IncludeWslProjects { get; set; }
         public List<string>? ExcludePaths { get; set; }
     }
 
@@ -138,6 +143,18 @@ public sealed class LanguageManager : INotifyPropertyChanged
         {
             if (_hasCompletedOnboarding == value) return;
             _hasCompletedOnboarding = value;
+            SaveSettings();
+            OnPropertyChanged();
+        }
+    }
+
+    public bool IncludeWslProjects
+    {
+        get => _includeWslProjects;
+        set
+        {
+            if (_includeWslProjects == value) return;
+            _includeWslProjects = value;
             SaveSettings();
             OnPropertyChanged();
         }

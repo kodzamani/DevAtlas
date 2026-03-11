@@ -21,6 +21,9 @@ namespace DevAtlas.Models
         public int? TotalFiles { get; set; }
 
         [JsonIgnore]
+        public bool IsWslProject => IsWslPath(Path);
+
+        [JsonIgnore]
         public IBrush IconBrush
         {
             get
@@ -39,6 +42,19 @@ namespace DevAtlas.Models
 
                 return new SolidColorBrush(Color.FromRgb(107, 114, 128));
             }
+        }
+
+        public static bool IsWslPath(string? path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                return false;
+            }
+
+            return path.StartsWith(@"\\wsl$\", StringComparison.OrdinalIgnoreCase) ||
+                   path.StartsWith(@"\\wsl.localhost\", StringComparison.OrdinalIgnoreCase) ||
+                   path.StartsWith("//wsl$/", StringComparison.OrdinalIgnoreCase) ||
+                   path.StartsWith("//wsl.localhost/", StringComparison.OrdinalIgnoreCase);
         }
     }
 }

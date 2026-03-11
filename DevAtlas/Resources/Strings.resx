@@ -50,6 +50,7 @@
   <data name="SidebarDesktop" xml:space="preserve"><value>Desktop</value></data>
   <data name="SidebarMobile" xml:space="preserve"><value>Mobile</value></data>
   <data name="SidebarCloud" xml:space="preserve"><value>Cloud</value></data>
+  <data name="SidebarWsl" xml:space="preserve"><value>WSL</value></data>
   <data name="SidebarScanProjects" xml:space="preserve"><value>Scan Projects</value></data>
   <data name="SidebarDarkMode" xml:space="preserve"><value>Dark Mode</value></data>
   <data name="SidebarShowTour" xml:space="preserve"><value>Show Tour</value></data>
@@ -136,6 +137,8 @@
   <data name="SettingsAppearance" xml:space="preserve"><value>Appearance</value></data>
   <data name="SettingsTheme" xml:space="preserve"><value>Theme</value></data>
   <data name="SettingsAccentColor" xml:space="preserve"><value>Accent Color</value></data>
+  <data name="SettingsWslProjects" xml:space="preserve"><value>Include WSL2 projects</value></data>
+  <data name="SettingsWslProjectsDescription" xml:space="preserve"><value>Scan the home directories of installed WSL distributions through \\wsl$ shares.</value></data>
   <data name="SettingsLight" xml:space="preserve"><value>Light</value></data>
   <data name="SettingsDark" xml:space="preserve"><value>Dark</value></data>
   <data name="SettingsSystem" xml:space="preserve"><value>System</value></data>
@@ -289,6 +292,7 @@
 
   <!-- Messages -->
   <data name="MessageAllLocations" xml:space="preserve"><value>All Locations</value></data>
+  <data name="MessageWslProjects" xml:space="preserve"><value>WSL Projects</value></data>
   <data name="MessageEditorNotFound" xml:space="preserve"><value>Editor Not Found</value></data>
   <data name="MessageVSCodeNotFound" xml:space="preserve"><value>VSCode could not be found.</value></data>
   <data name="MessageComingSoon" xml:space="preserve"><value>Coming Soon</value></data>

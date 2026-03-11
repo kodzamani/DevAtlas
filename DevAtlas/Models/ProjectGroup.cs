@@ -13,6 +13,44 @@ namespace DevAtlas.Models
         public ObservableCollection<ProjectInfo> Projects { get; set; } = new();
         public int Count => Projects.Count;
 
+        public static List<ProjectGroup> GroupForExplorer(IEnumerable<ProjectInfo> projects)
+        {
+            var projectList = projects.ToList();
+            var wslProjects = projectList
+                .Where(project => project.IsWslProject)
+                .OrderByDescending(project => project.LastModified)
+                .ToList();
+            var localProjects = projectList
+                .Where(project => !project.IsWslProject)
+                .ToList();
+
+            var groups = new List<ProjectGroup>();
+            if (wslProjects.Count > 0)
+            {
+                groups.Add(CreateGroup(
+                    LanguageManager.Instance["MessageWslProjects"],
+                    "WSL",
+                    "#0F172A",
+                    "#E0F2FE",
+                    "#075985",
+                    wslProjects));
+            }
+
+            groups.AddRange(GroupByLastModified(localProjects));
+            return groups;
+        }
+
+        public static ProjectGroup CreateSingleGroup(string groupName, string icon, IEnumerable<ProjectInfo> projects)
+        {
+            return CreateGroup(
+                groupName,
+                icon,
+                "#0F172A",
+                "#E0F2FE",
+                "#075985",
+                projects.OrderByDescending(project => project.LastModified));
+        }
+
         public static List<ProjectGroup> GroupByLastModified(IEnumerable<ProjectInfo> projects)
         {
             var lm = LanguageManager.Instance;
@@ -74,6 +112,31 @@ namespace DevAtlas.Models
             }
 
             return result;
+        }
+
+        private static ProjectGroup CreateGroup(
+            string groupName,
+            string icon,
+            string accentColor,
+            string badgeBackground,
+            string badgeForeground,
+            IEnumerable<ProjectInfo> projects)
+        {
+            var group = new ProjectGroup
+            {
+                GroupName = groupName,
+                Icon = icon,
+                AccentColor = accentColor,
+                BadgeBackground = badgeBackground,
+                BadgeForeground = badgeForeground
+            };
+
+            foreach (var project in projects)
+            {
+                group.Projects.Add(project);
+            }
+
+            return group;
         }
     }
 }

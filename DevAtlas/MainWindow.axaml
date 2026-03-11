@@ -497,6 +497,23 @@
                                     <TextBlock x:Name="SidebarCloudCount" Grid.Column="2" Text="0" Foreground="{DynamicResource Text.Muted}" FontSize="11" VerticalAlignment="Center"/>
                                 </Grid>
                             </Border>
+
+                            <Border Height="1" Background="{DynamicResource Border.Normal}" Margin="14,8,14,6"/>
+
+                            <Border x:Name="SidebarWsl" CornerRadius="6" Padding="8,6" Margin="4,1" Cursor="Hand" PointerPressed="SidebarFilter_Click" Tag="WSL">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border x:Name="SidebarWslIconBorder" Grid.Column="0" Width="20" Height="20" CornerRadius="4" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,8,0">
+                                        <TextBlock Text="WSL" Foreground="{DynamicResource Text.Secondary}" FontSize="8" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock Grid.Column="1" Text="{Binding [SidebarWsl], Source={x:Static svc:LanguageManager.Instance}, Mode=OneWay}" Foreground="{DynamicResource Text.Secondary}" FontSize="12" VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="SidebarWslCount" Grid.Column="2" Text="0" Foreground="{DynamicResource Text.Muted}" FontSize="11" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
                         </StackPanel>
                     </DockPanel>
 
