@@ -139,6 +139,33 @@
                     <WrapPanel x:Name="AccentColorPanel" Margin="0,0,0,0">
                         <!-- Populated in code-behind -->
                     </WrapPanel>
+
+                    <Border IsVisible="{Binding ShowWslProjectsOption}"
+                            Background="{DynamicResource Bg.Muted}"
+                            BorderBrush="{DynamicResource Border.Normal}"
+                            BorderThickness="1"
+                            CornerRadius="10"
+                            Padding="14,12"
+                            Margin="0,20,0,0">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Grid.Column="0" Spacing="4">
+                                <TextBlock Text="{Binding WslProjectsLabel}"
+                                           Foreground="{DynamicResource Text.Primary}"
+                                           FontSize="13"
+                                           FontWeight="SemiBold"/>
+                                <TextBlock Text="{Binding WslProjectsDescription}"
+                                           Foreground="{DynamicResource Text.Muted}"
+                                           FontSize="11"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+
+                            <CheckBox Grid.Column="1"
+                                      IsChecked="{Binding IncludeWslProjects}"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Right"
+                                      Margin="16,0,0,0"/>
+                        </Grid>
+                    </Border>
                 </StackPanel>
             </Border>
 

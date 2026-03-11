@@ -1,10 +1,16 @@
 using DevAtlas.Models;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace DevAtlas.Services
 {
     public class ProjectScanner
     {
         private List<string> _excludePaths;
+        private bool _includeWslProjects;
+        private readonly WslProjectRootProvider _wslProjectRootProvider;
+        private static readonly Regex TomlNameRegex = new(@"^\s*name\s*=\s*[""'](?<name>[^""']+)[""']\s*$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         // Extensions that indicate a project (matched against file extension)
         // Static readonly collections are intentionally kept in memory for performance
@@ -209,9 +215,14 @@ namespace DevAtlas.Services
         /// Initializes a new instance of the ProjectScanner class.
         /// </summary>
         /// <param name="excludePaths">List of directory paths to exclude during scanning</param>
-        public ProjectScanner(List<string>? excludePaths = null)
+        public ProjectScanner(
+            List<string>? excludePaths = null,
+            bool includeWslProjects = false,
+            WslProjectRootProvider? wslProjectRootProvider = null)
         {
             _excludePaths = excludePaths ?? new List<string>();
+            _includeWslProjects = includeWslProjects;
+            _wslProjectRootProvider = wslProjectRootProvider ?? new WslProjectRootProvider();
         }
 
         /// <summary>
@@ -223,30 +234,33 @@ namespace DevAtlas.Services
             _excludePaths = excludePaths ?? new List<string>();
         }
 
+        public void UpdateScanOptions(List<string>? excludePaths, bool includeWslProjects)
+        {
+            _excludePaths = excludePaths ?? new List<string>();
+            _includeWslProjects = includeWslProjects;
+        }
+
         public async Task<List<ProjectInfo>> ScanAllDrivesAsync(CancellationToken cancellationToken = default)
         {
             var projects = new List<ProjectInfo>();
             var progress = new ScanProgress { IsScanning = true, Status = "Starting scan..." };
+            var scanRoots = await GetScanRootsAsync(cancellationToken);
 
-            var drives = DriveInfo.GetDrives()
-                .Where(d => d.IsReady && (d.DriveType == DriveType.Fixed || d.DriveType == DriveType.Removable))
-                .ToList();
-
-            progress.TotalDrives = drives.Count;
+            progress.TotalDrives = scanRoots.Count;
             ReportProgress(progress);
 
-            foreach (var drive in drives)
+            foreach (var scanRoot in scanRoots)
             {
                 if (cancellationToken.IsCancellationRequested) break;
 
-                progress.CurrentDrive = drive.Name;
-                progress.Status = $"Scanning drive {drive.Name}...";
+                progress.CurrentDrive = scanRoot.DisplayName;
+                progress.Status = $"Scanning {scanRoot.DisplayName}...";
                 ReportProgress(progress);
 
                 try
                 {
-                    var driveProjects = await ScanDriveAsync(drive, progress, cancellationToken);
-                    projects.AddRange(driveProjects);
+                    var rootProjects = await ScanRootAsync(scanRoot, progress, cancellationToken);
+                    projects.AddRange(rootProjects);
                 }
                 catch (OperationCanceledException)
                 {
@@ -254,11 +268,13 @@ namespace DevAtlas.Services
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Error scanning drive {drive.Name}: {ex.Message}");
+                    System.Diagnostics.Debug.WriteLine($"Error scanning {scanRoot.DisplayName}: {ex.Message}");
                 }
 
                 progress.ProcessedDrives++;
-                progress.ProgressPercentage = (double)progress.ProcessedDrives / progress.TotalDrives * 100;
+                progress.ProgressPercentage = progress.TotalDrives == 0
+                    ? 100
+                    : (double)progress.ProcessedDrives / progress.TotalDrives * 100;
                 ReportProgress(progress);
             }
 
@@ -269,7 +285,7 @@ namespace DevAtlas.Services
             return projects;
         }
 
-        private async Task<List<ProjectInfo>> ScanDriveAsync(DriveInfo drive, ScanProgress progress, CancellationToken cancellationToken)
+        private async Task<List<ProjectInfo>> ScanRootAsync(ProjectScanRoot scanRoot, ScanProgress progress, CancellationToken cancellationToken)
         {
             var projects = new List<ProjectInfo>();
             var foundProjectRoots = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -279,7 +295,7 @@ namespace DevAtlas.Services
             {
                 try
                 {
-                    ScanDirectory(drive.RootDirectory.FullName, projects, foundProjectRoots, visitedDirectories, progress, 0, 100, cancellationToken);
+                    ScanDirectory(scanRoot.RootPath, projects, foundProjectRoots, visitedDirectories, progress, 0, scanRoot.MaxDepth, cancellationToken);
                 }
                 catch (OperationCanceledException) { }
                 catch (Exception ex)
@@ -289,6 +305,23 @@ namespace DevAtlas.Services
             }, cancellationToken);
 
             return projects;
+        }
+
+        private async Task<List<ProjectScanRoot>> GetScanRootsAsync(CancellationToken cancellationToken)
+        {
+            var scanRoots = DriveInfo.GetDrives()
+                .Where(drive => drive.IsReady && (drive.DriveType == DriveType.Fixed || drive.DriveType == DriveType.Removable))
+                .Select(drive => new ProjectScanRoot(drive.Name, drive.RootDirectory.FullName))
+                .ToList();
+
+            if (!_includeWslProjects)
+            {
+                return scanRoots;
+            }
+
+            var wslRoots = await _wslProjectRootProvider.GetScanRootsAsync(cancellationToken);
+            scanRoots.AddRange(wslRoots);
+            return scanRoots;
         }
 
         private void ScanDirectory(string path, List<ProjectInfo> projects, HashSet<string> foundProjectRoots,
@@ -525,6 +558,7 @@ namespace DevAtlas.Services
                 }
 
                 string? matchedMarker = null;
+                string? matchedMarkerPath = null;
                 bool isExtensionMatch = false;
 
                 // Check files for project markers
@@ -537,6 +571,7 @@ namespace DevAtlas.Services
                     if (!string.IsNullOrEmpty(ext) && _extensionMarkers.Contains(ext))
                     {
                         matchedMarker = ext;
+                        matchedMarkerPath = file;
                         isExtensionMatch = true;
                         break;
                     }
@@ -545,6 +580,7 @@ namespace DevAtlas.Services
                     if (_filenameMarkers.Contains(fileName))
                     {
                         matchedMarker = fileName;
+                        matchedMarkerPath = file;
                         isExtensionMatch = false;
                         break;
                     }
@@ -560,6 +596,7 @@ namespace DevAtlas.Services
                             subDirName.EndsWith(".xcworkspace", StringComparison.OrdinalIgnoreCase))
                         {
                             matchedMarker = subDirName;
+                            matchedMarkerPath = dir;
                             break;
                         }
                     }
@@ -567,7 +604,7 @@ namespace DevAtlas.Services
 
                 if (matchedMarker != null)
                 {
-                    return CreateProjectInfo(path, files, matchedMarker, isExtensionMatch);
+                    return CreateProjectInfo(path, files, matchedMarker, matchedMarkerPath, isExtensionMatch);
                 }
 
                 // Check for Python project with .py files but no marker files
@@ -586,13 +623,13 @@ namespace DevAtlas.Services
 
                     if (hasMainFile)
                     {
-                        return CreateProjectInfo(path, files, "main.py", false);
+                        return CreateProjectInfo(path, files, "main.py", pyFiles.FirstOrDefault(), false);
                     }
 
                     // Or if there are 3+ .py files, treat it as a project
                     if (pyFiles.Count >= 3)
                     {
-                        return CreateProjectInfo(path, files, "main.py", false);
+                        return CreateProjectInfo(path, files, "main.py", pyFiles.FirstOrDefault(), false);
                     }
                 }
 
@@ -603,7 +640,7 @@ namespace DevAtlas.Services
                     bool hasReadme = files.Any(f => Path.GetFileName(f).Equals("README.md", StringComparison.OrdinalIgnoreCase));
                     if (hasReadme)
                     {
-                        return CreateProjectInfo(path, files, ".git", false);
+                        return CreateProjectInfo(path, files, ".git", dirs.FirstOrDefault(d => Path.GetFileName(d).Equals(".git", StringComparison.OrdinalIgnoreCase)), false);
                     }
                 }
 
@@ -615,7 +652,7 @@ namespace DevAtlas.Services
             }
         }
 
-        private ProjectInfo CreateProjectInfo(string projectPath, string[] files, string markerType, bool isExtensionMatch)
+        private ProjectInfo CreateProjectInfo(string projectPath, string[] files, string markerType, string? markerPath, bool isExtensionMatch)
         {
             var dirInfo = new DirectoryInfo(projectPath);
             var tags = new List<string>();
@@ -692,7 +729,7 @@ namespace DevAtlas.Services
 
             return new ProjectInfo
             {
-                Name = dirInfo.Name,
+                Name = ResolveProjectName(projectPath, files, markerType, markerPath, isExtensionMatch),
                 Path = projectPath,
                 ProjectType = projectType,
                 Category = category,
@@ -704,6 +741,237 @@ namespace DevAtlas.Services
                 IconText = iconText,
                 IconColor = iconColor
             };
+        }
+
+        private static string ResolveProjectName(string projectPath, string[] files, string markerType, string? markerPath, bool isExtensionMatch)
+        {
+            if (TryReadJsonName(files, "package.json", out var packageName))
+            {
+                return packageName;
+            }
+
+            if (TryGetSolutionName(files, out var solutionName))
+            {
+                return solutionName;
+            }
+
+            if (TryGetProjectFileName(files, out var projectFileName))
+            {
+                return projectFileName;
+            }
+
+            if (TryReadTomlName(files, "Cargo.toml", out var cargoName))
+            {
+                return cargoName;
+            }
+
+            if (TryReadPyProjectName(files, out var pyProjectName))
+            {
+                return pyProjectName;
+            }
+
+            if (TryReadJsonName(files, "composer.json", out var composerName))
+            {
+                return composerName;
+            }
+
+            if (TryReadPomArtifactId(files, out var artifactId))
+            {
+                return artifactId;
+            }
+
+            if (!string.IsNullOrWhiteSpace(markerPath) && isExtensionMatch)
+            {
+                var markerStem = Path.GetFileNameWithoutExtension(markerPath);
+                if (!string.IsNullOrWhiteSpace(markerStem))
+                {
+                    return markerStem;
+                }
+            }
+
+            return new DirectoryInfo(projectPath).Name;
+        }
+
+        private static bool TryGetSolutionName(string[] files, out string projectName)
+        {
+            var solutionFile = files.FirstOrDefault(file =>
+                file.EndsWith(".slnx", StringComparison.OrdinalIgnoreCase) ||
+                file.EndsWith(".sln", StringComparison.OrdinalIgnoreCase));
+
+            return TryGetFileStem(solutionFile, out projectName);
+        }
+
+        private static bool TryGetProjectFileName(string[] files, out string projectName)
+        {
+            var projectFiles = files
+                .Where(file =>
+                    file.EndsWith(".csproj", StringComparison.OrdinalIgnoreCase) ||
+                    file.EndsWith(".fsproj", StringComparison.OrdinalIgnoreCase) ||
+                    file.EndsWith(".vbproj", StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            if (projectFiles.Count == 1)
+            {
+                return TryGetFileStem(projectFiles[0], out projectName);
+            }
+
+            projectName = string.Empty;
+            return false;
+        }
+
+        private static bool TryGetFileStem(string? filePath, out string projectName)
+        {
+            var stem = string.IsNullOrWhiteSpace(filePath)
+                ? null
+                : Path.GetFileNameWithoutExtension(filePath);
+
+            if (!string.IsNullOrWhiteSpace(stem))
+            {
+                projectName = stem;
+                return true;
+            }
+
+            projectName = string.Empty;
+            return false;
+        }
+
+        private static bool TryReadJsonName(string[] files, string fileName, out string projectName)
+        {
+            var manifestPath = files.FirstOrDefault(file =>
+                Path.GetFileName(file).Equals(fileName, StringComparison.OrdinalIgnoreCase));
+
+            if (string.IsNullOrWhiteSpace(manifestPath))
+            {
+                projectName = string.Empty;
+                return false;
+            }
+
+            try
+            {
+                using var document = JsonDocument.Parse(File.ReadAllText(manifestPath));
+                if (document.RootElement.TryGetProperty("name", out var nameProperty) &&
+                    nameProperty.ValueKind == JsonValueKind.String)
+                {
+                    var name = nameProperty.GetString();
+                    if (!string.IsNullOrWhiteSpace(name))
+                    {
+                        projectName = name;
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+            }
+
+            projectName = string.Empty;
+            return false;
+        }
+
+        private static bool TryReadTomlName(string[] files, string fileName, out string projectName)
+        {
+            var manifestPath = files.FirstOrDefault(file =>
+                Path.GetFileName(file).Equals(fileName, StringComparison.OrdinalIgnoreCase));
+
+            if (string.IsNullOrWhiteSpace(manifestPath))
+            {
+                projectName = string.Empty;
+                return false;
+            }
+
+            try
+            {
+                foreach (var line in File.ReadLines(manifestPath))
+                {
+                    var match = TomlNameRegex.Match(line);
+                    if (match.Success)
+                    {
+                        projectName = match.Groups["name"].Value;
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+            }
+
+            projectName = string.Empty;
+            return false;
+        }
+
+        private static bool TryReadPyProjectName(string[] files, out string projectName)
+        {
+            var manifestPath = files.FirstOrDefault(file =>
+                Path.GetFileName(file).Equals("pyproject.toml", StringComparison.OrdinalIgnoreCase));
+
+            if (string.IsNullOrWhiteSpace(manifestPath))
+            {
+                projectName = string.Empty;
+                return false;
+            }
+
+            try
+            {
+                var currentSection = string.Empty;
+                foreach (var line in File.ReadLines(manifestPath))
+                {
+                    var trimmed = line.Trim();
+                    if (trimmed.StartsWith('[') && trimmed.EndsWith(']'))
+                    {
+                        currentSection = trimmed;
+                        continue;
+                    }
+
+                    if (currentSection is "[project]" or "[tool.poetry]")
+                    {
+                        var match = TomlNameRegex.Match(trimmed);
+                        if (match.Success)
+                        {
+                            projectName = match.Groups["name"].Value;
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+            }
+
+            projectName = string.Empty;
+            return false;
+        }
+
+        private static bool TryReadPomArtifactId(string[] files, out string projectName)
+        {
+            var pomPath = files.FirstOrDefault(file =>
+                Path.GetFileName(file).Equals("pom.xml", StringComparison.OrdinalIgnoreCase));
+
+            if (string.IsNullOrWhiteSpace(pomPath))
+            {
+                projectName = string.Empty;
+                return false;
+            }
+
+            try
+            {
+                var document = XDocument.Load(pomPath);
+                var artifactId = document.Root?
+                    .Elements()
+                    .FirstOrDefault(element => element.Name.LocalName == "artifactId")?
+                    .Value;
+
+                if (!string.IsNullOrWhiteSpace(artifactId))
+                {
+                    projectName = artifactId;
+                    return true;
+                }
+            }
+            catch
+            {
+            }
+
+            projectName = string.Empty;
+            return false;
         }
 
         public static string DetectCategory(string projectType, List<string> tags, string[] files)

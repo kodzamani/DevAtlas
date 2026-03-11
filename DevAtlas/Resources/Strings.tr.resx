@@ -50,6 +50,7 @@
   <data name="SidebarDesktop" xml:space="preserve"><value>Masaüstü</value></data>
   <data name="SidebarMobile" xml:space="preserve"><value>Mobil</value></data>
   <data name="SidebarCloud" xml:space="preserve"><value>Bulut</value></data>
+  <data name="SidebarWsl" xml:space="preserve"><value>WSL</value></data>
   <data name="SidebarScanProjects" xml:space="preserve"><value>Projeleri Tara</value></data>
   <data name="SidebarDarkMode" xml:space="preserve"><value>Karanlık Mod</value></data>
   <data name="SidebarShowTour" xml:space="preserve"><value>Turu Göster</value></data>
@@ -136,6 +137,8 @@
   <data name="SettingsAppearance" xml:space="preserve"><value>Görünüm</value></data>
   <data name="SettingsTheme" xml:space="preserve"><value>Tema</value></data>
   <data name="SettingsAccentColor" xml:space="preserve"><value>Vurgu Rengi</value></data>
+  <data name="SettingsWslProjects" xml:space="preserve"><value>WSL2 projelerini dahil et</value></data>
+  <data name="SettingsWslProjectsDescription" xml:space="preserve"><value>Yüklü WSL dağıtımlarının home klasörlerini \\wsl$ paylaşımları üzerinden tara.</value></data>
   <data name="SettingsLight" xml:space="preserve"><value>Açık</value></data>
   <data name="SettingsDark" xml:space="preserve"><value>Koyu</value></data>
   <data name="SettingsSystem" xml:space="preserve"><value>Sistem</value></data>
@@ -266,6 +269,7 @@
 
   <!-- Messages -->
   <data name="MessageAllLocations" xml:space="preserve"><value>Tüm Konumlar</value></data>
+  <data name="MessageWslProjects" xml:space="preserve"><value>WSL Projeleri</value></data>
   <data name="MessageEditorNotFound" xml:space="preserve"><value>Düzenleyici Bulunamadı</value></data>
   <data name="MessageVSCodeNotFound" xml:space="preserve"><value>VSCode bulunamadı.</value></data>
   <data name="MessageComingSoon" xml:space="preserve"><value>Yakında</value></data>

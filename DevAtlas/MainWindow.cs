@@ -64,6 +64,7 @@ namespace DevAtlas
         private readonly SettingsViewModel _settingsViewModel = new();
         private readonly OnboardingViewModel _onboardingViewModel = new();
         private const double ProjectGridCardFootprint = 272;
+        private const string WslFilterTag = "WSL";
         private int _gridProjectsPerRow = 1;
 
         public MainWindow()
@@ -77,7 +78,9 @@ namespace DevAtlas
             _settingsViewTourRequestedHandler = (_, _) => _onboardingViewModel.ShowOnboarding();
             _onboardingViewThemeChangedHandler = (_, mode) => ApplyThemeFromMode(mode);
 
-            _scanner = new ProjectScanner(LanguageManager.Instance.GetExcludePaths());
+            _scanner = new ProjectScanner(
+                LanguageManager.Instance.GetExcludePaths(),
+                LanguageManager.Instance.IncludeWslProjects);
             _index = new ProjectIndex();
             _editorDetector = new CodeEditorDetector();
             _projectAnalyzer = new ProjectAnalyzerService();
@@ -515,7 +518,7 @@ namespace DevAtlas
 
             // Update scanner with new exclude paths
             var excludePaths = LanguageManager.Instance.GetExcludePaths();
-            _scanner.UpdateExcludePaths(excludePaths);
+            _scanner.UpdateScanOptions(excludePaths, LanguageManager.Instance.IncludeWslProjects);
 
             // Clear cache and run scan
             _index.ClearCache();
@@ -555,6 +558,7 @@ namespace DevAtlas
             SidebarDesktopCount.Text = Projects.Count(p => p.Category == "Desktop").ToString();
             SidebarMobileCount.Text = Projects.Count(p => p.Category == "Mobile").ToString();
             SidebarCloudCount.Text = Projects.Count(p => p.Category == "Cloud").ToString();
+            SidebarWslCount.Text = Projects.Count(p => p.IsWslProject).ToString();
 
             // Show/hide status display based on whether projects are loaded
             StatusDisplayControl.IsVisible = Projects.Count > 0;
@@ -604,7 +608,9 @@ namespace DevAtlas
 
             IEnumerable<ProjectInfo> filtered = _currentFilter == "All"
                 ? Projects
-                : Projects.Where(p => p.Category == _currentFilter);
+                : _currentFilter == WslFilterTag
+                    ? Projects.Where(p => p.IsWslProject)
+                    : Projects.Where(p => p.Category == _currentFilter);
 
             // Apply search text filter
             if (!string.IsNullOrWhiteSpace(_searchText))
@@ -625,9 +631,14 @@ namespace DevAtlas
                 FilteredProjects.Add(p);
             }
 
-            // Build time-based groups
+            // Build explorer groups
             ProjectGroups.Clear();
-            var groups = ProjectGroup.GroupByLastModified(FilteredProjects);
+            var groups = _currentFilter switch
+            {
+                "All" => ProjectGroup.GroupForExplorer(FilteredProjects),
+                WslFilterTag => [ProjectGroup.CreateSingleGroup(LanguageManager.Instance["MessageWslProjects"], "WSL", FilteredProjects)],
+                _ => ProjectGroup.GroupByLastModified(FilteredProjects)
+            };
             foreach (var g in groups)
             {
                 ProjectGroups.Add(g);
@@ -636,7 +647,7 @@ namespace DevAtlas
             UpdateProjectListEntries();
 
             // Update breadcrumb
-            var categoryText = _currentFilter == "All" ? LanguageManager.Instance["MessageAllLocations"] : _currentFilter;
+            var categoryText = GetFilterDisplayName(_currentFilter);
             BreadcrumbCategoryText.Text = categoryText;
             FilteredCountText.Text = FilteredProjects.Count.ToString();
 
@@ -710,6 +721,7 @@ namespace DevAtlas
             SidebarDesktop.Background = null;
             SidebarMobile.Background = null;
             SidebarCloud.Background = null;
+            SidebarWsl.Background = null;
 
             // Set selected item background
             var selected = _currentFilter switch
@@ -719,6 +731,7 @@ namespace DevAtlas
                 "Desktop" => SidebarDesktop,
                 "Mobile" => SidebarMobile,
                 "Cloud" => SidebarCloud,
+                WslFilterTag => SidebarWsl,
                 _ => SidebarAllProjects
             };
 
@@ -744,6 +757,7 @@ namespace DevAtlas
                 SidebarDesktopIconBorder.Background = _currentFilter == "Desktop" ? accent : Brushes.Transparent;
                 SidebarMobileIconBorder.Background = _currentFilter == "Mobile" ? accent : Brushes.Transparent;
                 SidebarCloudIconBorder.Background = _currentFilter == "Cloud" ? accent : Brushes.Transparent;
+                SidebarWslIconBorder.Background = _currentFilter == WslFilterTag ? accent : Brushes.Transparent;
                 SidebarAllProjectsIconBorder.Background = allProjectsBg;
                 SidebarAllProjectsText.Foreground = isAllSelected ? activeText : secondary;
                 SidebarAllProjectsBadge.Background = isAllSelected ? badge : Brushes.Transparent;
@@ -760,6 +774,7 @@ namespace DevAtlas
                     SidebarDesktopIconBorder.Background = Brushes.Transparent;
                     SidebarMobileIconBorder.Background = Brushes.Transparent;
                     SidebarCloudIconBorder.Background = Brushes.Transparent;
+                    SidebarWslIconBorder.Background = Brushes.Transparent;
                 }
                 // Swap svg sources for selected category icons
                 try
@@ -1896,11 +1911,22 @@ namespace DevAtlas
             // Update breadcrumb
             if (BreadcrumbCategoryText != null)
             {
-                var categoryText = _currentFilter == "All"
-                    ? LanguageManager.Instance["MessageAllLocations"]
-                    : _currentFilter;
-                BreadcrumbCategoryText.Text = categoryText;
+                BreadcrumbCategoryText.Text = GetFilterDisplayName(_currentFilter);
             }
+        }
+
+        private static string GetFilterDisplayName(string filter)
+        {
+            return filter switch
+            {
+                "All" => LanguageManager.Instance["MessageAllLocations"],
+                "Web" => LanguageManager.Instance["SidebarWeb"],
+                "Desktop" => LanguageManager.Instance["SidebarDesktop"],
+                "Mobile" => LanguageManager.Instance["SidebarMobile"],
+                "Cloud" => LanguageManager.Instance["SidebarCloud"],
+                WslFilterTag => LanguageManager.Instance["MessageWslProjects"],
+                _ => filter
+            };
         }
 
         private void UpdateAccentColorResources()

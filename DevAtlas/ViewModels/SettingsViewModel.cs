@@ -10,7 +10,7 @@ namespace DevAtlas.ViewModels;
 
 /// <summary>
 /// ViewModel for the Settings page.
-/// Manages appearance, language, accent color, and exclude path preferences.
+/// Manages appearance, language, and project scanning preferences.
 /// </summary>
 public class SettingsViewModel : ViewModelBase, IDisposable
 {
@@ -41,6 +41,8 @@ public class SettingsViewModel : ViewModelBase, IDisposable
             OnPropertyChanged(nameof(VersionLabel));
             OnPropertyChanged(nameof(CopyrightLabel));
             OnPropertyChanged(nameof(SelectLanguageLabel));
+            OnPropertyChanged(nameof(WslProjectsLabel));
+            OnPropertyChanged(nameof(WslProjectsDescription));
         };
         _langManager.PropertyChanged += _propertyChangedHandler;
 
@@ -111,6 +113,8 @@ public class SettingsViewModel : ViewModelBase, IDisposable
             OnPropertyChanged(nameof(VersionLabel));
             OnPropertyChanged(nameof(CopyrightLabel));
             OnPropertyChanged(nameof(SelectLanguageLabel));
+            OnPropertyChanged(nameof(WslProjectsLabel));
+            OnPropertyChanged(nameof(WslProjectsDescription));
         }
     }
 
@@ -137,6 +141,24 @@ public class SettingsViewModel : ViewModelBase, IDisposable
 
     public SolidColorBrush AccentBrush => new(_langManager.GetAccentColorValue());
 
+    public bool IncludeWslProjects
+    {
+        get => _langManager.IncludeWslProjects;
+        set
+        {
+            if (_langManager.IncludeWslProjects == value)
+            {
+                return;
+            }
+
+            _langManager.IncludeWslProjects = value;
+            OnPropertyChanged();
+            SettingsSaved?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    public bool ShowWslProjectsOption => OperatingSystem.IsWindows();
+
     // Exclude Paths
     public ObservableCollection<string> ExcludePaths { get; } = new();
 
@@ -155,6 +177,8 @@ public class SettingsViewModel : ViewModelBase, IDisposable
     public string AppVersion => Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "N/A";
     public string CopyrightLabel => L("SettingsCopyright");
     public string SelectLanguageLabel => L("SettingsSelectLanguage");
+    public string WslProjectsLabel => L("SettingsWslProjects");
+    public string WslProjectsDescription => L("SettingsWslProjectsDescription");
 
     public ICommand SetLanguageCommand { get; }
     public ICommand SetThemeCommand { get; }
